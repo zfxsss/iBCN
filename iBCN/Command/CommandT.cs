@@ -10,7 +10,6 @@ using Metocean.iBCN.Command.Definition.Interface;
 
 namespace Metocean.iBCN.Command
 {
-
     /// <summary>
     /// 
     /// </summary>
