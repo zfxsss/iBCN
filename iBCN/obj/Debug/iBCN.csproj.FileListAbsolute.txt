@@ -1,0 +1,6 @@
+C:\Users\zhefeng\Desktop\iBCN\iBCN\bin\Debug\iBCN.dll
+C:\Users\zhefeng\Desktop\iBCN\iBCN\bin\Debug\iBCN.pdb
+C:\Users\zhefeng\Desktop\iBCN\iBCN\obj\Debug\iBCN.csprojResolveAssemblyReference.cache
+C:\Users\zhefeng\Desktop\iBCN\iBCN\obj\Debug\iBCN.csproj.CoreCompileInputs.cache
+C:\Users\zhefeng\Desktop\iBCN\iBCN\obj\Debug\iBCN.dll
+C:\Users\zhefeng\Desktop\iBCN\iBCN\obj\Debug\iBCN.pdb

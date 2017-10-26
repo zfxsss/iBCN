@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC8A3E3B-05C9-464B-84F7-7EDF1C6DCCAB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Metocean.iBCN</RootNamespace>
+    <AssemblyName>iBCN</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Command\CommandT.cs" />
+    <Compile Include="Command\Definition\ClearMemoryLog.cs" />
+    <Compile Include="Command\Definition\GetDiagnosticStatus.cs" />
+    <Compile Include="Command\Definition\GetExtendedDiagnostics.cs" />
+    <Compile Include="Command\Definition\GetIdentification.cs" />
+    <Compile Include="Command\Definition\Interface\ICmdDefinition.cs" />
+    <Compile Include="Command\Definition\ReadConfigMode.cs" />
+    <Compile Include="Command\Definition\ReadDateTime.cs" />
+    <Compile Include="Command\Definition\RequestPositionReport_Last.cs" />
+    <Compile Include="Command\Definition\RequestPositionReport_New.cs" />
+    <Compile Include="Command\Definition\ResetReportingIndex.cs" />
+    <Compile Include="Command\Definition\SendIridiumMessage.cs" />
+    <Compile Include="Command\Definition\SetDebugOutputLevel.cs" />
+    <Compile Include="Command\Definition\StartBootloaderProcess.cs" />
+    <Compile Include="Command\Definition\StartDownloadNew.cs" />
+    <Compile Include="Command\Definition\StopDownload.cs" />
+    <Compile Include="Command\Definition\WriteConfigMode.cs" />
+    <Compile Include="Command\Definition\WriteDateTime.cs" />
+    <Compile Include="Command\Definition\GetLogMemoryStatus.cs" />
+    <Compile Include="Command\Definition\StartDownloadAll.cs" />
+    <Compile Include="Configuration\IConfig.cs" />
+    <Compile Include="Configuration\IConfigReader.cs" />
+    <Compile Include="Interface\ICmd.cs" />
+    <Compile Include="Interface\IMsg.cs" />
+    <Compile Include="Message\Entity\EventData\PowerUp.cs" />
+    <Compile Include="Message\Entity\EventReport.cs" />
+    <Compile Include="Message\Entity\ExtendedStatus.cs" />
+    <Compile Include="Message\Entity\Identity.cs" />
+    <Compile Include="Message\Entity\Interface\IEntity.cs" />
+    <Compile Include="Message\Entity\Interface\IMsgEntity.cs" />
+    <Compile Include="Message\Entity\Interface\BaseMessage.cs" />
+    <Compile Include="Message\Entity\Interface\PropertyAccessor.cs" />
+    <Compile Include="Message\Entity\LogStatus.cs" />
+    <Compile Include="Message\Entity\Mode.cs" />
+    <Compile Include="Message\Entity\PositionReport.cs" />
+    <Compile Include="Message\Entity\RecordsPacket.cs" />
+    <Compile Include="Message\Entity\Status.cs" />
+    <Compile Include="Message\MessageT.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Command\Definition\Attribute\" />
+    <Folder Include="Configuration\Repository\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
