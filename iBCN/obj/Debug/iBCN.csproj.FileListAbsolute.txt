@@ -12,3 +12,5 @@ C:\Users\jxu\Documents\iBCN\iBCN\obj\Debug\iBCN.csprojResolveAssemblyReference.c
 C:\Users\jxu\Documents\iBCN\iBCN\obj\Debug\iBCN.csproj.CoreCompileInputs.cache
 C:\Users\jxu\Documents\iBCN\iBCN\obj\Debug\iBCN.dll
 C:\Users\jxu\Documents\iBCN\iBCN\obj\Debug\iBCN.pdb
+C:\Users\zhefeng\Desktop\iBCN\iBCN\bin\Debug\Newtonsoft.Json.dll
+C:\Users\zhefeng\Desktop\iBCN\iBCN\bin\Debug\Newtonsoft.Json.xml

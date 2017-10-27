@@ -46,5 +46,13 @@ namespace Metocean.iBCN.Message.Entity
         /// 
         /// </summary>
         public byte TimeToFix { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public PositionReport() : base()
+        {
+
+        }
     }
 }

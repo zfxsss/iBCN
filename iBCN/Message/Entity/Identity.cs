@@ -36,5 +36,13 @@ namespace Metocean.iBCN.Message.Entity
         /// 
         /// </summary>
         public byte[] GpsFwRev { get; set; } = new byte[80];
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Identity() : base()
+        {
+
+        }
     }
 }

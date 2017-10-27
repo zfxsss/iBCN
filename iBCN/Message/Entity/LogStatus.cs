@@ -32,5 +32,12 @@ namespace Metocean.iBCN.Message.Entity
         /// </summary>
         public DateTime LastRecordTimestamp { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public LogStatus() : base()
+        {
+
+        }
     }
 }

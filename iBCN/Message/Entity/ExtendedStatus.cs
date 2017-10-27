@@ -26,5 +26,13 @@ namespace Metocean.iBCN.Message.Entity
         /// 
         /// </summary>
         public byte[] Reserved2 { get; set; } = new byte[36];
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ExtendedStatus() : base()
+        {
+
+        }
     }
 }

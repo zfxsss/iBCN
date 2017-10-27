@@ -33,3 +33,5 @@ C:\Users\jxu\Documents\iBCN\iBCNTests\obj\Debug\iBCNTests.csprojResolveAssemblyR
 C:\Users\jxu\Documents\iBCN\iBCNTests\obj\Debug\iBCNTests.csproj.CoreCompileInputs.cache
 C:\Users\jxu\Documents\iBCN\iBCNTests\obj\Debug\iBCNTests.dll
 C:\Users\jxu\Documents\iBCN\iBCNTests\obj\Debug\iBCNTests.pdb
+C:\Users\zhefeng\Desktop\iBCN\iBCNTests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\zhefeng\Desktop\iBCN\iBCNTests\bin\Debug\Newtonsoft.Json.xml

@@ -46,5 +46,13 @@ namespace Metocean.iBCN.Message.Entity
         /// 
         /// </summary>
         public UInt16 TransmitInterval { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Mode() : base()
+        {
+
+        }
     }
 }
