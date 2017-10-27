@@ -1,0 +1,116 @@
+﻿{
+  "Version": "0.0.0.1",
+  "CopyRight": "MetOcean",
+
+  "Message": {
+    "EventReport": {
+      "Properties": [
+        "Timestamp",
+        "EventCode",
+        "EventData"
+      ],
+      "EventDataProperty": "EventData"
+    },
+    "PositionReport": {
+      "Properties": [
+        "Timestamp",
+        "EventCode",
+        "Latitude",
+        "Logitude",
+        "Speed",
+        "FixAccuracy",
+        "TimeToFix"
+      ]
+    },
+    "RecordsPacket": {
+      "Properties": [
+        "RecordIndex",
+        "Records"
+      ]
+    },
+    "LogStatus": {
+      "Properties": [
+        "RecordCount",
+        "LastRecordDownloaded",
+        "FirstRecordTimestamp",
+        "LastRecordTimestamp"
+      ]
+    },
+    "Status": {
+      "Properties": [
+        "Time",
+        "BatteryVoltage",
+        "Temperature",
+        "Reserved1",
+        "GpsStatus",
+        "ArrayLength"
+      ]
+    },
+    "ExtendedStatus": {
+      "Properties": [
+        "Reserved1",
+        "Imei",
+        "Reserved2"
+      ]
+    },
+    "Mode": {
+      "Properties": [
+        "Reserved1",
+        "FixInterval",
+        "Reserved2",
+        "MailboxCheckInterval",
+        "SurfacingSetting",
+        "TransmitIntervalFlags",
+        "TransmitInterval"
+      ]
+    },
+    "Identity": {
+      "Properties": [
+        "ModelNumber",
+        "SerialNumber",
+        "FwRev",
+        "IridiumFwRev",
+        "GpsFwRev"
+      ]
+    }
+  },
+  "EventData": {
+    "PowerUp": {
+      "Properties": [
+        "ResetReason"
+      ]
+    },
+    "BatteryStatus": {
+      "Properties": [
+        "Voltage",
+        "Temperature"
+      ]
+    },
+    "ConfigUpdate": {
+      "Properties": [
+        "Source"
+      ]
+    },
+    "GpsTimeout": {
+      "Properties": [
+        "Latitude",
+        "Longtitude",
+        "Speed",
+        "FixAccuracy",
+        "NumSatellites"
+      ]
+    },
+    "TimeSet": {
+      "Properties": [
+        "Source",
+        "Offset"
+      ]
+    },
+    "GpsPositionRequest": {
+      "Properties": [
+        "Source"
+      ]
+    }
+  }
+
+}

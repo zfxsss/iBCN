@@ -20,6 +20,6 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public List<EventReport> Records { get; set; } = new List<EventReport>(12);
+        public EventReport[] Records { get; set; } = new EventReport[12];
     }
 }
