@@ -40,9 +40,9 @@ namespace Metocean.iBCN.Message
         /// 
         /// </summary>
         /// <param name="messageName"></param>
-        public Msg(string msgName)
+        public Msg()
         {
-
+            MessageEntity = new T();
         }
 
         /// <summary>
