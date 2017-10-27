@@ -11,6 +11,7 @@ namespace Metocean.iBCN.Command.Definition.Interface
     /// </summary>
     public interface ICmdDefinition
     {
+
         /// <summary>
         /// 
         /// </summary>
