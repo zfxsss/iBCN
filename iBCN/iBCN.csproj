@@ -64,7 +64,12 @@
     <Compile Include="Configuration\IConfigReader.cs" />
     <Compile Include="Interface\ICmd.cs" />
     <Compile Include="Interface\IMsg.cs" />
+    <Compile Include="Message\Entity\EventData\BatteryStatus.cs" />
+    <Compile Include="Message\Entity\EventData\ConfigUpdate.cs" />
+    <Compile Include="Message\Entity\EventData\GpsPositionRequest.cs" />
+    <Compile Include="Message\Entity\EventData\GpsTimeout.cs" />
     <Compile Include="Message\Entity\EventData\PowerUp.cs" />
+    <Compile Include="Message\Entity\EventData\TimeSet.cs" />
     <Compile Include="Message\Entity\EventReport.cs" />
     <Compile Include="Message\Entity\ExtendedStatus.cs" />
     <Compile Include="Message\Entity\Identity.cs" />
