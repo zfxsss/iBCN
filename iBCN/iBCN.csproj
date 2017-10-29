@@ -66,7 +66,7 @@
     <Compile Include="Configuration\JsonConfigReader.cs" />
     <Compile Include="Configuration\Repository\ConfigRepository.cs" />
     <Compile Include="Interface\ICmd.cs" />
-    <Compile Include="Interface\IMsg.cs" />
+    <Compile Include="Interface\IMsgT.cs" />
     <Compile Include="Message\Entity\EventData\BatteryStatus.cs" />
     <Compile Include="Message\Entity\EventData\ConfigUpdate.cs" />
     <Compile Include="Message\Entity\EventData\GpsPositionRequest.cs" />
@@ -78,6 +78,7 @@
     <Compile Include="Message\Entity\Identity.cs" />
     <Compile Include="Message\Entity\Interface\IByteParser.cs" />
     <Compile Include="Message\Entity\Interface\IEntity.cs" />
+    <Compile Include="Message\Entity\Interface\IMsg.cs" />
     <Compile Include="Message\Entity\Interface\IMsgEntity.cs" />
     <Compile Include="Message\Entity\Interface\BaseMessage.cs" />
     <Compile Include="Message\Entity\Interface\PropertyAccessor.cs" />

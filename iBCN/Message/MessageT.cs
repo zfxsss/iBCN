@@ -15,16 +15,30 @@ namespace Metocean.iBCN.Message
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Msg<T> : IMsg where T : IMsgEntity, new()
+    public class Msg<T> : IMsg<T>, IMsg where T : IMsgEntity, new()
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="data"></param>
-        public void ParseBytes(byte[] data)
+        public T ParseBytes(byte[] data)
         {
             var msgConfig = JsonConfigReader.GetConfigItem("");
+            //needs to be implemented
+
+            return MessageEntity;
+            //return new T();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int CmdType { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int SubCmdType { get; private set; }
 
         /// <summary>
         /// 
@@ -39,8 +53,10 @@ namespace Metocean.iBCN.Message
         /// 
         /// </summary>
         /// <param name="messageName"></param>
-        public Msg()
+        public Msg(int cmdType, int subCmdType)
         {
+            CmdType = cmdType;
+            SubCmdType = subCmdType;
             MessageEntity = new T();
         }
 
@@ -48,7 +64,7 @@ namespace Metocean.iBCN.Message
         /// 
         /// </summary>
         /// <param name="data"></param>
-        public Msg(byte[] msgData) : this()
+        private Msg(int cmdType, int subCmdType, byte[] msgData) : this(cmdType, subCmdType)
         {
             //MessageEntity = MsgBuilder.BuildMsg<T>(msgData);
             //MessageEntity = new T();
@@ -63,10 +79,9 @@ namespace Metocean.iBCN.Message
         /// <returns></returns>
         public static IMsgEntity GetMessageEntity(byte[] data)
         {
-            var msg = new Msg<EventReport>();
-            msg.ParseBytes(data);
-            return msg.MessageEntity;
-            //return (new Msg<EventReport>(data)).MessageEntity;
+            //return (new Msg<EventReport>(0, 0)).ParseBytes(data);
+            return (new Msg<EventReport>(0, 0, data)).MessageEntity;
+
         }
     }
 }

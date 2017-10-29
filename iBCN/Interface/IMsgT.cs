@@ -9,12 +9,12 @@ namespace Metocean.iBCN.Interface
     /// <summary>
     /// 
     /// </summary>
-    public interface IMsg
+    public interface IMsg<T>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="data"></param>
-        void ParseBytes(byte[] data);
+        T ParseBytes(byte[] data);
     }
 }
