@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Interface
+namespace Metocean.iBCN.Message.Entity.Interface
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IMsg
+    public interface IBytesParser
     {
         /// <summary>
         /// 

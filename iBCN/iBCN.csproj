@@ -63,8 +63,7 @@
     <Compile Include="Command\Definition\WriteDateTime.cs" />
     <Compile Include="Command\Definition\GetLogMemoryStatus.cs" />
     <Compile Include="Command\Definition\StartDownloadAll.cs" />
-    <Compile Include="Configuration\IConfig.cs" />
-    <Compile Include="Configuration\IConfigReader.cs" />
+    <Compile Include="Configuration\JsonConfigReader.cs" />
     <Compile Include="Configuration\Repository\ConfigRepository.cs" />
     <Compile Include="Interface\ICmd.cs" />
     <Compile Include="Interface\IMsg.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="Message\Entity\EventReport.cs" />
     <Compile Include="Message\Entity\ExtendedStatus.cs" />
     <Compile Include="Message\Entity\Identity.cs" />
+    <Compile Include="Message\Entity\Interface\IByteParser.cs" />
     <Compile Include="Message\Entity\Interface\IEntity.cs" />
     <Compile Include="Message\Entity\Interface\IMsgEntity.cs" />
     <Compile Include="Message\Entity\Interface\BaseMessage.cs" />
@@ -87,7 +87,6 @@
     <Compile Include="Message\Entity\RecordsPacket.cs" />
     <Compile Include="Message\Entity\Status.cs" />
     <Compile Include="Message\MessageT.cs" />
-    <Compile Include="Message\MsgBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

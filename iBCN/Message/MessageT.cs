@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Metocean.iBCN.Interface;
 using Metocean.iBCN.Message.Entity.Interface;
 using Metocean.iBCN.Message.Entity;
+using Metocean.iBCN.Configuration;
 
 namespace Metocean.iBCN.Message
 {
@@ -19,12 +20,10 @@ namespace Metocean.iBCN.Message
         /// <summary>
         /// 
         /// </summary>
-        public Type MsgType
+        /// <param name="data"></param>
+        public void ParseBytes(byte[] data)
         {
-            get
-            {
-                return typeof(T);
-            }
+            var msgConfig = JsonConfigReader.GetConfigItem("");
         }
 
         /// <summary>
@@ -49,9 +48,11 @@ namespace Metocean.iBCN.Message
         /// 
         /// </summary>
         /// <param name="data"></param>
-        public Msg(byte[] msgData)
+        public Msg(byte[] msgData) : this()
         {
-            MessageEntity = MsgBuilder.BuildMsg<T>(msgData);
+            //MessageEntity = MsgBuilder.BuildMsg<T>(msgData);
+            //MessageEntity = new T();
+            ParseBytes(msgData);
         }
 
         /// <summary>
@@ -62,8 +63,10 @@ namespace Metocean.iBCN.Message
         /// <returns></returns>
         public static IMsgEntity GetMessageEntity(byte[] data)
         {
-            return (new Msg<EventReport>(data)).MessageEntity;
-
+            var msg = new Msg<EventReport>();
+            msg.ParseBytes(data);
+            return msg.MessageEntity;
+            //return (new Msg<EventReport>(data)).MessageEntity;
         }
     }
 }

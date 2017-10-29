@@ -10,19 +10,8 @@ namespace Metocean.iBCN.Message.Entity.Interface
     /// <summary>
     /// 
     /// </summary>
-    public abstract class BaseMessage : PropertyAccessor, IConfigReader
+    public abstract class BaseMessage : PropertyAccessor
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="itemName"></param>
-        /// <returns></returns>
-        public object GetConfigItem(string configItemPath)
-        {
-            //to be implemented
-            return null;
-        }
-
         /// <summary>
         /// 
         /// </summary>
@@ -38,7 +27,7 @@ namespace Metocean.iBCN.Message.Entity.Interface
         /// </summary>
         public BaseMessage()
         {
-
+            //GetConfigItem(null);
         }
     }
 }

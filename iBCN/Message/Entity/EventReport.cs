@@ -26,7 +26,8 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        byte[] EventData { get; set; } = new byte[11];
+        IEntity EventData { get; set; }
+        //byte[] EventData { get; set; } = new byte[11];
 
         /// <summary>
         /// 

@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Command\CommandTests.cs" />
     <Compile Include="Message\Entity\Interface\PropertyAccessorTests.cs" />
+    <Compile Include="Message\MsgTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
