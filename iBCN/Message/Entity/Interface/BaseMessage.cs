@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Message.Entity.Interface
     /// <summary>
     /// 
     /// </summary>
-    public abstract class BaseMessage : PropertyAccessor
+    public abstract class BaseMessage : PropertyAccessor, IMsgEntity
     {
         /// <summary>
         /// 

@@ -92,6 +92,11 @@ namespace Metocean.iBCN.Message
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static IMsg GetMessage(byte[] data)
         {
             return new Msg<EventReport>(0, 0, data);
