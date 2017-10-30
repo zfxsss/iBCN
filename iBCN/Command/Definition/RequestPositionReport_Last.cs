@@ -15,12 +15,14 @@ namespace Metocean.iBCN.Command.Definition
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Body
+        public byte[] Body { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RequestPositionReport_Last()
         {
-            get
-            {
-                return new byte[] { 0x03, 0x10 };
-            }
+            Body = new byte[] { 0x03, 0x10 };
         }
     }
 }

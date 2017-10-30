@@ -15,12 +15,14 @@ namespace Metocean.iBCN.Command.Definition
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Body
+        public byte[] Body { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public StartBootloaderProcess()
         {
-            get
-            {
-                return new byte[] { 0x07, 0x04 };
-            }
+            Body = new byte[] { 0x07, 0x04 };
         }
     }
 }

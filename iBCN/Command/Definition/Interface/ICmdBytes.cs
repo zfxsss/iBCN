@@ -14,6 +14,6 @@ namespace Metocean.iBCN.Command.Definition.Interface
         /// <summary>
         /// 
         /// </summary>
-        byte[] Body { get; }
+        byte[] Body { get; set; }
     }
 }

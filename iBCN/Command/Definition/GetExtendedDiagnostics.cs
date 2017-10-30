@@ -7,14 +7,22 @@ using System.Threading.Tasks;
 
 namespace Metocean.iBCN.Command.Definition
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class GetExtendedDiagnostics : ICmdBytes
     {
-        public byte[] Body
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[] Body{ get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public GetExtendedDiagnostics()
         {
-            get
-            {
-                return new byte[] { 0x03, 0x04 };
-            }
+            Body = new byte[] { 0x03, 0x04 };
         }
     }
 }

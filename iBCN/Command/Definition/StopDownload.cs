@@ -15,12 +15,11 @@ namespace Metocean.iBCN.Command.Definition
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Body
+        public byte[] Body { get; set; }
+
+        public StopDownload()
         {
-            get
-            {
-                return new byte[] { 0x09, 0x20 };
-            }
+            Body = new byte[] { 0x09, 0x20 };
         }
     }
 }
