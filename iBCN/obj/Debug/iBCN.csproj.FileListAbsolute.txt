@@ -13,3 +13,4 @@ C:\Users\jxu\Documents\iBCN\iBCN\obj\Debug\iBCN.dll
 C:\Users\jxu\Documents\iBCN\iBCN\obj\Debug\iBCN.pdb
 C:\Users\zhefeng\Desktop\iBCN\iBCN\bin\Debug\Newtonsoft.Json.dll
 C:\Users\zhefeng\Desktop\iBCN\iBCN\bin\Debug\Newtonsoft.Json.xml
+C:\Users\zhefeng\Desktop\iBCN\iBCN\obj\Debug\iBCN.csprojResolveAssemblyReference.cache

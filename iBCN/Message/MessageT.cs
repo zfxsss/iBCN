@@ -21,7 +21,7 @@ namespace Metocean.iBCN.Message
         /// 
         /// </summary>
         /// <param name="data"></param>
-        public T ParseBytes(byte[] data)
+        public T ParseBytes(byte[] entityData)
         {
             var msgConfig = JsonConfigReader.GetConfigItem("");
             //needs to be implemented
@@ -89,6 +89,12 @@ namespace Metocean.iBCN.Message
         {
             //return (new Msg<EventReport>(0, 0)).ParseBytes(data);
             return (new Msg<EventReport>(0, 0, data)).MessageEntity;
+
+        }
+
+        public static IMsg GetMessage(byte[] data)
+        {
+            return new Msg<EventReport>(0, 0, data);
 
         }
     }

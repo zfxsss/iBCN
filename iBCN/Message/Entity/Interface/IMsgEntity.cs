@@ -20,5 +20,10 @@ namespace Metocean.iBCN.Message.Entity.Interface
         /// 
         /// </summary>
         string EvtDataPropertyName { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        string EntityName { get; }
     }
 }

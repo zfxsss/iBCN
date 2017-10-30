@@ -15,6 +15,16 @@ namespace Metocean.iBCN.Interface
         /// 
         /// </summary>
         /// <param name="data"></param>
-        T ParseBytes(byte[] data);
+        T ParseBytes(byte[] entityData);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        int CmdType { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        int SubCmdType { get; }
     }
 }
