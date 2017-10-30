@@ -30,6 +30,14 @@ namespace Metocean.iBCN.Message
             //return new T();
         }
 
+        public Type MsgType
+        {
+            get
+            {
+                return typeof(T);
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>

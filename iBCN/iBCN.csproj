@@ -77,7 +77,7 @@
     <Compile Include="Message\Entity\ExtendedStatus.cs" />
     <Compile Include="Message\Entity\Identity.cs" />
     <Compile Include="Message\Entity\Interface\IEntity.cs" />
-    <Compile Include="Message\Entity\Interface\IMsg.cs" />
+    <Compile Include="Interface\IMsg.cs" />
     <Compile Include="Message\Entity\Interface\IMsgEntity.cs" />
     <Compile Include="Message\Entity\Interface\BaseMessage.cs" />
     <Compile Include="Message\Entity\Interface\PropertyAccessor.cs" />
