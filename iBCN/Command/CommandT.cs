@@ -60,10 +60,10 @@ namespace Metocean.iBCN.Command
         /// 
         /// </summary>
         /// <param name="cmdDefinition"></param>
-        public Command(int cmdType, int subCmdType)
+        public Command()
         {
-            CmdTypeCode = cmdType;
-            SubCmdTypeCode = subCmdType;
+            CmdTypeCode = 0;
+            SubCmdTypeCode = 0;
             CmdBytes = new T();
         }
 
@@ -71,7 +71,7 @@ namespace Metocean.iBCN.Command
         /// 
         /// </summary>
         /// <param name="cmdName"></param>
-        private Command(int cmdType, int subCmdType, object payload) : this(cmdType, subCmdType)
+        private Command(object payload) : this()
         {
             AppendBytes(payload);
         }
@@ -84,7 +84,7 @@ namespace Metocean.iBCN.Command
         /// <returns></returns>
         public static ICmdBytes GetCommandBytes(string cmdName, object payload)
         {
-            return (new Command<ClearMemoryLog>(0, 0, payload)).CmdBytes;
+            return (new Command<ClearMemoryLog>(payload)).CmdBytes;
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Metocean.iBCN.Command
         /// <returns></returns>
         public static ICmd GetCommand(string cmdName, object payload)
         {
-            return new Command<ClearMemoryLog>(0, 0, payload);
+            return new Command<ClearMemoryLog>(payload);
         }
     }
 }
