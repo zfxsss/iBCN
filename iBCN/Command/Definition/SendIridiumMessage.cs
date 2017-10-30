@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class SendIridiumMessage : ICmdDefinition
+    public class SendIridiumMessage : ICmdBytes
     {
         /// <summary>
         /// 

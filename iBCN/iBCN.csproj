@@ -48,7 +48,7 @@
     <Compile Include="Command\Definition\GetDiagnosticStatus.cs" />
     <Compile Include="Command\Definition\GetExtendedDiagnostics.cs" />
     <Compile Include="Command\Definition\GetIdentification.cs" />
-    <Compile Include="Command\Definition\Interface\ICmdDefinition.cs" />
+    <Compile Include="Command\Definition\Interface\ICmdBytes.cs" />
     <Compile Include="Command\Definition\ReadConfigMode.cs" />
     <Compile Include="Command\Definition\ReadDateTime.cs" />
     <Compile Include="Command\Definition\RequestPositionReport_Last.cs" />
@@ -66,6 +66,7 @@
     <Compile Include="Configuration\JsonConfigReader.cs" />
     <Compile Include="Configuration\Repository\ConfigRepository.cs" />
     <Compile Include="Interface\ICmd.cs" />
+    <Compile Include="Interface\ICmdT.cs" />
     <Compile Include="Interface\IMsgT.cs" />
     <Compile Include="Message\Entity\EventData\BatteryStatus.cs" />
     <Compile Include="Message\Entity\EventData\ConfigUpdate.cs" />

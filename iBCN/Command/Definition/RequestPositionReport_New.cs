@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class RequestPositionReport_New : ICmdDefinition
+    public class RequestPositionReport_New : ICmdBytes
     {
         /// <summary>
         /// 

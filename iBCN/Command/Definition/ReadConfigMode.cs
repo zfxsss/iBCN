@@ -10,16 +10,12 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class ReadConfigMode : ICmdDefinition
+    public class ReadConfigMode : ICmdBytes
     {
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Body
-        {
-            get;
-            private set;
-        }
+        public byte[] Body { get; set; }
 
         /// <summary>
         /// 

@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class WriteConfigMode : ICmdDefinition
+    public class WriteConfigMode : ICmdBytes
     {
         /// <summary>
         /// 

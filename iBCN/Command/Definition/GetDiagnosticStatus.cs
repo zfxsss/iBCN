@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Metocean.iBCN.Command.Definition
 {
-    public class GetDiagnosticStatus : ICmdDefinition
+    public class GetDiagnosticStatus : ICmdBytes
     {
         public byte[] Body
         {

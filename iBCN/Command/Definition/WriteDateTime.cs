@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class WriteDateTime : ICmdDefinition
+    public class WriteDateTime : ICmdBytes
     {
         /// <summary>
         /// 

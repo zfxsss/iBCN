@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class StartBootloaderProcess : ICmdDefinition
+    public class StartBootloaderProcess : ICmdBytes
     {
         /// <summary>
         /// 

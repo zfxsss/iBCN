@@ -14,8 +14,8 @@ namespace Metocean.iBCN.Command.Tests
         [TestMethod()]
         public void CommandTest()
         {
-            Definition.Interface.ICmdDefinition x = new Definition.ClearMemoryLog();
-            var y = (Definition.Interface.ICmdDefinition)(new Definition.ClearMemoryLog());
+            Definition.Interface.ICmdBytes x = new Definition.ClearMemoryLog();
+            var y = (Definition.Interface.ICmdBytes)(new Definition.ClearMemoryLog());
 
             Console.WriteLine("Type is:" + x.GetType().ToString());
             Console.WriteLine("Type is:" + y.GetType().ToString());
