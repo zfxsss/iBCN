@@ -32,7 +32,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public EventReport() : base()
+        public EventReport() : base("EventReport")
         {
 
         }

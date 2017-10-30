@@ -35,7 +35,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public LogStatus() : base()
+        public LogStatus() : base("LogStatus")
         {
 
         }

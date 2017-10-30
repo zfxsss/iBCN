@@ -30,8 +30,9 @@ namespace Metocean.iBCN.Message.Entity.Interface
         /// <summary>
         /// 
         /// </summary>
-        public BaseMessage()
+        public BaseMessage(string entityName)
         {
+            EntityName = entityName;
             //GetConfigItem(null);
         }
     }

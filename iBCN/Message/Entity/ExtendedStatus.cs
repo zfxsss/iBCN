@@ -30,7 +30,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public ExtendedStatus() : base()
+        public ExtendedStatus() : base("ExtendedStatus")
         {
 
         }
