@@ -68,6 +68,8 @@
     <Compile Include="Interface\ICmd.cs" />
     <Compile Include="Interface\ICmdT.cs" />
     <Compile Include="Interface\IMsgT.cs" />
+    <Compile Include="Message\Entity\Acknowledgement.cs" />
+    <Compile Include="Message\Entity\DateTime.cs" />
     <Compile Include="Message\Entity\EventData\BatteryStatus.cs" />
     <Compile Include="Message\Entity\EventData\ConfigUpdate.cs" />
     <Compile Include="Message\Entity\EventData\GpsPositionRequest.cs" />
@@ -86,7 +88,9 @@
     <Compile Include="Message\Entity\Mode.cs" />
     <Compile Include="Message\Entity\PositionReport.cs" />
     <Compile Include="Message\Entity\RecordsPacket.cs" />
+    <Compile Include="Message\Entity\StartDownload.cs" />
     <Compile Include="Message\Entity\Status.cs" />
+    <Compile Include="Message\MessageBuilder.cs" />
     <Compile Include="Message\MessageT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Metocean.iBCN.Command.Definition;
 
 namespace Metocean.iBCN.Command.Tests
 {
@@ -20,6 +21,19 @@ namespace Metocean.iBCN.Command.Tests
             Console.WriteLine("Type is:" + x.GetType().ToString());
             Console.WriteLine("Type is:" + y.GetType().ToString());
 
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetCommandBytesTest()
+        {
+            Command<ClearMemoryLog>.GetCommandBytes(null);
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetCommandTest()
+        {
             Assert.Fail();
         }
     }

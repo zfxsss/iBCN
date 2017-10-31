@@ -18,12 +18,40 @@ namespace Metocean.iBCN.Message
     public class Msg<T> : IMsg<T>, IMsg where T : IMsgEntity, new()
     {
         /// <summary>
-        /// 
+        /// recursively parse the bytes
         /// </summary>
         /// <param name="data"></param>
         public T ParseBytes(byte[] entityData)
         {
-            var msgConfig = JsonConfigReader.GetConfigItem("");
+            var msgConfig = JsonConfigReader.GetConfigItem(typeof(T).Name);
+
+            var cursorPosition = 0;
+            int byteOccupied = 0;
+
+            //the size of the Message Entity is already defined
+            if ((byteOccupied = msgConfig.Value<int>("BytesOccupied")) > 0)
+            {
+                if (entityData.Length < byteOccupied)
+                {
+                    throw new Exception("Not enough bytes provided");
+                }
+                else
+                {
+                    //start parsing the bytes
+                    var propertiesConfig = msgConfig["PropertiesConfig"];
+
+                    //new Msg<>
+
+                }
+            }
+            //the size of the Message Entity is not defined
+            else
+            {
+
+            }
+
+
+
             //needs to be implemented
 
             return MessageEntity;
@@ -72,7 +100,7 @@ namespace Metocean.iBCN.Message
         /// 
         /// </summary>
         /// <param name="data"></param>
-        private Msg(int cmdType, int subCmdType, byte[] msgData) : this(cmdType, subCmdType)
+        internal Msg(int cmdType, int subCmdType, byte[] msgData) : this(cmdType, subCmdType)
         {
             //MessageEntity = MsgBuilder.BuildMsg<T>(msgData);
             //MessageEntity = new T();
@@ -82,25 +110,12 @@ namespace Metocean.iBCN.Message
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="msgType"></param>
-        /// <returns></returns>
-        public static IMsgEntity GetMessageEntity(byte[] data)
+        /// <param name="msgData"></param>
+        internal Msg(byte[] msgData)
         {
-            //return (new Msg<EventReport>(0, 0)).ParseBytes(data);
-            return (new Msg<EventReport>(0, 0, data)).MessageEntity;
-
+            MessageEntity = new T();
+            ParseBytes(msgData);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public static IMsg GetMessage(byte[] data)
-        {
-            return new Msg<EventReport>(0, 0, data);
-
-        }
     }
 }

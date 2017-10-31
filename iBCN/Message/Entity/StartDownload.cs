@@ -5,36 +5,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Metocean.iBCN.Message.Entity
 {
     /// <summary>
     /// 
     /// </summary>
-    public class EventReport : BaseMessage, IMsgEntity
+    public class StartDownload : BaseMessage, IMsgEntity
     {
         /// <summary>
         /// 
         /// </summary>
-        public DateTime Timestamp { get; set; }
+        public Acknowledgement Ack { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte EventCode { get; set; }
+        public UInt32 StartIndex { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public IEntity EventData { get; set; }
-        //byte[] EventData { get; set; } = new byte[11];
+        public UInt32 EndIndex { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public EventReport() : base("EventReport")
+        public StartDownload() : base("StartDownload")
         {
-
         }
     }
 }

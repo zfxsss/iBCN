@@ -24,6 +24,7 @@ namespace Metocean.iBCN.Message.Entity.Interface
         /// <summary>
         /// 
         /// </summary>
+        [Obsolete]
         string EntityName { get; }
     }
 }
