@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Metocean.iBCN.Message.Entity.EventData.Interface
 {
-    interface IEvtData : IEntity
+    public interface IEvtData : IEntity
     {
         int EventCode { get; }
     }
