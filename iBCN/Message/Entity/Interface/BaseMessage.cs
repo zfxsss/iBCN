@@ -1,4 +1,4 @@
-﻿using Metocean.iBCN.Configuration;
+﻿using Metocean.iBCN.Interface.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

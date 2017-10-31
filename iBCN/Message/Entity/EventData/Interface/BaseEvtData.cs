@@ -1,20 +1,20 @@
-﻿using Metocean.iBCN.Message.Entity.EventData.Interface;
+﻿using Metocean.iBCN.Interface.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Message.Entity.EventData
+namespace Metocean.iBCN.Message.Entity.EventData.Interface
 {
     /// <summary>
     /// 
     /// </summary>
-    public class PowerUp : BaseEvtData, IEvtData
+    public class BaseEvtData : PropertyAccessor, IEvtData
     {
         /// <summary>
         /// 
         /// </summary>
-        public byte ResetReason { get; set; }
+        public int EventCode { get; set; }
     }
 }

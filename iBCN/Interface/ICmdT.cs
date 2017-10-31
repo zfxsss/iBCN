@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Metocean.iBCN.Command.Payload.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace Metocean.iBCN.Interface
         /// </summary>
         /// <param name="payload"></param>
         /// <returns></returns>
-        T AppendBytes(object payload);
+        T AppendBytes(IPayload payload);
 
         /// <summary>
         /// 

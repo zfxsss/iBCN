@@ -1,4 +1,4 @@
-﻿using Metocean.iBCN.Message.Entity.Interface;
+﻿using Metocean.iBCN.Message.Entity.EventData.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// <summary>
     /// 
     /// </summary>
-    public class TimeSet : PropertyAccessor, IEntity
+    public class TimeSet : BaseEvtData, IEvtData
     {
         /// <summary>
         /// 

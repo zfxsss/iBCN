@@ -8,6 +8,7 @@ using Metocean.iBCN.Interface;
 using Metocean.iBCN.Command.Definition;
 using Metocean.iBCN.Command.Definition.Interface;
 using Metocean.iBCN.Configuration;
+using Metocean.iBCN.Command.Payload.Interface;
 
 namespace Metocean.iBCN.Command
 {
@@ -33,7 +34,7 @@ namespace Metocean.iBCN.Command
         /// </summary>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public T AppendBytes(object payload)
+        public T AppendBytes(IPayload payload)
         {
             var cmdConfig = JsonConfigReader.GetConfigItem("");
 
@@ -71,7 +72,7 @@ namespace Metocean.iBCN.Command
         /// 
         /// </summary>
         /// <param name="cmdName"></param>
-        private Command(object payload) : this()
+        private Command(IPayload payload) : this()
         {
             AppendBytes(payload);
         }
@@ -82,7 +83,7 @@ namespace Metocean.iBCN.Command
         /// <param name="cmdName"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public static ICmdBytes GetCommandBytes(object payload)
+        public static ICmdBytes GetCommandBytes(IPayload payload)
         {
             return new Command<T>(payload).CmdBytes;
         }
@@ -93,7 +94,7 @@ namespace Metocean.iBCN.Command
         /// <param name="cmdName"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public static ICmd GetCommand(object payload)
+        public static ICmd GetCommand(IPayload payload)
         {
             return new Command<T>(payload);
         }

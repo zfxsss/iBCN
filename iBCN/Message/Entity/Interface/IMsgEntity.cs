@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Metocean.iBCN.Interface.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
