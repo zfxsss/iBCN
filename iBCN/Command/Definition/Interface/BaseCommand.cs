@@ -9,16 +9,23 @@ namespace Metocean.iBCN.Command.Definition.Interface
     /// <summary>
     /// 
     /// </summary>
-    public interface ICmdBytes
+    public abstract class BaseCommand : ICmdBytes
     {
         /// <summary>
         /// 
         /// </summary>
-        byte[] Body { get; }
+        public byte[] Body { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        bool? HasPayload { get; }
+        public bool? HasPayload
+        {
+            get
+            {
+                return false;
+            }
+        }
+
     }
 }

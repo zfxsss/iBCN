@@ -48,6 +48,7 @@
     <Compile Include="Command\Definition\GetDiagnosticStatus.cs" />
     <Compile Include="Command\Definition\GetExtendedDiagnostics.cs" />
     <Compile Include="Command\Definition\GetIdentification.cs" />
+    <Compile Include="Command\Definition\Interface\BaseCommand.cs" />
     <Compile Include="Command\Definition\Interface\ICmdBytes.cs" />
     <Compile Include="Command\Definition\ReadConfigMode.cs" />
     <Compile Include="Command\Definition\ReadDateTime.cs" />
@@ -66,9 +67,9 @@
     <Compile Include="Command\Payload\Interface\IPayload.cs" />
     <Compile Include="Configuration\JsonConfigReader.cs" />
     <Compile Include="Configuration\Repository\ConfigRepository.cs" />
-    <Compile Include="Interface\ICmd.cs" />
-    <Compile Include="Interface\ICmdT.cs" />
-    <Compile Include="Interface\IMsgT.cs" />
+    <Compile Include="Command\Interface\ICmd.cs" />
+    <Compile Include="Command\Interface\ICmdT.cs" />
+    <Compile Include="Message\Interface\IMsgT.cs" />
     <Compile Include="Message\Entity\Acknowledgement.cs" />
     <Compile Include="Message\Entity\DateTime.cs" />
     <Compile Include="Message\Entity\EventData\BatteryStatus.cs" />
@@ -76,17 +77,14 @@
     <Compile Include="Message\Entity\EventData\GpsPositionRequest.cs" />
     <Compile Include="Message\Entity\EventData\GpsTimeout.cs" />
     <Compile Include="Message\Entity\EventData\Interface\BaseEvtData.cs" />
-    <Compile Include="Message\Entity\EventData\Interface\IEvtData.cs" />
     <Compile Include="Message\Entity\EventData\PowerUp.cs" />
     <Compile Include="Message\Entity\EventData\TimeSet.cs" />
     <Compile Include="Message\Entity\EventReport.cs" />
     <Compile Include="Message\Entity\ExtendedStatus.cs" />
     <Compile Include="Message\Entity\Identity.cs" />
-    <Compile Include="Interface\Entity\IEntity.cs" />
-    <Compile Include="Interface\IMsg.cs" />
-    <Compile Include="Message\Entity\Interface\IMsgEntity.cs" />
+    <Compile Include="Message\Interface\Parser\IParser.cs" />
+    <Compile Include="Message\Interface\IMsg.cs" />
     <Compile Include="Message\Entity\Interface\BaseMessage.cs" />
-    <Compile Include="Interface\Entity\PropertyAccessor.cs" />
     <Compile Include="Message\Entity\LogStatus.cs" />
     <Compile Include="Message\Entity\Mode.cs" />
     <Compile Include="Message\Entity\PositionReport.cs" />
@@ -100,6 +98,7 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="Configuration\Json\iBCN_Configuration.json" />
+    <None Include="iBCN Structure.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

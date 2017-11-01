@@ -10,13 +10,8 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class StartDownloadNew : ICmdBytes
+    public class StartDownloadNew : BaseCommand, ICmdBytes
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public byte[] Body { get; set; }
-
         /// <summary>
         /// 
         /// </summary>

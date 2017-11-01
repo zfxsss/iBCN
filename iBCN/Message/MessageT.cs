@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Metocean.iBCN.Interface;
-using Metocean.iBCN.Message.Entity.Interface;
-using Metocean.iBCN.Message.Entity;
 using Metocean.iBCN.Configuration;
+using Metocean.iBCN.Message.Interface;
+using Metocean.iBCN.Message.Entity.Interface;
 
 namespace Metocean.iBCN.Message
 {
@@ -15,7 +14,7 @@ namespace Metocean.iBCN.Message
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Msg<T> : IMsg<T>, IMsg where T : IMsgEntity, new()
+    public class Msg<T> : IMsg<T>, IMsg where T : BaseMessage, new()
     {
         /// <summary>
         /// recursively parse the bytes

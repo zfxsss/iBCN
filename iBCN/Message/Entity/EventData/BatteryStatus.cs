@@ -1,4 +1,5 @@
 ﻿using Metocean.iBCN.Message.Entity.EventData.Interface;
+using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// <summary>
     /// 
     /// </summary>
-    public class BatteryStatus : BaseEvtData, IEvtData
+    public class BatteryStatus : BaseEvtData, IParser
     {
         /// <summary>
         /// 
@@ -21,5 +22,6 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// 
         /// </summary>
         public byte Temperature { get; set; }
+
     }
 }

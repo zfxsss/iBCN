@@ -1,4 +1,5 @@
 ﻿using Metocean.iBCN.Message.Entity.Interface;
+using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class PositionReport : BaseMessage, IMsgEntity
+    public class PositionReport : BaseMessage, IParser
     {
         /// <summary>
         /// 
@@ -50,7 +51,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public PositionReport() : base()
+        public PositionReport()
         {
 
         }

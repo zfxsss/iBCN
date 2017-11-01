@@ -27,12 +27,19 @@ namespace Metocean.iBCN.Command.Tests
         [TestMethod()]
         public void GetCommandBytesTest()
         {
-            Command<ClearMemoryLog>.GetCommandBytes(null);
+            Command<ClearMemoryLog>.GetCommandBytes();
             Assert.Fail();
         }
 
         [TestMethod()]
         public void GetCommandTest()
+        {
+            Command<ClearMemoryLog>.GetCommand();
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetCommandTest1()
         {
             Assert.Fail();
         }

@@ -1,4 +1,4 @@
-﻿using Metocean.iBCN.Interface.Entity;
+﻿using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +10,14 @@ namespace Metocean.iBCN.Message.Entity.EventData.Interface
     /// <summary>
     /// 
     /// </summary>
-    public class BaseEvtData : PropertyAccessor, IEvtData
+    public abstract class BaseEvtData : IParser
     {
         /// <summary>
         /// 
         /// </summary>
-        public int EventCode { get; set; }
+        public virtual void FromBytes(byte[] evtData)
+        {
+            throw new NotImplementedException("");
+        }
     }
 }

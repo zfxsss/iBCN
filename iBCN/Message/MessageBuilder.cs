@@ -1,6 +1,6 @@
-﻿using Metocean.iBCN.Interface;
-using Metocean.iBCN.Message.Entity;
+﻿using Metocean.iBCN.Message.Entity;
 using Metocean.iBCN.Message.Entity.Interface;
+using Metocean.iBCN.Message.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace Metocean.iBCN.Message
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static IMsgEntity GetMessageEntity(byte[] data)
+        public static BaseMessage GetMessageEntity(byte[] data)
         {
             if (data[0] == 0x01 && data[1] == 0x81)
             {
@@ -72,7 +72,7 @@ namespace Metocean.iBCN.Message
         /// <param name="MsgName"></param>
         /// <param name="entitydata"></param>
         /// <returns></returns>
-        public static IMsgEntity GetMessageEntity(string msgName, byte[] entitydata)
+        public static BaseMessage GetMessageEntity(string msgName, byte[] entitydata)
         {
             if (msgName == "EventReport")
             {

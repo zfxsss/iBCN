@@ -4,26 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Interface
+namespace Metocean.iBCN.Message.Interface
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface ICmd
+    public interface IMsg
     {
         /// <summary>
         /// 
         /// </summary>
-        Type CmdType { get; }
+        Type MsgType { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        int CmdTypeCode { get; }
+        int CmdType { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        int SubCmdTypeCode { get; }
+        int SubCmdType { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        byte[] EntityBytes { get; }
     }
 }

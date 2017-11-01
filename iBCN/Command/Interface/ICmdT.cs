@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Interface
+namespace Metocean.iBCN.Command.Interface
 {
     /// <summary>
     /// 

@@ -1,4 +1,5 @@
 ﻿using Metocean.iBCN.Message.Entity.Interface;
+using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class DateTime : BaseMessage, IMsgEntity
+    public class DateTime : BaseMessage, IParser
     {
         /// <summary>
         /// 
@@ -20,7 +21,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public DateTime() : base()
+        public DateTime()
         {
 
         }

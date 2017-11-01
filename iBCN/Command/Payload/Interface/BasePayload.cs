@@ -1,23 +1,24 @@
-﻿using Metocean.iBCN.Command.Definition.Interface;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Command.Definition
+namespace Metocean.iBCN.Command.Payload.Interface
 {
     /// <summary>
     /// 
     /// </summary>
-    public class StopDownload : BaseCommand, ICmdBytes
+    public class BasePayload : IPayload
     {
         /// <summary>
         /// 
         /// </summary>
-        public StopDownload()
+        /// <returns></returns>
+        public virtual byte[] ToBytes()
         {
-            Body = new byte[] { 0x09, 0x20 };
+            //to be implemented
+            return null;
         }
     }
 }

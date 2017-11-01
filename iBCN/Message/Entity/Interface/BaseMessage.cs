@@ -1,4 +1,4 @@
-﻿using Metocean.iBCN.Interface.Entity;
+﻿using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +10,14 @@ namespace Metocean.iBCN.Message.Entity.Interface
     /// <summary>
     /// 
     /// </summary>
-    public abstract class BaseMessage : PropertyAccessor, IMsgEntity
+    public abstract class BaseMessage : IParser
     {
         /// <summary>
         /// 
         /// </summary>
-        public bool HasDirectEvtDataProperty { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string EvtDataPropertyName { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public BaseMessage()
+        public virtual void FromBytes(byte[] entityData)
         {
-            //GetConfigItem(null);
+            throw new NotImplementedException("");
         }
     }
 }

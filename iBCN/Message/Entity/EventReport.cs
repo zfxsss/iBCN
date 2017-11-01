@@ -1,6 +1,6 @@
-﻿using Metocean.iBCN.Interface.Entity;
-using Metocean.iBCN.Message.Entity.EventData.Interface;
+﻿using Metocean.iBCN.Message.Entity.EventData.Interface;
 using Metocean.iBCN.Message.Entity.Interface;
+using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class EventReport : BaseMessage, IMsgEntity
+    public class EventReport : BaseMessage, IParser
     {
         /// <summary>
         /// 
@@ -28,7 +28,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public IEvtData EventData { get; set; }
+        public BaseEvtData EventData { get; set; }
         //byte[] EventData { get; set; } = new byte[11];
 
         /// <summary>

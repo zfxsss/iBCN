@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Metocean.iBCN.Interface;
 using Metocean.iBCN.Command.Definition;
 using Metocean.iBCN.Command.Definition.Interface;
 using Metocean.iBCN.Configuration;
 using Metocean.iBCN.Command.Payload.Interface;
+using Metocean.iBCN.Command.Interface;
 
 namespace Metocean.iBCN.Command
 {
@@ -21,24 +21,23 @@ namespace Metocean.iBCN.Command
         /// <summary>
         /// 
         /// </summary>
-        public Type CmdType
-        {
-            get
-            {
-                return typeof(T);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="payload"></param>
         /// <returns></returns>
         public T AppendBytes(IPayload payload)
         {
-            var cmdConfig = JsonConfigReader.GetConfigItem("");
+            if (CmdBytes.HasPayload != null)
+            {
+                if ((bool)CmdBytes.HasPayload == true)
+                {
+                    var payloadBytes = payload.ToBytes();
+                    
+                    //some logic need to be added here
+                    CmdBytes.Body.Concat(payloadBytes);
+                }
 
-            //to be implemented
+            }
+
+
             return CmdBytes;
         }
 
@@ -72,7 +71,7 @@ namespace Metocean.iBCN.Command
         /// 
         /// </summary>
         /// <param name="cmdName"></param>
-        private Command(IPayload payload) : this()
+        private Command(IPayload payload = null) : this()
         {
             AppendBytes(payload);
         }
@@ -83,7 +82,7 @@ namespace Metocean.iBCN.Command
         /// <param name="cmdName"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public static ICmdBytes GetCommandBytes(IPayload payload)
+        public static ICmdBytes GetCommandBytes(IPayload payload = null)
         {
             return new Command<T>(payload).CmdBytes;
         }
@@ -94,7 +93,7 @@ namespace Metocean.iBCN.Command
         /// <param name="cmdName"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public static ICmd GetCommand(IPayload payload)
+        public static ICmd GetCommand(IPayload payload = null)
         {
             return new Command<T>(payload);
         }

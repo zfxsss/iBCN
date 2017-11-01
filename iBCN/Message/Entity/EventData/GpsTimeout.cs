@@ -1,4 +1,5 @@
 ﻿using Metocean.iBCN.Message.Entity.EventData.Interface;
+using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// <summary>
     /// 
     /// </summary>
-    public class GpsTimeout : BaseEvtData, IEvtData
+    public class GpsTimeout : BaseEvtData, IParser
     {
         /// <summary>
         /// 
@@ -36,5 +37,14 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// 
         /// </summary>
         public byte NumSatellites { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="evtCode"></param>
+        public GpsTimeout()
+        {
+
+        }
     }
 }

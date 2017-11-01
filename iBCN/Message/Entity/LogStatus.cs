@@ -1,4 +1,5 @@
 ﻿using Metocean.iBCN.Message.Entity.Interface;
+using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class LogStatus : BaseMessage, IMsgEntity
+    public class LogStatus : BaseMessage, IParser
     {
         /// <summary>
         /// 
@@ -35,7 +36,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public LogStatus() : base()
+        public LogStatus()
         {
 
         }

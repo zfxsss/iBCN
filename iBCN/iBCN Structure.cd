@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Metocean.iBCN.Command.Definition.ClearMemoryLog" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\ClearMemoryLog.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.GetDiagnosticStatus" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\GetDiagnosticStatus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.GetExtendedDiagnostics" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="65.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\GetExtendedDiagnostics.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.GetIdentification" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\GetIdentification.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.GetLogMemoryStatus" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="60" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\GetLogMemoryStatus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.ReadConfigMode" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\ReadConfigMode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.ReadDateTime" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="60" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\ReadDateTime.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.RequestPositionReport_Last" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\RequestPositionReport_Last.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.RequestPositionReport_New" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\RequestPositionReport_New.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.ResetReportingIndex" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="65.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\ResetReportingIndex.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.SendIridiumMessage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\SendIridiumMessage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.SetDebugOutputLevel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="60" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\SetDebugOutputLevel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.StartBootloaderProcess" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\StartBootloaderProcess.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.StartDownloadAll" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="63.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\StartDownloadAll.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.StartDownloadNew" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="65.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\StartDownloadNew.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.StopDownload" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\StopDownload.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.WriteConfigMode" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="60" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\WriteConfigMode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Definition.WriteDateTime" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\WriteDateTime.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Command.Command&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="59.25" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAIAAAAQAAAABAAAAAAABAAAAAAAAAAAAAAAAABIAAA=</HashCode>
+      <FileName>Command\CommandT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Metocean.iBCN.Configuration.Repository.ConfigRepository" Collapsed="true">
+    <Position X="61.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAABAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Configuration\Repository\ConfigRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Metocean.iBCN.Configuration.JsonConfigReader" Collapsed="true">
+    <Position X="61.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Configuration\JsonConfigReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Metocean.iBCN.Interface.Entity.PropertyAccessor">
+    <Position X="37.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\Entity\PropertyAccessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.EventData.Interface.BaseEvtData">
+    <Position X="24.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\EventData\Interface\BaseEvtData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.EventData.BatteryStatus">
+    <Position X="30" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Message\Entity\EventData\BatteryStatus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.EventData.ConfigUpdate">
+    <Position X="18.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\EventData\ConfigUpdate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.EventData.GpsPositionRequest">
+    <Position X="20.75" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\EventData\GpsPositionRequest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.EventData.GpsTimeout">
+    <Position X="23.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAEAAAAAAAAAIAAABAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\EventData\GpsTimeout.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.EventData.PowerUp">
+    <Position X="25.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\EventData\PowerUp.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.EventData.TimeSet">
+    <Position X="27.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Message\Entity\EventData\TimeSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.Interface.BaseMessage">
+    <Position X="43.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\Interface\BaseMessage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.Acknowledgement">
+    <Position X="53.25" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Message\Entity\Acknowledgement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.DateTime">
+    <Position X="32.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\DateTime.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.EventReport">
+    <Position X="36.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Message\Entity\EventReport.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.ExtendedStatus">
+    <Position X="41.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\ExtendedStatus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.Identity">
+    <Position X="43.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAUAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Message\Entity\Identity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.LogStatus">
+    <Position X="45.75" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Message\Entity\LogStatus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.Mode">
+    <Position X="48.5" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAgAAAAAAAAAAAEAAABAAABAAAAABAAAAAA=</HashCode>
+      <FileName>Message\Entity\Mode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.PositionReport">
+    <Position X="51" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAECAAAAAAAAKAAABAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\PositionReport.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.RecordsPacket">
+    <Position X="55.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Message\Entity\RecordsPacket.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.StartDownload">
+    <Position X="34.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAIAAAAAAAAAAAEA=</HashCode>
+      <FileName>Message\Entity\StartDownload.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Entity.Status">
+    <Position X="39" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAgAAAAAAAAAAAAAAAAAAACAAAAAAAAEAQA=</HashCode>
+      <FileName>Message\Entity\Status.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metocean.iBCN.Message.MessageBuilder" Collapsed="true">
+    <Position X="63.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\MessageBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Metocean.iBCN.Message.Msg&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="62.25" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAQAAAACAAAAAAAAAAAAAAQAgABAAAAAAAAAAA=</HashCode>
+      <FileName>Message\MessageT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Metocean.iBCN.Interface.ICmd">
+    <Position X="25.75" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAABAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\ICmd.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Metocean.iBCN.Interface.ICmd&lt;T&gt;">
+    <Position X="25.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Interface\ICmdT.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Metocean.iBCN.Interface.IMsg">
+    <Position X="22.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAQAgABAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\IMsg.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Metocean.iBCN.Interface.IMsg&lt;T&gt;">
+    <Position X="22.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\IMsgT.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Metocean.iBCN.Command.Definition.Interface.ICmdBytes">
+    <Position X="58.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Definition\Interface\ICmdBytes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Metocean.iBCN.Command.Payload.Interface.IPayload" Collapsed="true">
+    <Position X="60" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Payload\Interface\IPayload.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Metocean.iBCN.Interface.Entity.IEntity">
+    <Position X="18.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\Entity\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Metocean.iBCN.Message.Entity.EventData.Interface.IEvtData">
+    <Position X="16.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\EventData\Interface\IEvtData.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Metocean.iBCN.Message.Entity.Interface.IMsgEntity">
+    <Position X="19" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\Entity\Interface\IMsgEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

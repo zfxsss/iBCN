@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Interface.Entity
+namespace Metocean.iBCN.Interface.Parser
 {
     /// <summary>
     /// 
     /// </summary>
-    public abstract class PropertyAccessor : IEntity
+    public abstract class BaseParser : IParser
     {
         /// <summary>
         /// 

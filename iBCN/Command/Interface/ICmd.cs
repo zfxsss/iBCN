@@ -4,22 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Interface
+namespace Metocean.iBCN.Command.Interface
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IMsg<T> : IMsg
+    public interface ICmd
     {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="data"></param>
-        T ParseBytes(byte[] entityData);
+        int CmdTypeCode { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        T MessageEntity { get; }
+        int SubCmdTypeCode { get; }
     }
 }

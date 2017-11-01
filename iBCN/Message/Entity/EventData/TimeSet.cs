@@ -1,4 +1,5 @@
 ﻿using Metocean.iBCN.Message.Entity.EventData.Interface;
+using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// <summary>
     /// 
     /// </summary>
-    public class TimeSet : BaseEvtData, IEvtData
+    public class TimeSet : BaseEvtData, IParser
     {
         /// <summary>
         /// 
@@ -21,5 +22,14 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// 
         /// </summary>
         public UInt32 Offset { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="evtCode"></param>
+        public TimeSet()
+        {
+
+        }
     }
 }
