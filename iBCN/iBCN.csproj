@@ -48,7 +48,7 @@
     <Compile Include="Command\Definition\GetDiagnosticStatus.cs" />
     <Compile Include="Command\Definition\GetExtendedDiagnostics.cs" />
     <Compile Include="Command\Definition\GetIdentification.cs" />
-    <Compile Include="Command\Definition\Interface\iBCNCommand.cs" />
+    <Compile Include="Command\Definition\iBCNCommand.cs" />
     <Compile Include="Command\Definition\Interface\ICmdBytes.cs" />
     <Compile Include="Command\Definition\ReadConfigMode.cs" />
     <Compile Include="Command\Definition\ReadDateTime.cs" />
@@ -76,7 +76,7 @@
     <Compile Include="Message\Entity\EventData\ConfigUpdate.cs" />
     <Compile Include="Message\Entity\EventData\GpsPositionRequest.cs" />
     <Compile Include="Message\Entity\EventData\GpsTimeout.cs" />
-    <Compile Include="Message\Entity\EventData\Interface\iBCNEvtData.cs" />
+    <Compile Include="Message\Entity\EventData\iBCNEvtData.cs" />
     <Compile Include="Message\Entity\EventData\PowerUp.cs" />
     <Compile Include="Message\Entity\EventData\TimeSet.cs" />
     <Compile Include="Message\Entity\EventReport.cs" />
@@ -84,7 +84,7 @@
     <Compile Include="Message\Entity\Identity.cs" />
     <Compile Include="Message\Interface\Parser\IParser.cs" />
     <Compile Include="Message\Interface\IMsg.cs" />
-    <Compile Include="Message\Entity\Interface\iBCNMessage.cs" />
+    <Compile Include="Message\Entity\iBCNMessage.cs" />
     <Compile Include="Message\Entity\LogStatus.cs" />
     <Compile Include="Message\Entity\Mode.cs" />
     <Compile Include="Message\Entity\PositionReport.cs" />

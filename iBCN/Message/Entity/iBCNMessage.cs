@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Message.Entity.EventData.Interface
+namespace Metocean.iBCN.Message.Entity
 {
     /// <summary>
     /// 
     /// </summary>
-    public abstract class iBCNEvtData : IParser
+    public abstract class iBCNMessage : IParser
     {
         /// <summary>
         /// 
         /// </summary>
-        public virtual void FromBytes(byte[] evtData)
+        public virtual void FromBytes(byte[] entityData)
         {
             throw new NotImplementedException("");
         }

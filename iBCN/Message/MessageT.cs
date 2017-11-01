@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Metocean.iBCN.Configuration;
 using Metocean.iBCN.Message.Interface;
-using Metocean.iBCN.Message.Entity.Interface;
+using Metocean.iBCN.Message.Entity;
 
 namespace Metocean.iBCN.Message
 {

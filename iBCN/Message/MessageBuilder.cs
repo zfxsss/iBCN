@@ -1,5 +1,4 @@
 ﻿using Metocean.iBCN.Message.Entity;
-using Metocean.iBCN.Message.Entity.Interface;
 using Metocean.iBCN.Message.Interface;
 using System;
 using System.Collections.Generic;

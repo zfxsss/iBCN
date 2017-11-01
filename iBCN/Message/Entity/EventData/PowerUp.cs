@@ -1,5 +1,4 @@
-﻿using Metocean.iBCN.Message.Entity.EventData.Interface;
-using Metocean.iBCN.Message.Interface.Parser;
+﻿using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
