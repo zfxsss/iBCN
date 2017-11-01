@@ -1,116 +1,118 @@
 ﻿{
   "Version": "0.0.0.1",
   "CopyRight": "MetOcean",
-
+  /**
+    Message Configuration
+  **/
   "Message": {
     "EventReport": {
-      "Properties": [
-        "Timestamp",
-        "EventCode",
-        "EventData"
-      ],
-      "EventDataProperty": "EventData"
+      "Length": 0,
+      "EventDataProperty": "EventData",
+      "EventCodeProperty": ""
     },
     "PositionReport": {
-      "Properties": [
-        "Timestamp",
-        "EventCode",
-        "Latitude",
-        "Logitude",
-        "Speed",
-        "FixAccuracy",
-        "TimeToFix"
-      ]
+      "Length": 0
     },
     "RecordsPacket": {
-      "Properties": [
-        "RecordIndex",
-        "Records"
-      ]
+      "Length": 0
     },
     "LogStatus": {
-      "Properties": [
-        "RecordCount",
-        "LastRecordDownloaded",
-        "FirstRecordTimestamp",
-        "LastRecordTimestamp"
-      ]
+      "Length": 0
     },
     "Status": {
-      "Properties": [
-        "Time",
-        "BatteryVoltage",
-        "Temperature",
-        "Reserved1",
-        "GpsStatus",
-        "ArrayLength"
-      ]
+      "Length": 0
     },
     "ExtendedStatus": {
-      "Properties": [
-        "Reserved1",
-        "Imei",
-        "Reserved2"
-      ]
+      "Length": 0
     },
     "Mode": {
-      "Properties": [
-        "Reserved1",
-        "FixInterval",
-        "Reserved2",
-        "MailboxCheckInterval",
-        "SurfacingSetting",
-        "TransmitIntervalFlags",
-        "TransmitInterval"
-      ]
+      "Length": 0
     },
     "Identity": {
-      "Properties": [
-        "ModelNumber",
-        "SerialNumber",
-        "FwRev",
-        "IridiumFwRev",
-        "GpsFwRev"
-      ]
+      "Length": 0
     }
   },
+  /**
+    EventData Configuration
+  **/
   "EventData": {
     "PowerUp": {
-      "Properties": [
-        "ResetReason"
-      ]
+      "Length": 0
     },
     "BatteryStatus": {
-      "Properties": [
-        "Voltage",
-        "Temperature"
-      ]
+      "Length": 0
     },
     "ConfigUpdate": {
-      "Properties": [
-        "Source"
-      ]
+      "Length": 0
     },
     "GpsTimeout": {
-      "Properties": [
-        "Latitude",
-        "Longtitude",
-        "Speed",
-        "FixAccuracy",
-        "NumSatellites"
-      ]
+      "Length": 0
     },
     "TimeSet": {
-      "Properties": [
-        "Source",
-        "Offset"
-      ]
+      "Length": 0
     },
     "GpsPositionRequest": {
-      "Properties": [
-        "Source"
-      ]
+      "Length": 0
     }
-  }
+  },
+  /**
+    Command Configuration
+  **/
+  "Command": {
+    "ClearMemoryLog": {
+      "HasPayload": false
+    },
+    "GetDiagnosticStatus": {
+      "HasPayload": false
+    },
+    "GetExtendedDiagnostics": {
+      "HasPayload": false
+    },
+    "GetIdentification": {
+      "HasPayload": false
+    },
+    "GetLogMemoryStatus": {
+      "HasPayload": false
+    },
+    "ReadConfigMode": {
+      "HasPayload": false
+    },
+    "ReadDateTime": {
+      "HasPayload": false
+    },
+    "RequestPositionReport_Last": {
+      "HasPayload": false
+    },
+    "RequestPositionReport_New": {
+      "HasPayload": false
+    },
+    "ResetReportingIndex": {
+      "Payload": false
+    },
+    "SendIridiumMessage": {
+      "HasPayload": false
+    },
+    "SetDebugOutputLevel": {
+      "HasPayload": false
+    },
+    "StartBootloaderProcess": {
+      "HasPayload": false
+    },
+    "StartDownloadAll": {
+      "HasPayload": false
+    },
+    "StartDownloadNew": {
+      "HasPayload": false
+    },
+    "StopDownload": {
+      "HasPayload": false
+    },
+    "WriteConfigMode": {
+      "HasPayload": false
+    },
+    "WriteDateTime": {
+      "HasPayload": false
+    }
 
+  }
 }
