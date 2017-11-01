@@ -23,6 +23,11 @@ namespace Metocean.iBCN.Interface
         /// <summary>
         /// 
         /// </summary>
+        T CmdBytes { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         int CmdTypeCode { get; }
 
         /// <summary>

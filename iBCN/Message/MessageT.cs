@@ -104,7 +104,7 @@ namespace Metocean.iBCN.Message
         {
             //MessageEntity = MsgBuilder.BuildMsg<T>(msgData);
             //MessageEntity = new T();
-            ParseBytes(msgData);
+            //ParseBytes(msgData);
         }
 
         /// <summary>

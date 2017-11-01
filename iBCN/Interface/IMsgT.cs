@@ -20,6 +20,11 @@ namespace Metocean.iBCN.Interface
         /// <summary>
         /// 
         /// </summary>
+        T MessageEntity { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         int CmdType { get; }
 
         /// <summary>
