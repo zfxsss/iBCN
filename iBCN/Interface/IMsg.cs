@@ -15,5 +15,20 @@ namespace Metocean.iBCN.Interface
         /// 
         /// </summary>
         Type MsgType { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        int CmdType { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        int SubCmdType { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        byte[] MsgBytes { get; }
     }
 }

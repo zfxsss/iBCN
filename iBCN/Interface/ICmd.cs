@@ -15,5 +15,15 @@ namespace Metocean.iBCN.Interface
         /// 
         /// </summary>
         Type CmdType { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        int CmdTypeCode { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        int SubCmdTypeCode { get; }
     }
 }

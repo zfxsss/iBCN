@@ -9,7 +9,7 @@ namespace Metocean.iBCN.Interface
     /// <summary>
     /// 
     /// </summary>
-    public interface IMsg<T>
+    public interface IMsg<T> : IMsg
     {
         /// <summary>
         /// 
@@ -21,15 +21,5 @@ namespace Metocean.iBCN.Interface
         /// 
         /// </summary>
         T MessageEntity { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        int CmdType { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        int SubCmdType { get; }
     }
 }

@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Interface
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    interface ICmd<T>
+    interface ICmd<T> : ICmd
     {
         /// <summary>
         /// 
@@ -24,15 +24,5 @@ namespace Metocean.iBCN.Interface
         /// 
         /// </summary>
         T CmdBytes { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        int CmdTypeCode { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        int SubCmdTypeCode { get; }
     }
 }
