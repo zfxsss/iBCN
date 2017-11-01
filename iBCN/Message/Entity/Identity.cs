@@ -40,7 +40,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public Identity() : base("Identity")
+        public Identity() : base()
         {
 
         }

@@ -20,7 +20,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public Acknowledgement() : base("Acknowledgement")
+        public Acknowledgement() : base()
         {
 
         }

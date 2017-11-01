@@ -20,7 +20,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public DateTime() : base("DateTime")
+        public DateTime() : base()
         {
 
         }

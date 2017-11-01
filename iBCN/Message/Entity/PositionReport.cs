@@ -50,7 +50,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public PositionReport() : base("PositionReport")
+        public PositionReport() : base()
         {
 
         }

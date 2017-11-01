@@ -23,7 +23,7 @@ namespace Metocean.iBCN.Message
         /// <param name="data"></param>
         public T ParseBytes(byte[] entityData)
         {
-            MsgBytes = entityData;
+            EntityBytes = entityData;
 
             var msgConfig = JsonConfigReader.GetConfigItem(typeof(T).Name);
 
@@ -68,7 +68,7 @@ namespace Metocean.iBCN.Message
             }
         }
 
-        public byte[] MsgBytes { get; private set; }
+        public byte[] EntityBytes { get; private set; }
 
         /// <summary>
         /// 
@@ -104,19 +104,19 @@ namespace Metocean.iBCN.Message
         /// 
         /// </summary>
         /// <param name="data"></param>
-        internal Msg(int cmdType, int subCmdType, byte[] msgData) : this(cmdType, subCmdType)
+        internal Msg(int cmdType, int subCmdType, byte[] entityData) : this(cmdType, subCmdType)
         {
-            ParseBytes(msgData);
+            ParseBytes(entityData);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="msgData"></param>
-        internal Msg(byte[] msgData)
+        /// <param name="entityData"></param>
+        internal Msg(byte[] entityData)
         {
             MessageEntity = new T();
-            ParseBytes(msgData);
+            ParseBytes(entityData);
         }
 
     }

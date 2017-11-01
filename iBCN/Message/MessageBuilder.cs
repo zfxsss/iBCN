@@ -70,49 +70,49 @@ namespace Metocean.iBCN.Message
         /// normally it will be invoked in ParseBytes method
         /// </summary>
         /// <param name="MsgName"></param>
-        /// <param name="data"></param>
+        /// <param name="entitydata"></param>
         /// <returns></returns>
-        public static IMsgEntity GetMessageEntity(string msgName, byte[] data)
+        public static IMsgEntity GetMessageEntity(string msgName, byte[] entitydata)
         {
             if (msgName == "EventReport")
             {
-                return new Msg<EventReport>(data.ToArray()).MessageEntity;
+                return new Msg<EventReport>(entitydata).MessageEntity;
             }
             else if (msgName == "ExtendedStatus")
             {
-                return new Msg<ExtendedStatus>(data.ToArray()).MessageEntity;
+                return new Msg<ExtendedStatus>(entitydata).MessageEntity;
             }
             else if (msgName == "Identity")
             {
-                return new Msg<Identity>(data.ToArray()).MessageEntity;
+                return new Msg<Identity>(entitydata).MessageEntity;
             }
             else if (msgName == "LogStatus")
             {
-                return new Msg<LogStatus>(data.ToArray()).MessageEntity;
+                return new Msg<LogStatus>(entitydata).MessageEntity;
             }
             else if (msgName == "Mode")
             {
-                return new Msg<Mode>(data.ToArray()).MessageEntity;
+                return new Msg<Mode>(entitydata).MessageEntity;
             }
             else if (msgName == "PositionReport")
             {
-                return new Msg<PositionReport>(data.ToArray()).MessageEntity;
+                return new Msg<PositionReport>(entitydata).MessageEntity;
             }
             else if (msgName == "RecordsPacket")
             {
-                return new Msg<RecordsPacket>(data.ToArray()).MessageEntity;
+                return new Msg<RecordsPacket>(entitydata.ToArray()).MessageEntity;
             }
             else if (msgName == "Status")
             {
-                return new Msg<Status>(data.ToArray()).MessageEntity;
+                return new Msg<Status>(entitydata.ToArray()).MessageEntity;
             }
             else if (msgName == "Acknowledgement")
             {
-                return new Msg<Acknowledgement>(data.ToArray()).MessageEntity;
+                return new Msg<Acknowledgement>(entitydata.ToArray()).MessageEntity;
             }
             else if (msgName == "DateTime")
             {
-                return new Msg<Entity.DateTime>(data.ToArray()).MessageEntity;
+                return new Msg<Entity.DateTime>(entitydata.ToArray()).MessageEntity;
             }
             else
             {

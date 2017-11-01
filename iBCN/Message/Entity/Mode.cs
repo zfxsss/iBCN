@@ -50,7 +50,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public Mode() : base("Mode")
+        public Mode() : base()
         {
 
         }

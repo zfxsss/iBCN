@@ -29,6 +29,6 @@ namespace Metocean.iBCN.Interface
         /// <summary>
         /// 
         /// </summary>
-        byte[] MsgBytes { get; }
+        byte[] EntityBytes { get; }
     }
 }

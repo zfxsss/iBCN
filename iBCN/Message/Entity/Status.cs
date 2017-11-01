@@ -45,7 +45,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public Status() : base("Status")
+        public Status() : base()
         {
 
         }

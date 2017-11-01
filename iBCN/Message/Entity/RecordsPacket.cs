@@ -25,7 +25,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public RecordsPacket() : base("RecordsPacket")
+        public RecordsPacket() : base()
         {
 
         }

@@ -30,7 +30,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public StartDownload() : base("StartDownload")
+        public StartDownload() : base()
         {
         }
     }
