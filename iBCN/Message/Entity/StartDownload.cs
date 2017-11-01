@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class StartDownload : BaseMessage, IParser
+    public class StartDownload : iBCNMessage, IParser
     {
         /// <summary>
         /// 

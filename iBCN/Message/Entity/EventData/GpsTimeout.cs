@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// <summary>
     /// 
     /// </summary>
-    public class GpsTimeout : BaseEvtData, IParser
+    public class GpsTimeout : iBCNEvtData, IParser
     {
         /// <summary>
         /// 

@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class RecordsPacket : BaseMessage, IParser
+    public class RecordsPacket : iBCNMessage, IParser
     {
         /// <summary>
         /// 

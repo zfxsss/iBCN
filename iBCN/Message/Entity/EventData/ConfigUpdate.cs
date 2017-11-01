@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// <summary>
     /// 
     /// </summary>
-    public class ConfigUpdate : BaseEvtData, IParser
+    public class ConfigUpdate : iBCNEvtData, IParser
     {
         /// <summary>
         /// 

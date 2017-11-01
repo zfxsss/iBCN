@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class ReadConfigMode : BaseCommand, ICmdBytes
+    public class ReadConfigMode : iBCNCommand, ICmdBytes
     {
         /// <summary>
         /// 

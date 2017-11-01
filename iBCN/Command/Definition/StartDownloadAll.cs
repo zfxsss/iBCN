@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class StartDownloadAll : BaseCommand, ICmdBytes
+    public class StartDownloadAll : iBCNCommand, ICmdBytes
     {
         /// <summary>
         /// 

@@ -16,7 +16,7 @@ namespace Metocean.iBCN.Message
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static BaseMessage GetMessageEntity(byte[] data)
+        public static iBCNMessage GetMessageEntity(byte[] data)
         {
             if (data[0] == 0x01 && data[1] == 0x81)
             {
@@ -72,7 +72,7 @@ namespace Metocean.iBCN.Message
         /// <param name="MsgName"></param>
         /// <param name="entitydata"></param>
         /// <returns></returns>
-        public static BaseMessage GetMessageEntity(string msgName, byte[] entitydata)
+        public static iBCNMessage GetMessageEntity(string msgName, byte[] entitydata)
         {
             if (msgName == "EventReport")
             {
@@ -100,19 +100,19 @@ namespace Metocean.iBCN.Message
             }
             else if (msgName == "RecordsPacket")
             {
-                return new Msg<RecordsPacket>(entitydata.ToArray()).MessageEntity;
+                return new Msg<RecordsPacket>(entitydata).MessageEntity;
             }
             else if (msgName == "Status")
             {
-                return new Msg<Status>(entitydata.ToArray()).MessageEntity;
+                return new Msg<Status>(entitydata).MessageEntity;
             }
             else if (msgName == "Acknowledgement")
             {
-                return new Msg<Acknowledgement>(entitydata.ToArray()).MessageEntity;
+                return new Msg<Acknowledgement>(entitydata).MessageEntity;
             }
             else if (msgName == "DateTime")
             {
-                return new Msg<Entity.DateTime>(entitydata.ToArray()).MessageEntity;
+                return new Msg<Entity.DateTime>(entitydata).MessageEntity;
             }
             else
             {

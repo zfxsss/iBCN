@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class GetDiagnosticStatus : BaseCommand, ICmdBytes
+    public class GetDiagnosticStatus : iBCNCommand, ICmdBytes
     {
         /// <summary>
         /// 

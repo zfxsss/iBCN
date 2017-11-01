@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class ResetReportingIndex : BaseCommand, ICmdBytes
+    public class ResetReportingIndex : iBCNCommand, ICmdBytes
     {
         /// <summary>
         /// 

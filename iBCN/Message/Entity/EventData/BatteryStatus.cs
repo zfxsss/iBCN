@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// <summary>
     /// 
     /// </summary>
-    public class BatteryStatus : BaseEvtData, IParser
+    public class BatteryStatus : iBCNEvtData, IParser
     {
         /// <summary>
         /// 

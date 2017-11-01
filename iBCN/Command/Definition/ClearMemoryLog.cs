@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class ClearMemoryLog : BaseCommand, ICmdBytes
+    public class ClearMemoryLog : iBCNCommand, ICmdBytes
     {
         /// <summary>
         /// 

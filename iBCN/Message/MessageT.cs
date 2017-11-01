@@ -14,7 +14,7 @@ namespace Metocean.iBCN.Message
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Msg<T> : IMsg<T>, IMsg where T : BaseMessage, new()
+    public class Msg<T> : IMsg<T>, IMsg where T : iBCNMessage, new()
     {
         /// <summary>
         /// recursively parse the bytes
@@ -59,14 +59,6 @@ namespace Metocean.iBCN.Message
             //return new T();
         }
 
-        public Type MsgType
-        {
-            get
-            {
-                return typeof(T);
-            }
-        }
-
         public byte[] EntityBytes { get; private set; }
 
         /// <summary>
@@ -105,7 +97,8 @@ namespace Metocean.iBCN.Message
         /// <param name="data"></param>
         internal Msg(int cmdType, int subCmdType, byte[] entityData) : this(cmdType, subCmdType)
         {
-            ParseBytes(entityData);
+            //ParseBytes(entityData);
+            MessageEntity.FromBytes(entityData);
         }
 
         /// <summary>
@@ -115,7 +108,8 @@ namespace Metocean.iBCN.Message
         internal Msg(byte[] entityData)
         {
             MessageEntity = new T();
-            ParseBytes(entityData);
+            //ParseBytes(entityData);
+            MessageEntity.FromBytes(entityData);
         }
 
     }

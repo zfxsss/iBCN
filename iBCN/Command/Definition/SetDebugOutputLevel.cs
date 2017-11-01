@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class SetDebugOutputLevel : BaseCommand, ICmdBytes
+    public class SetDebugOutputLevel : iBCNCommand, ICmdBytes
     {
         /// <summary>
         /// 

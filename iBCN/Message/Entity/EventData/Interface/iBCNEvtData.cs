@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Message.Entity.EventData.Interface
     /// <summary>
     /// 
     /// </summary>
-    public abstract class BaseEvtData : IParser
+    public abstract class iBCNEvtData : IParser
     {
         /// <summary>
         /// 

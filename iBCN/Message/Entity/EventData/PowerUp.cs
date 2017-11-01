@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// <summary>
     /// 
     /// </summary>
-    public class PowerUp : BaseEvtData, IParser
+    public class PowerUp : iBCNEvtData, IParser
     {
         /// <summary>
         /// 

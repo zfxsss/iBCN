@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class ReadDateTime : BaseCommand, ICmdBytes
+    public class ReadDateTime : iBCNCommand, ICmdBytes
     {
         /// <summary>
         /// 

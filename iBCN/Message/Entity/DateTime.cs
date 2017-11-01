@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class DateTime : BaseMessage, IParser
+    public class DateTime : iBCNMessage, IParser
     {
         /// <summary>
         /// 

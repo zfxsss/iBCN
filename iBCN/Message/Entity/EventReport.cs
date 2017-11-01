@@ -13,7 +13,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class EventReport : BaseMessage, IParser
+    public class EventReport : iBCNMessage, IParser
     {
         /// <summary>
         /// 
@@ -28,7 +28,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public BaseEvtData EventData { get; set; }
+        public iBCNEvtData EventData { get; set; }
         //byte[] EventData { get; set; } = new byte[11];
 
         /// <summary>

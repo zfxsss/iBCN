@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// <summary>
     /// 
     /// </summary>
-    public class TimeSet : BaseEvtData, IParser
+    public class TimeSet : iBCNEvtData, IParser
     {
         /// <summary>
         /// 

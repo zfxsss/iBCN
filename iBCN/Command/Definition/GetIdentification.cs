@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class GetIdentification : BaseCommand, ICmdBytes
+    public class GetIdentification : iBCNCommand, ICmdBytes
     {
         /// <summary>
         /// 

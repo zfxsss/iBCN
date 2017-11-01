@@ -9,7 +9,7 @@ namespace Metocean.iBCN.Command.Definition.Interface
     /// <summary>
     /// 
     /// </summary>
-    public abstract class BaseCommand : ICmdBytes
+    public abstract class iBCNCommand : ICmdBytes
     {
         /// <summary>
         /// 

@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Command.Definition
     /// <summary>
     /// 
     /// </summary>
-    public class GetLogMemoryStatus : BaseCommand, ICmdBytes
+    public class GetLogMemoryStatus : iBCNCommand, ICmdBytes
     {
         /// <summary>
         /// 

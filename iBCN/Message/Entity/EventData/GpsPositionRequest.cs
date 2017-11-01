@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// <summary>
     /// 
     /// </summary>
-    public class GpsPositionRequest : BaseEvtData, IParser
+    public class GpsPositionRequest : iBCNEvtData, IParser
     {
         /// <summary>
         /// 
