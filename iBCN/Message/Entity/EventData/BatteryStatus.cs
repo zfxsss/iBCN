@@ -22,5 +22,14 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// </summary>
         public byte Temperature { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="evtData"></param>
+        public override void FromBytes(byte[] evtData)
+        {
+            base.FromBytes(evtData);
+        }
+
     }
 }

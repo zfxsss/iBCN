@@ -20,10 +20,10 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="evtCode"></param>
-        public PowerUp()
+        /// <param name="evtData"></param>
+        public override void FromBytes(byte[] evtData)
         {
-
+            base.FromBytes(evtData);
         }
     }
 }

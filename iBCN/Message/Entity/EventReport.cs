@@ -33,9 +33,10 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public EventReport() : base()
+        /// <param name="entityData"></param>
+        public override void FromBytes(byte[] entityData)
         {
-
+            base.FromBytes(entityData);
         }
     }
 }
