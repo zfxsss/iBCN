@@ -15,12 +15,12 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// <summary>
         /// 
         /// </summary>
-        public UInt16 Voltage { get; set; }
+        public UInt16 Voltage { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte Temperature { get; set; }
+        public byte Temperature { get; private set; }
 
         /// <summary>
         /// 

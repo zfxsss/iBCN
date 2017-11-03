@@ -24,6 +24,11 @@ namespace Metocean.iBCN.Message.Interface
         /// <summary>
         /// 
         /// </summary>
+        int Sequence { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         byte[] EntityBytes { get; }
     }
 }

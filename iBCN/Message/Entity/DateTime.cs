@@ -15,7 +15,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public System.DateTime Date_Time { get; set; }
+        public System.DateTime Date_Time { get; private set; }
 
         /// <summary>
         /// 

@@ -23,7 +23,10 @@ namespace Metocean.iBCN.Message
         public T ParseBytes(byte[] entityData)
         {
             EntityBytes = entityData;
+            MessageEntity.FromBytes(EntityBytes);
 
+            #region test
+            /*
             var msgConfig = JsonConfigReader.GetConfigItem(typeof(T).Name);
 
             var cursorPosition = 0;
@@ -51,12 +54,11 @@ namespace Metocean.iBCN.Message
 
             }
 
-
-
             //needs to be implemented
+            */
+            #endregion
 
             return MessageEntity;
-            //return new T();
         }
 
         public byte[] EntityBytes { get; private set; }
@@ -74,6 +76,11 @@ namespace Metocean.iBCN.Message
         /// <summary>
         /// 
         /// </summary>
+        public int Sequence { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public T MessageEntity
         {
             get;
@@ -84,10 +91,11 @@ namespace Metocean.iBCN.Message
         /// 
         /// </summary>
         /// <param name="messageName"></param>
-        public Msg(int cmdType, int subCmdType)
+        public Msg(int cmdType, int subCmdType, int sequence)
         {
             CmdType = cmdType;
             SubCmdType = subCmdType;
+            Sequence = sequence;
             MessageEntity = new T();
         }
 
@@ -95,10 +103,9 @@ namespace Metocean.iBCN.Message
         /// 
         /// </summary>
         /// <param name="data"></param>
-        internal Msg(int cmdType, int subCmdType, byte[] entityData) : this(cmdType, subCmdType)
+        internal Msg(int cmdType, int subCmdType, int sequence, byte[] entityData) : this(cmdType, subCmdType, sequence)
         {
-            //ParseBytes(entityData);
-            MessageEntity.FromBytes(entityData);
+            ParseBytes(entityData);
         }
 
         /// <summary>
@@ -108,8 +115,7 @@ namespace Metocean.iBCN.Message
         internal Msg(byte[] entityData)
         {
             MessageEntity = new T();
-            //ParseBytes(entityData);
-            MessageEntity.FromBytes(entityData);
+            ParseBytes(entityData);
         }
 
     }

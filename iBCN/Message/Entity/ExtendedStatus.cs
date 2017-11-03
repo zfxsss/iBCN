@@ -15,17 +15,17 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Reserved1 { get; set; } = new byte[32];
+        public byte[] Reserved1 { get; private set; } = new byte[32];
 
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Imei { get; set; } = new byte[15];
+        public byte[] Imei { get; private set; } = new byte[15];
 
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Reserved2 { get; set; } = new byte[36];
+        public byte[] Reserved2 { get; private set; } = new byte[36];
 
         /// <summary>
         /// 

@@ -17,7 +17,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// </summary>
         public virtual void FromBytes(byte[] evtData)
         {
-            throw new NotImplementedException("");
+            //throw new NotImplementedException("");
         }
     }
 }

@@ -60,6 +60,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Command\CommandTests.cs" />
+    <Compile Include="Configuration\Repository\ConfigRepositoryTests.cs" />
+    <Compile Include="Message\Entity\EventData\EvtDataBuilderTests.cs" />
     <Compile Include="Message\Entity\Interface\PropertyAccessorTests.cs" />
     <Compile Include="Message\MessageBuilderTests.cs" />
     <Compile Include="Message\MsgTests.cs" />

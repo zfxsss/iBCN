@@ -30,13 +30,12 @@ namespace Metocean.iBCN.Command
                 if ((bool)CmdBytes.HasPayload == true)
                 {
                     var payloadBytes = payload.ToBytes();
-                    
+
                     //some logic need to be added here
                     CmdBytes.Body.Concat(payloadBytes);
                 }
 
             }
-
 
             return CmdBytes;
         }

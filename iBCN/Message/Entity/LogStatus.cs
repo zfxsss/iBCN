@@ -15,22 +15,22 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 RecordCount { get; set; }
+        public UInt32 RecordCount { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 LastRecordDownloaded { get; set; }
+        public UInt32 LastRecordDownloaded { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public DateTime FirstRecordTimestamp { get; set; }
+        public DateTime FirstRecordTimestamp { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public DateTime LastRecordTimestamp { get; set; }
+        public DateTime LastRecordTimestamp { get; private set; }
 
         /// <summary>
         /// 

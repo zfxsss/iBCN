@@ -15,32 +15,32 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public DateTime Time { get; set; }
+        public DateTime Time { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt16 BatteryVoltage { get; set; }
+        public UInt16 BatteryVoltage { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte Temperature { get; set; }
+        public byte Temperature { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte Reserved1 { get; set; }
+        public byte Reserved1 { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte GpsStatus { get; set; }
+        public byte GpsStatus { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Reserved2 { get; set; } = new byte[4];
+        public byte[] Reserved2 { get; private set; } = new byte[4];
 
         /// <summary>
         /// 

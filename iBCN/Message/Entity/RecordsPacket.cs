@@ -15,12 +15,12 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 RecordIndex { get; set; }
+        public UInt32 RecordIndex { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public EventReport[] Records { get; set; } = new EventReport[12];
+        public EventReport[] Records { get; private set; } = new EventReport[12];
 
         /// <summary>
         /// 

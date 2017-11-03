@@ -15,37 +15,37 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 Reserved1 { get; set; }
+        public UInt32 Reserved1 { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 FixInterval { get; set; }
+        public UInt32 FixInterval { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt16 Reserved2 { get; set; }
+        public UInt16 Reserved2 { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt16 MailboxCheckInterval { get; set; }
+        public UInt16 MailboxCheckInterval { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte SurfacingSetting { get; set; }
+        public byte SurfacingSetting { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt16 TransmitIntervalFlags { get; set; }
+        public UInt16 TransmitIntervalFlags { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt16 TransmitInterval { get; set; }
+        public UInt16 TransmitInterval { get; private set; }
 
         /// <summary>
         /// 

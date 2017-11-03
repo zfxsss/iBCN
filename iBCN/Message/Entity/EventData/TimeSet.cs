@@ -15,12 +15,12 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// <summary>
         /// 
         /// </summary>
-        public byte Source { get; set; }
+        public byte Source { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 Offset { get; set; }
+        public UInt32 Offset { get; private set; }
 
         /// <summary>
         /// 

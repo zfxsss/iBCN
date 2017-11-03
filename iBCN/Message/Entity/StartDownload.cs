@@ -15,17 +15,17 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public Acknowledgement Ack { get; set; }
+        public Acknowledgement Ack { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 StartIndex { get; set; }
+        public UInt32 StartIndex { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 EndIndex { get; set; }
+        public UInt32 EndIndex { get; private set; }
 
         /// <summary>
         /// 

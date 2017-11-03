@@ -10,12 +10,12 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class Acknowledgement : iBCNMessage, IParser
+    public class MultiplePositionReport : iBCNMessage, IParser
     {
         /// <summary>
         /// 
         /// </summary>
-        public bool Ack { get; private set; }
+        public iBCNMessage[] PositionReports { get; private set; } = new EventReport[] { };
 
         /// <summary>
         /// 

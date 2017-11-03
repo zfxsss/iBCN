@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.IO;
 using Newtonsoft.Json.Linq;
+using Metocean.iBCN.iBCNException.Configuration;
 
 namespace Metocean.iBCN.Configuration.Repository
 {
@@ -36,8 +37,7 @@ namespace Metocean.iBCN.Configuration.Repository
                 }
                 catch (Exception ex)
                 {
-                    //throw new DomainException(ex.Message, PubLib.Log.ExceptionSrc.Init, PubLib.Log.ExceptionType.System, PubLib.Log.LogType.Console);
-                    throw new Exception();
+                    throw new ConfigurationDomainException("Exception raised in the configuration file loading process", ex);
                 }
             }
         }

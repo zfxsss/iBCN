@@ -15,27 +15,27 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 Latitude { get; set; }
+        public UInt32 Latitude { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 Longitude { get; set; }
+        public UInt32 Longitude { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte Speed { get; set; }
+        public byte Speed { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte FixAccuracy { get; set; }
+        public byte FixAccuracy { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte NumSatellites { get; set; }
+        public byte NumSatellites { get; private set; }
 
         /// <summary>
         /// 

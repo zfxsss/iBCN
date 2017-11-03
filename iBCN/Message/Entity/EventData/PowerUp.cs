@@ -15,7 +15,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// <summary>
         /// 
         /// </summary>
-        public byte ResetReason { get; set; }
+        public byte ResetReason { get; private set; }
 
         /// <summary>
         /// 

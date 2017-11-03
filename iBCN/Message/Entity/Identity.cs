@@ -15,27 +15,27 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public byte[] ModelNumber { get; set; } = new byte[24];
+        public byte[] ModelNumber { get; private set; } = new byte[24];
 
         /// <summary>
         /// 
         /// </summary>
-        public UInt32 SerialNumber { get; set; }
+        public UInt32 SerialNumber { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte[] FwRev { get; set; } = new byte[4];
+        public byte[] FwRev { get; private set; } = new byte[4];
 
         /// <summary>
         /// 
         /// </summary>
-        public byte[] IridiumFwRev { get; set; } = new byte[16];
+        public byte[] IridiumFwRev { get; private set; } = new byte[16];
 
         /// <summary>
         /// 
         /// </summary>
-        public byte[] GpsFwRev { get; set; } = new byte[80];
+        public byte[] GpsFwRev { get; private set; } = new byte[80];
 
         /// <summary>
         /// 
