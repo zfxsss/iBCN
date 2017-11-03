@@ -23,13 +23,18 @@ namespace Metocean.iBCN.Command
         /// </summary>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public T AppendBytes(IPayload payload)
+        public T AppendBytes(int sequence, IPayload payload)
         {
+            Sequence = sequence;
+            Payload = payload;
+
             if (CmdBytes.HasPayload != null)
             {
+                //append sequence first
+
                 if ((bool)CmdBytes.HasPayload == true)
                 {
-                    var payloadBytes = payload.ToBytes();
+                    var payloadBytes = Payload.ToBytes();
 
                     //some logic need to be added here
                     CmdBytes.Body.Concat(payloadBytes);
@@ -53,6 +58,38 @@ namespace Metocean.iBCN.Command
         /// <summary>
         /// 
         /// </summary>
+        private int sequence;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Sequence
+        {
+            get
+            {
+                return sequence;
+            }
+            private set
+            {
+                if ((value > 255) || (value < 0))
+                {
+                    sequence = value;
+                }
+                else
+                {
+                    throw new Exception("");
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IPayload Payload { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public T CmdBytes { get; private set; }
 
         /// <summary>
@@ -70,9 +107,9 @@ namespace Metocean.iBCN.Command
         /// 
         /// </summary>
         /// <param name="cmdName"></param>
-        private Command(IPayload payload = null) : this()
+        private Command(int sequence, IPayload payload = null) : this()
         {
-            AppendBytes(payload);
+            AppendBytes(sequence, payload);
         }
 
         /// <summary>
@@ -81,9 +118,9 @@ namespace Metocean.iBCN.Command
         /// <param name="cmdName"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public static ICmdBytes GetCommandBytes(IPayload payload = null)
+        public static ICmdBytes GetCommandBytes(int sequence = 0, IPayload payload = null)
         {
-            return new Command<T>(payload).CmdBytes;
+            return new Command<T>(sequence, payload).CmdBytes;
         }
 
         /// <summary>
@@ -92,9 +129,9 @@ namespace Metocean.iBCN.Command
         /// <param name="cmdName"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public static ICmd GetCommand(IPayload payload = null)
+        public static ICmd GetCommand(int sequence = 0, IPayload payload = null)
         {
-            return new Command<T>(payload);
+            return new Command<T>(sequence, payload);
         }
     }
 }

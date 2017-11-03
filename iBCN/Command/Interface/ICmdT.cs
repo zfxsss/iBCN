@@ -18,7 +18,7 @@ namespace Metocean.iBCN.Command.Interface
         /// </summary>
         /// <param name="payload"></param>
         /// <returns></returns>
-        T AppendBytes(IPayload payload);
+        T AppendBytes(int sequence, IPayload payload);
 
         /// <summary>
         /// 

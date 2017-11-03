@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Metocean.iBCN.Command.Payload.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,5 +21,15 @@ namespace Metocean.iBCN.Command.Interface
         /// 
         /// </summary>
         int SubCmdTypeCode { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        int Sequence { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IPayload Payload { get; }
     }
 }
