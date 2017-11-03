@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Metocean.iBCN.Command.Definition;
 using Metocean.iBCN.Command.Definition.Interface;
-using Metocean.iBCN.Configuration;
 using Metocean.iBCN.Command.Payload.Interface;
 using Metocean.iBCN.Command.Interface;
+using Metocean.iBCN.iBCNException.Command;
 
 namespace Metocean.iBCN.Command
 {
@@ -25,24 +24,31 @@ namespace Metocean.iBCN.Command
         /// <returns></returns>
         public T AppendBytes(int sequence, IPayload payload)
         {
-            Sequence = sequence;
-            Payload = payload;
-
-            if (CmdBytes.HasPayload != null)
+            try
             {
-                //append sequence first
+                Sequence = sequence;
+                Payload = payload;
 
-                if ((bool)CmdBytes.HasPayload == true)
+                if (CmdBytes.HasPayload != null)
                 {
-                    var payloadBytes = Payload.ToBytes();
+                    //append sequence first
 
-                    //some logic need to be added here
-                    CmdBytes.Body.Concat(payloadBytes);
+                    if ((bool)CmdBytes.HasPayload == true)
+                    {
+                        var payloadBytes = Payload.ToBytes();
+
+                        //some logic need to be added here
+                        CmdBytes.Body.Concat(payloadBytes);
+                    }
+
                 }
 
+                return CmdBytes;
             }
-
-            return CmdBytes;
+            catch(Exception ex)
+            {
+                throw new CommandDomainException("Exception raised in command processing", ex);
+            }
         }
 
         /// <summary>
@@ -73,11 +79,11 @@ namespace Metocean.iBCN.Command
             {
                 if ((value > 255) || (value < 0))
                 {
-                    sequence = value;
+                    throw new Exception("");
                 }
                 else
                 {
-                    throw new Exception("");
+                    sequence = value;
                 }
             }
         }

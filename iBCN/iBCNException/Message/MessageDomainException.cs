@@ -17,5 +17,11 @@ namespace Metocean.iBCN.iBCNException.Message
         /// <param name="message"></param>
         /// <param name="innerException"></param>
         public MessageDomainException(string message, Exception innerException) : base(message, innerException) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        public MessageDomainException(string message) : base(message) { }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Metocean.iBCN.Configuration;
 using Metocean.iBCN.Message.Interface;
 using Metocean.iBCN.Message.Entity;
+using Metocean.iBCN.iBCNException.Message;
 
 namespace Metocean.iBCN.Message
 {
@@ -22,43 +22,50 @@ namespace Metocean.iBCN.Message
         /// <param name="data"></param>
         public T ParseBytes(byte[] entityData)
         {
-            EntityBytes = entityData;
-            MessageEntity.FromBytes(EntityBytes);
-
-            #region test
-            /*
-            var msgConfig = JsonConfigReader.GetConfigItem(typeof(T).Name);
-
-            var cursorPosition = 0;
-            int byteOccupied = 0;
-
-            //the size of the Message Entity is already defined
-            if ((byteOccupied = msgConfig.Value<int>("BytesOccupied")) > 0)
+            try
             {
-                if (entityData.Length < byteOccupied)
+                EntityBytes = entityData;
+                MessageEntity.FromBytes(EntityBytes);
+
+                #region test
+                /*
+                var msgConfig = JsonConfigReader.GetConfigItem(typeof(T).Name);
+
+                var cursorPosition = 0;
+                int byteOccupied = 0;
+
+                //the size of the Message Entity is already defined
+                if ((byteOccupied = msgConfig.Value<int>("BytesOccupied")) > 0)
                 {
-                    throw new Exception("Not enough bytes provided");
+                    if (entityData.Length < byteOccupied)
+                    {
+                        throw new Exception("Not enough bytes provided");
+                    }
+                    else
+                    {
+                        //start parsing the bytes
+                        var propertiesConfig = msgConfig["PropertiesConfig"];
+
+                        //new Msg<>
+
+                    }
                 }
+                //the size of the Message Entity is not defined
                 else
                 {
-                    //start parsing the bytes
-                    var propertiesConfig = msgConfig["PropertiesConfig"];
-
-                    //new Msg<>
 
                 }
+
+                //needs to be implemented
+                */
+                #endregion
+
+                return MessageEntity;
             }
-            //the size of the Message Entity is not defined
-            else
+            catch (Exception ex)
             {
-
+                throw new MessageDomainException("Exception raised in message processing", ex);
             }
-
-            //needs to be implemented
-            */
-            #endregion
-
-            return MessageEntity;
         }
 
         public byte[] EntityBytes { get; private set; }

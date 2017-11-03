@@ -1,4 +1,5 @@
-﻿using Metocean.iBCN.Message.Entity;
+﻿using Metocean.iBCN.iBCNException.Message;
+using Metocean.iBCN.Message.Entity;
 using Metocean.iBCN.Message.Interface;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,8 @@ namespace Metocean.iBCN.Message
             }
             else
             {
-                throw new Exception("Unknown Message");
+                //throw new Exception("Unknown Message");
+                throw new MessageDomainException("Unknown message type code, unable to parse the byte stream");
             }
         }
 
@@ -119,7 +121,8 @@ namespace Metocean.iBCN.Message
             }
             else
             {
-                throw new Exception("Unknown Message");
+                //throw new Exception("Unknown Message");
+                throw new MessageDomainException("Unknown message name, unable to parse the byte stream");
             }
         }
 
@@ -178,7 +181,8 @@ namespace Metocean.iBCN.Message
             }
             else
             {
-                throw new Exception("Unknown Message");
+                //throw new Exception("Unknown Message");
+                throw new MessageDomainException("Unknown message type code, unable to parse the byte stream");
             }
 
         }
