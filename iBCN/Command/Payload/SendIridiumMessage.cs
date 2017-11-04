@@ -25,5 +25,10 @@ namespace Metocean.iBCN.Command.Payload
         {
             return null;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Tuple<uint, uint>[] CommandsSupported { get; } = new Tuple<uint, uint>[] { };
     }
 }

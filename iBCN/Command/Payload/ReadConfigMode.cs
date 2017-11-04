@@ -24,6 +24,10 @@ namespace Metocean.iBCN.Command.Payload
         public byte[] ToBytes()
         {
             return null;
+
+            //CommandsSupported.Count(x => x.Item1 == 1 && x.Item2 == 2);
         }
+
+        public Tuple<uint, uint>[] CommandsSupported { get; } = new Tuple<uint, uint>[] { };
     }
 }

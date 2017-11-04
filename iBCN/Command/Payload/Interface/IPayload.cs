@@ -16,5 +16,10 @@ namespace Metocean.iBCN.Command.Payload.Interface
         /// </summary>
         /// <returns></returns>
         byte[] ToBytes();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Tuple<uint, uint>[] CommandsSupported { get; }
     }
 }
