@@ -15,17 +15,7 @@ namespace iBCNLinkLayer.Link.Interface
         /// <summary>
         /// 
         /// </summary>
-        BlockingCollection<ConcurrentQueue<byte[]>> InBoundQueue { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         void OnReceiving(byte[] bytes);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        BlockingCollection<ConcurrentQueue<byte[]>> OutBoundQueue { get; }
 
         /// <summary>
         /// 

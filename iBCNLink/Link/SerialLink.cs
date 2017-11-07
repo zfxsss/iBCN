@@ -17,7 +17,7 @@ namespace iBCNLinkLayer.Link
         /// </summary>
         public override void OnReceiving(byte[] bytes)
         {
-
+            
         }
 
         /// <summary>
