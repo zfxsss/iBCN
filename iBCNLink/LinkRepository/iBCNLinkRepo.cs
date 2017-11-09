@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using iBCNLinkLayer.Link;
+using iBCNLinkLayer.Link.Interface;
 
 namespace iBCNLinkLayer.LinkRepository
 {
@@ -17,14 +18,19 @@ namespace iBCNLinkLayer.LinkRepository
         /// <summary>
         /// 
         /// </summary>
-        private ConcurrentDictionary<LinkDescription, iBCNLink> _linkDictionary = new ConcurrentDictionary<LinkDescription, iBCNLink>();
+        private const int MaxSize = 1024;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private ConcurrentDictionary<LinkDescription, ILink> _linkDictionary = new ConcurrentDictionary<LinkDescription, ILink>(5, MaxSize);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="linkDescription"></param>
         /// <returns></returns>
-        public iBCNLink this[LinkDescription linkDescription]
+        public ILink this[LinkDescription linkDescription]
         {
             get
             {
@@ -52,7 +58,7 @@ namespace iBCNLinkLayer.LinkRepository
         /// <param name="linkDescription"></param>
         public void RemoveItem(LinkDescription linkDescription)
         {
-            iBCNLink removed;
+            ILink removed;
             try
             {
                 if (!_linkDictionary.TryRemove(linkDescription, out removed))

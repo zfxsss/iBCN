@@ -1,27 +1,25 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Concurrent;
 
-namespace iBCNLinkLayer.Link.Interface
+namespace iBCNLinkLayer.MsgQueue.Interface
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface ILink
+    public interface IMsgQueue
     {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name"></param>
-        void Open(string name);
+        BlockingCollection<ConcurrentQueue<QueueItem>> InBoundQueue { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        void Close();
-
+        BlockingCollection<ConcurrentQueue<QueueItem>> OutBoundQueue { get; }
     }
 }

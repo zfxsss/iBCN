@@ -16,16 +16,6 @@ namespace iBCNLinkLayer.Link
         /// <summary>
         /// 
         /// </summary>
-        const int MaxSize = 4096;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static BlockingCollection<ConcurrentQueue<byte[]>> InBoundQueue { get; } = new BlockingCollection<ConcurrentQueue<byte[]>>(MaxSize);
-
-        /// <summary>
-        /// 
-        /// </summary>
         public virtual void OnReceiving(byte[] bytes)
         {
             if (GetType() == typeof(IridiumLink))
@@ -37,11 +27,6 @@ namespace iBCNLinkLayer.Link
                 throw new NotImplementedException();
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static BlockingCollection<ConcurrentQueue<byte[]>> OutBoundQueue { get; } = new BlockingCollection<ConcurrentQueue<byte[]>>(MaxSize);
 
         /// <summary>
         /// 
