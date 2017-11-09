@@ -40,7 +40,7 @@ namespace iBCNLinkLayer.Link
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public abstract void Open(string name);
+        public abstract void Open(string name, bool supportQueue);
 
         /// <summary>
         /// 

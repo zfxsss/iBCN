@@ -29,7 +29,7 @@ namespace iBCNLinkLayer.Link
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public override void Open(string name)
+        public override void Open(string name, bool supportQueue)
         {
             throw new NotImplementedException();
         }

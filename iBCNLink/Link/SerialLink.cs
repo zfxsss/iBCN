@@ -1,6 +1,7 @@
 ﻿using iBCNLinkLayer.Link.Interface;
 using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,11 @@ namespace iBCNLinkLayer.Link
     /// </summary>
     public class SerialLink : iBCNLink, ILink
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        private SerialPort serialPort;
+
         /// <summary>
         /// 
         /// </summary>
@@ -32,8 +38,12 @@ namespace iBCNLinkLayer.Link
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public override void Open(string name)
+        public override void Open(string name, bool supportQueue)
         {
+            if(serialPort == null)
+            {
+
+            }
             throw new NotImplementedException();
         }
 
@@ -44,6 +54,7 @@ namespace iBCNLinkLayer.Link
         {
             throw new NotImplementedException();
         }
+
 
     }
 }

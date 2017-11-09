@@ -16,7 +16,7 @@ namespace iBCNLinkLayer.Link.Interface
         /// 
         /// </summary>
         /// <param name="name"></param>
-        void Open(string name);
+        void Open(string name, bool supportQueue = false);
 
         /// <summary>
         /// 
