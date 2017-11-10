@@ -1,0 +1,7 @@
+C:\Users\jxu\source\repos\iBCN\SerialPortAppTest\bin\Debug\SerialPortAppTest.exe.config
+C:\Users\jxu\source\repos\iBCN\SerialPortAppTest\bin\Debug\SerialPortAppTest.exe
+C:\Users\jxu\source\repos\iBCN\SerialPortAppTest\bin\Debug\SerialPortAppTest.pdb
+C:\Users\jxu\source\repos\iBCN\SerialPortAppTest\obj\Debug\SerialPortAppTest.csproj.CoreCompileInputs.cache
+C:\Users\jxu\source\repos\iBCN\SerialPortAppTest\obj\Debug\SerialPortAppTest.exe
+C:\Users\jxu\source\repos\iBCN\SerialPortAppTest\obj\Debug\SerialPortAppTest.pdb
+C:\Users\jxu\source\repos\iBCN\SerialPortAppTest\obj\Debug\SerialPortAppTest.csprojResolveAssemblyReference.cache

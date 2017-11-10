@@ -11,13 +11,13 @@ namespace SerialPortAppTest
     {
         static void Main(string[] args)
         {
-            var sp = new SerialPort("COM2", 9600, Parity.None, 8, StopBits.One);
+            var sp = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
             sp.ReadTimeout = 1000;
             sp.Open();
-            var buffer = new byte[8];
-            sp.Read(buffer, 0, sp.BytesToRead);
+            var buffer = new byte[1024];
+            var count = sp.Read(buffer, 0, 1);
 
-            sp.Write("abcd");
+            //sp.Write("abcd");
             /*
             sp.DataReceived += (o, e) =>
              {

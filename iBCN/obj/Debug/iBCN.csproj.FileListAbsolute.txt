@@ -14,3 +14,12 @@ C:\Users\zhefeng\Desktop\iBCN\iBCN\bin\Debug\Newtonsoft.Json.dll
 C:\Users\zhefeng\Desktop\iBCN\iBCN\bin\Debug\Newtonsoft.Json.xml
 C:\Users\zhefeng\Desktop\iBCN\iBCN\obj\Debug\iBCN.csprojResolveAssemblyReference.cache
 C:\Users\jxu\Documents\iBCN\iBCN\obj\Debug\iBCN.csprojResolveAssemblyReference.cache
+C:\Users\jxu\source\repos\iBCN\iBCN\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\jxu\source\repos\iBCN\iBCN\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\jxu\source\repos\iBCN\iBCN\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\jxu\source\repos\iBCN\iBCN\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jxu\source\repos\iBCN\iBCN\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jxu\source\repos\iBCN\iBCN\obj\Debug\iBCN.csprojResolveAssemblyReference.cache
+C:\Users\jxu\source\repos\iBCN\iBCN\obj\Debug\iBCN.csproj.CoreCompileInputs.cache
+C:\Users\jxu\source\repos\iBCN\iBCN\obj\Debug\iBCN.dll
+C:\Users\jxu\source\repos\iBCN\iBCN\obj\Debug\iBCN.pdb

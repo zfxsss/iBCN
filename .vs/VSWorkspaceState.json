@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\iBCN"
+    "\\iBCN",
+    "\\iBCN\\iBCNException",
+    "\\iBCN\\iBCNException\\Command"
   ],
   "PreviewInSolutionExplorer": false
 }
