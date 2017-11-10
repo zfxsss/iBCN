@@ -15,7 +15,7 @@ namespace SerialPortAppTest
             sp.ReadTimeout = 1000;
             sp.Open();
             var buffer = new byte[1024];
-            var count = sp.Read(buffer, 0, 1);
+            var count = sp.Read(buffer, 0, sp.BytesToRead);
 
             //sp.Write("abcd");
             /*
