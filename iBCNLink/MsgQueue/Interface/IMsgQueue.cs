@@ -15,11 +15,11 @@ namespace iBCNLinkLayer.MsgQueue.Interface
         /// <summary>
         /// 
         /// </summary>
-        BlockingCollection<ConcurrentQueue<QueueItem>> InBoundQueue { get; }
+        BlockingCollection<QueueItem> InBoundQueue { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        BlockingCollection<ConcurrentQueue<QueueItem>> OutBoundQueue { get; }
+        BlockingCollection<QueueItem> OutBoundQueue { get; }
     }
 }

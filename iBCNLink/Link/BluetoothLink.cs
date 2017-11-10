@@ -1,4 +1,7 @@
 ﻿using iBCNLinkLayer.Link.Interface;
+using iBCNLinkLayer.MsgQueueEngine;
+using iBCNLinkLayer.Wrapper;
+using iBCNLinkLayer.MsgQueue;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
@@ -17,7 +20,7 @@ namespace iBCNLinkLayer.Link
         /// <summary>
         /// 
         /// </summary>
-        private const int BaudRate = 19200;
+        private const int BaudRate = 9600;
 
         /// <summary>
         /// 
@@ -47,7 +50,12 @@ namespace iBCNLinkLayer.Link
         /// <summary>
         /// 
         /// </summary>
-        public Action<byte[]> QueueAppDataHandler;
+        public Action<byte[]> QueueAppDataHandler_Inbound;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Action<byte[]> QueueAppDataHandler_Outbound;
 
         /// <summary>
         /// 
@@ -72,7 +80,7 @@ namespace iBCNLinkLayer.Link
         {
             if (serialPort == null)
             {
-                serialPort = new SerialPort(name, BaudRate, Parity.None, 8, StopBits.None);
+                serialPort = new SerialPort(name, BaudRate, Parity.None, 8, StopBits.One);
                 serialPort.ReadTimeout = 450;
 
                 readTimer = new System.Timers.Timer(500);
@@ -91,15 +99,47 @@ namespace iBCNLinkLayer.Link
                         }
 
                         byte[] tempbuffer = new byte[4096];
-                        var readBytesNumber = serialPort.Read(tempbuffer, 0, serialPort.BytesToRead);
+
+                        var readBytesNumber = 0;
+
+                        try
+                        {
+                            readBytesNumber = serialPort.Read(tempbuffer, 0, serialPort.BytesToRead);
+                        }
+                        catch (Exception ex)
+                        {
+                            if (ex is TimeoutException)
+                            {
+                                readBytesNumber = 0;
+                            }
+                            else
+                            {
+                                throw ex;
+                            }
+                        }
 
                         if (readBytesNumber > 0)
                         {
                             readBuffer = readBuffer.Concat(tempbuffer.Take(readBytesNumber)).ToArray();
                             while (bufferCursor < readBuffer.Length)
                             {
-                                if (1 == 1)
+                                byte[] appMsg;
+                                if (LinkLayerWrapper.UnwrapLinkLayerMessage(readBuffer.Take(bufferCursor + 1).ToArray(), out appMsg))
                                 {
+                                    if (supportQueue)
+                                    {
+                                        if (QueueAppDataHandler_Inbound == null)
+                                        {
+                                            throw new Exception("");
+                                        }
+
+                                        Engine.EnqueInBoundMsg(new QueueItem(appMsg, QueueAppDataHandler_Inbound));
+                                    }
+                                    else
+                                    {
+                                        AppDataPreparedHandler?.Invoke(appMsg); //invoke the handler
+                                    }
+                                    readBuffer = readBuffer.Skip(bufferCursor + 1).ToArray();
                                     bufferCursor = 0;
                                     break;
                                 }
@@ -108,6 +148,11 @@ namespace iBCNLinkLayer.Link
                             }
 
 
+                        }
+
+                        if (supportQueue)
+                        {
+                            QueueAppDataHandler_Outbound = data => Send(data);
                         }
 
                         lock (timerCallbackMutex)
@@ -149,6 +194,19 @@ namespace iBCNLinkLayer.Link
             serialPort = null;
 
             bufferCursor = 0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        public void Send(byte[] data)
+        {
+            if (!serialPort.IsOpen)
+            {
+                throw new Exception("");
+            }
+            serialPort.Write(data, 0, data.Length);
         }
     }
 }

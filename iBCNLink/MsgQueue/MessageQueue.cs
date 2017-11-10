@@ -21,11 +21,11 @@ namespace iBCNLinkLayer.MsgQueue
         /// <summary>
         /// 
         /// </summary>
-        public BlockingCollection<ConcurrentQueue<QueueItem>> InBoundQueue { get; } = new BlockingCollection<ConcurrentQueue<QueueItem>>(MaxSize);
+        public BlockingCollection<QueueItem> InBoundQueue { get; } = new BlockingCollection<QueueItem>(MaxSize);
 
         /// <summary>
         /// 
         /// </summary>
-        public BlockingCollection<ConcurrentQueue<QueueItem>> OutBoundQueue { get; } = new BlockingCollection<ConcurrentQueue<QueueItem>>(MaxSize);
+        public BlockingCollection<QueueItem> OutBoundQueue { get; } = new BlockingCollection<QueueItem>(MaxSize);
     }
 }
