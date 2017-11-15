@@ -23,7 +23,7 @@ namespace Metocean.iBCN.Message.Entity
             /// 
             /// </summary>
             public bool Motion { get; set; }
-            
+
             /// <summary>
             /// 
             /// </summary>
@@ -43,12 +43,12 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        private byte eventCode;
+        private UInt16 eventCode;
 
         /// <summary>
         /// 
         /// </summary>
-        public byte EventCode
+        public UInt16 EventCode
         {
             get
             {
@@ -57,7 +57,7 @@ namespace Metocean.iBCN.Message.Entity
             private set
             {
                 eventCode = value;
-                EventData = EvtDataBuilder.CreateEventData(0);
+                EventData = EvtDataBuilder.CreateEventData(eventCode);
             }
         }
 
@@ -65,7 +65,6 @@ namespace Metocean.iBCN.Message.Entity
         /// 
         /// </summary>
         public iBCNEvtData EventData { get; private set; }
-        //byte[] EventData { get; set; } = new byte[11];
 
         /// <summary>
         /// 
@@ -73,8 +72,12 @@ namespace Metocean.iBCN.Message.Entity
         /// <returns></returns>
         public PostionMetaData? GetPositionMetaData()
         {
-            //to be implemented
-            return new PostionMetaData() { HDOP = 1.5M, Motion = false, Satellites = 5 };
+            if (eventCode >= 128)
+            {
+                return new PostionMetaData() { HDOP = 1.5M, Motion = false, Satellites = 5 };
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -84,6 +87,10 @@ namespace Metocean.iBCN.Message.Entity
         public override void FromBytes(byte[] entityData)
         {
             base.FromBytes(entityData);
+            Timestamp = new DateTime();
+            Timestamp.FromBytes(entityData.Take(4).ToArray());
+            EventCode = entityData.Skip(4).Take(1).ToArray()[0];
+            EventData.FromBytes(entityData.Skip(5).Take(11).ToArray());
         }
     }
 }

@@ -15,17 +15,17 @@ namespace Metocean.iBCN.Command.Interface
         /// <summary>
         /// 
         /// </summary>
-        int CmdTypeCode { get; }
+        UInt16 CmdTypeCode { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        int SubCmdTypeCode { get; }
+        UInt16 SubCmdTypeCode { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        int Sequence { get; }
+        UInt16 Sequence { get; }
 
         /// <summary>
         /// 

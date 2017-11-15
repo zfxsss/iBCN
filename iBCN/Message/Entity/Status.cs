@@ -40,7 +40,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Reserved2 { get; private set; } = new byte[4];
+        public byte[] Reserved2 { get; private set; }
 
         /// <summary>
         /// 
@@ -49,6 +49,13 @@ namespace Metocean.iBCN.Message.Entity
         public override void FromBytes(byte[] entityData)
         {
             base.FromBytes(entityData);
+            Time = new DateTime();
+            Time.FromBytes(entityData.Take(4).ToArray());
+            BatteryVoltage = BitConverter.ToUInt16(entityData.Skip(4).Take(2).Reverse().ToArray(), 0);
+            Temperature = entityData[6];
+            Reserved1 = entityData[7];
+            GpsStatus = entityData[8];
+            Reserved2 = entityData.Skip(9).Take(4).ToArray();
         }
     }
 }

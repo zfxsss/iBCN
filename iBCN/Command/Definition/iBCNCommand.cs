@@ -15,7 +15,7 @@ namespace Metocean.iBCN.Command.Definition
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Body { get; set; }
+        public byte[] Body { get; internal set; }
 
         /// <summary>
         /// 
@@ -24,7 +24,45 @@ namespace Metocean.iBCN.Command.Definition
         {
             get
             {
-                return false;
+                if (GetType() == typeof(SetDebugOutputLevel))
+                {
+                    return true;
+                }
+                else if (GetType() == typeof(GetDiagnosticStatus))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(GetLogMemoryStatus))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(ReadDateTime))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(WriteDateTime))
+                {
+                    return true;
+                }
+                else if (GetType() == typeof(GetIdentification))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(GetExtendedDiagnostics))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(RequestPositionReport_Last))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(RequestPositionReport_New))
+                {
+                    return false;
+                }
+
+                return null;
+                //return true;
             }
         }
 

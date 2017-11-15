@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Metocean.iBCN.Message;
 
 namespace iBCNLinkLayer.Link
 {
@@ -80,11 +81,16 @@ namespace iBCNLinkLayer.Link
         {
             if (serialPort == null)
             {
+                AppDataPreparedHandler = (bytes) =>
+                {
+                    var msg = MessageBuilder.GetMessage(bytes);
+                };
+
                 serialPort = new SerialPort(name, BaudRate, Parity.None, 8, StopBits.One);
                 serialPort.ReadTimeout = 450;
 
-                readTimer = new System.Timers.Timer(500);
-                readTimer.AutoReset = true;
+                readTimer = new System.Timers.Timer(500); // to modify later
+                readTimer.AutoReset = true; //false; //true;
                 readTimer.Elapsed += (o, e) =>
                 {
                     try
@@ -124,7 +130,8 @@ namespace iBCNLinkLayer.Link
                             while (bufferCursor < readBuffer.Length)
                             {
                                 byte[] appMsg;
-                                if (LinkLayerWrapper.UnwrapLinkLayerMessage(readBuffer.Take(bufferCursor + 1).ToArray(), out appMsg))
+                                //if (LinkLayerWrapper.UnwrapLinkLayerMessage(readBuffer.Take(bufferCursor + 1).ToArray(), out appMsg))
+                                if (LinkLayerWrapper.UnwrapLinkLayerMessage(readBuffer, out appMsg))
                                 {
                                     if (supportQueue)
                                     {
@@ -146,7 +153,6 @@ namespace iBCNLinkLayer.Link
 
                                 bufferCursor++;
                             }
-
 
                         }
 

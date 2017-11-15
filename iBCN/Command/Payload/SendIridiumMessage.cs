@@ -12,10 +12,27 @@ namespace Metocean.iBCN.Command.Payload
     /// </summary>
     public class SendIridiumMessage : IPayload
     {
+
+        private byte[] message;
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Message { get; set; } = new byte[] { };
+        public byte[] Message
+        {
+            get
+            {
+                return message;
+            }
+            set
+            {
+                if (value.Length != 1)
+                {
+                    throw new Exception("");
+                }
+
+                message = value;
+            }
+        }
 
         /// <summary>
         /// 
@@ -23,12 +40,12 @@ namespace Metocean.iBCN.Command.Payload
         /// <returns></returns>
         public byte[] ToBytes()
         {
-            return null;
+            return Message;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public Tuple<uint, uint>[] CommandsSupported { get; } = new Tuple<uint, uint>[] { };
+        public Tuple<uint, uint>[] CommandsSupported { get; } = new Tuple<uint, uint>[] { new Tuple<uint, uint>(0x05, 0x20) };
     }
 }

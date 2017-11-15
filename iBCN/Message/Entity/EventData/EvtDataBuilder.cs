@@ -11,7 +11,12 @@ namespace Metocean.iBCN.Message.Entity.EventData
     /// </summary>
     public class EvtDataBuilder
     {
-        public static iBCNEvtData CreateEventData(int typeCode)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="typeCode"></param>
+        /// <returns></returns>
+        public static iBCNEvtData CreateEventData(UInt16 typeCode)
         {
             if (typeCode == 2)
             {

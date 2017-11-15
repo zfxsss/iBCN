@@ -39,6 +39,12 @@ namespace Metocean.iBCN.Message.Entity
         public override void FromBytes(byte[] entityData)
         {
             base.FromBytes(entityData);
+            RecordCount = BitConverter.ToUInt32(entityData.Take(4).Reverse().ToArray(), 0);
+            LastRecordDownloaded = BitConverter.ToUInt32(entityData.Skip(4).Take(4).Reverse().ToArray(), 0);
+            FirstRecordTimestamp = new DateTime();
+            FirstRecordTimestamp.FromBytes(entityData.Skip(8).Take(4).ToArray());
+            LastRecordTimestamp = new DateTime();
+            LastRecordTimestamp.FromBytes(entityData.Skip(12).Take(4).ToArray());
         }
     }
 }

@@ -26,17 +26,17 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// <summary>
         /// 
         /// </summary>
-        public byte Speed { get; private set; }
+        public UInt16 Speed { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte FixAccuracy { get; private set; }
+        public UInt16 FixAccuracy { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte TimeToFix { get; private set; }
+        public UInt16 TimeToFix { get; private set; }
 
         /// <summary>
         /// 
@@ -45,6 +45,11 @@ namespace Metocean.iBCN.Message.Entity.EventData
         public override void FromBytes(byte[] entityData)
         {
             base.FromBytes(entityData);
+            Latitude = BitConverter.ToUInt32(entityData.Take(4).Reverse().ToArray(), 0);
+            Longitude = BitConverter.ToUInt32(entityData.Skip(4).Take(4).Reverse().ToArray(), 0);
+            Speed = entityData.Skip(8).Take(1).ToArray()[0];
+            FixAccuracy = entityData.Skip(9).Take(1).ToArray()[0];
+            TimeToFix = entityData.Skip(10).Take(1).ToArray()[0];
         }
     }
 }

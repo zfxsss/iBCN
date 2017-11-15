@@ -15,17 +15,17 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Reserved1 { get; private set; } = new byte[32];
+        public byte[] Reserved1 { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Imei { get; private set; } = new byte[15];
+        public string Imei { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Reserved2 { get; private set; } = new byte[36];
+        public byte[] Reserved2 { get; private set; }
 
         /// <summary>
         /// 
@@ -34,6 +34,9 @@ namespace Metocean.iBCN.Message.Entity
         public override void FromBytes(byte[] entityData)
         {
             base.FromBytes(entityData);
+            Reserved1 = entityData.Take(32).ToArray();
+            Imei = Encoding.ASCII.GetString(entityData.Skip(32).Take(15).ToArray()).TrimEnd('\0');
+            Reserved2 = entityData.Skip(47).Take(36).ToArray();
         }
     }
 }

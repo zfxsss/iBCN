@@ -15,7 +15,27 @@ namespace Metocean.iBCN.Command.Payload
         /// <summary>
         /// 
         /// </summary>
-        public int DebugLevel { get; set; }
+        private UInt16 debugLevel;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public UInt16 DebugLevel
+        {
+            get
+            {
+                return debugLevel;
+            }
+            set
+            {
+                if (!(debugLevel >= 0 && debugLevel <= 3))
+                {
+                    throw new Exception("");
+                }
+
+                debugLevel = value;
+            }
+        }
 
         /// <summary>
         /// 
@@ -23,12 +43,12 @@ namespace Metocean.iBCN.Command.Payload
         /// <returns></returns>
         public byte[] ToBytes()
         {
-            return null;
+            return new byte[] { BitConverter.GetBytes(DebugLevel)[0] };
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public Tuple<uint, uint>[] CommandsSupported { get; } = new Tuple<uint, uint>[] { };
+        public Tuple<uint, uint>[] CommandsSupported { get; } = new Tuple<uint, uint>[] { new Tuple<uint, uint>(0x05, 0x20) };
     }
 }

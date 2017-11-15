@@ -133,7 +133,7 @@ namespace Metocean.iBCN.Message
         /// <returns></returns>
         public static IMsg GetMessage(byte[] data)
         {
-            if (data[0] == 0x01 && data[1] == 0x81)
+            if ((data[0] == 0x01 && data[1] == 0x81) || (data[0] == 0x03 && data[1] == 0x90) || (data[0] == 0x03 && data[1] == 0x91))
             {
                 return new Msg<EventReport>(data[0], data[1], data[2], data.Skip(3).ToArray());
             }
@@ -156,10 +156,6 @@ namespace Metocean.iBCN.Message
             else if (data[0] == 0x05 && data[1] == 0x81)
             {
                 return new Msg<Mode>(data[0], data[1], data[2], data.Skip(3).ToArray());
-            }
-            else if ((data[0] == 0x03 && data[1] == 0x90) || (data[0] == 0x03 && data[1] == 0x91))
-            {
-                return new Msg<EventReport>(data[0], data[1], data[2], data.Skip(3).ToArray());
             }
             else if (data[0] == 0x09 && data[1] == 0xFF)
             {
