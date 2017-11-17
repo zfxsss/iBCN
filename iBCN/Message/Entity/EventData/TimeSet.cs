@@ -15,7 +15,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// <summary>
         /// 
         /// </summary>
-        public byte Source { get; private set; }
+        public UInt16 Source { get; private set; }
 
         /// <summary>
         /// 
@@ -29,6 +29,8 @@ namespace Metocean.iBCN.Message.Entity.EventData
         public override void FromBytes(byte[] evtData)
         {
             base.FromBytes(evtData);
+            Source = evtData.Take(1).ToArray()[0];
+            Offset = BitConverter.ToUInt32(evtData.Skip(1).Take(4).Reverse().ToArray(), 0);
         }
     }
 }

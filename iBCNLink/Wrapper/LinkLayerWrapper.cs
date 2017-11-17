@@ -46,14 +46,18 @@ namespace iBCNLinkLayer.Wrapper
             0xEF1F, 0xFF3E, 0xCF5D, 0xDF7C, 0xAF9B, 0xBFBA, 0x8FD9, 0x9FF8,
             0x6E17, 0x7E36, 0x4E55, 0x5E74, 0x2E93, 0x3EB2, 0x0ED1, 0x1EF0
         };
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="linkLayerMsg"></param>
-        /// <param name="applicationMsg"></param>
+        /// <param name="linkLayerBytes"></param>
+        /// <param name="outputBytes"></param>
+        /// <param name="parsedLength"></param>
         /// <returns></returns>
-        public static bool UnwrapLinkLayerMessage(byte[] linkLayerMsg, out byte[] applicationMsg)
+        public static LinkLayerBytesType ParseLinkLayerBytes(byte[] linkLayerBytes, out byte[] outputBytes, out int parsedLength)
         {
+            bool potentialiBCNMsg = false;
+
             Func<byte[], byte[], bool> CRCCheck = (calculatedBytes, crcResult) =>
             {
                 var crt = (UInt16)0xFFFF;
@@ -78,32 +82,77 @@ namespace iBCNLinkLayer.Wrapper
 
             };
 
-            if (!((linkLayerMsg[0] == 0xAA) && (linkLayerMsg[1] == 0x55)))
+            if (linkLayerBytes == null || linkLayerBytes.Length == 0)
             {
-                throw new Exception("");
+                outputBytes = null;
+                parsedLength = 0;
+                return LinkLayerBytesType.None;
             }
 
-            if ((linkLayerMsg[linkLayerMsg.Length - 2] == 0xFF) && (linkLayerMsg[linkLayerMsg.Length - 1] == 0xCC))
+            if (linkLayerBytes.Length < 2)
             {
-                //end of the message, check CRC
-                if (!CRCCheck(linkLayerMsg.Skip(2).Take(linkLayerMsg.Length - 4 - 2).ToArray(), linkLayerMsg.Skip(linkLayerMsg.Length - 4).Take(2).ToArray()))
+                outputBytes = null;
+                parsedLength = 0;
+                return LinkLayerBytesType.None;
+            }
+
+            if ((linkLayerBytes[0] == 0xAA) && (linkLayerBytes[1] == 0x55))
+            {
+                potentialiBCNMsg = true;
+            }
+            else
+            {
+                //could deal with special plain text here
+            }
+
+            if (potentialiBCNMsg)
+            {
+                for (int i = 1; i < linkLayerBytes.Length; i++)
                 {
-                    throw new Exception("");
-                }
-                else
-                {
-                    applicationMsg = linkLayerMsg.Skip(4).Take(linkLayerMsg.Length - 4 - 4).ToArray();
-                    return true;
-                }
-            }
+                    if ((linkLayerBytes[i - 1] == 0xFF) && (linkLayerBytes[i] == 0xCC))
+                    {
+                        if (!CRCCheck(linkLayerBytes.Skip(2).Take(i + 1 - 4 - 2).ToArray(), linkLayerBytes.Skip(i + 1 - 4).Take(2).ToArray()))
+                        {
+                            outputBytes = null;
+                            parsedLength = i + 1;
+                            return LinkLayerBytesType.iBCNMsg_Invalid;
 
-            if (linkLayerMsg.Length > 10000)
+                        }
+                        else
+                        {
+                            outputBytes = linkLayerBytes.Skip(4).Take(i + 1 - 4 - 4).ToArray();
+                            parsedLength = i + 1;
+                            return LinkLayerBytesType.iBCNMsg;
+                        }
+                    }
+
+                    if (i > 260)
+                    {
+                        throw new Exception("too long iBCNMsg, it's an error!");
+                    }
+
+                }
+
+                outputBytes = null;
+                parsedLength = 0;
+                return LinkLayerBytesType.None;
+            }
+            else
             {
-                throw new Exception("");
-            }
+                for (int i = 1; i < linkLayerBytes.Length; i++)
+                {
+                    if ((linkLayerBytes[i - 1] == 0xAA) && (linkLayerBytes[i] == 0x55))
+                    {
+                        outputBytes = linkLayerBytes.Take(i - 1).ToArray();
+                        parsedLength = i - 1;
+                        return LinkLayerBytesType.PlainText;
+                    }
+                }
 
-            applicationMsg = null;
-            return false;
+                outputBytes = linkLayerBytes;
+                parsedLength = linkLayerBytes.Length;
+                return LinkLayerBytesType.PlainText;
+            }
         }
 
         /// <summary>

@@ -29,6 +29,12 @@ namespace Metocean.iBCN.Message.Entity
         public override void FromBytes(byte[] entityData)
         {
             base.FromBytes(entityData);
+            RecordIndex = BitConverter.ToUInt32(entityData.Take(4).Reverse().ToArray(), 0);
+            for (int i = 0; i < Records.Length; i++)
+            {
+                Records[i] = new EventReport();
+                Records[i].FromBytes(entityData.Skip(i * 16 + 4).Take(16).ToArray());
+            }
         }
     }
 }

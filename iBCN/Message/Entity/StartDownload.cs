@@ -34,6 +34,10 @@ namespace Metocean.iBCN.Message.Entity
         public override void FromBytes(byte[] entityData)
         {
             base.FromBytes(entityData);
+            Ack = new Acknowledgement();
+            Ack.FromBytes(entityData.Take(1).ToArray());
+            StartIndex = BitConverter.ToUInt32(entityData.Skip(1).Take(4).Reverse().ToArray(), 0);
+            EndIndex = BitConverter.ToUInt32(entityData.Skip(5).Take(4).Reverse().ToArray(), 0);
         }
     }
 }

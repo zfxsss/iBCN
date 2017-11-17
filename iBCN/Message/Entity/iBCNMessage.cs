@@ -66,7 +66,45 @@ namespace Metocean.iBCN.Message.Entity
                     throw new Exception("");
                 }
             }
-
+            else if (GetType() == typeof(Mode))
+            {
+                if (entityData.Length != 17)
+                {
+                    throw new Exception("");
+                }
+            }
+            else if (GetType() == typeof(ReadConfigMode))
+            {
+                if (!((entityData.Length == 18) || (entityData.Length == 180)))
+                {
+                    throw new Exception("");
+                }
+            }
+            else if (GetType() == typeof(RecordsPacket))
+            {
+                if (entityData.Length != 16 * 12 + 4)
+                {
+                    throw new Exception("");
+                }
+            }
+            else if (GetType() == typeof(StartDownload))
+            {
+                if (entityData.Length != 9)
+                {
+                    throw new Exception("");
+                }
+            }
+            else if (GetType() == typeof(ReceiveIridiumMessage))
+            {
+                if (entityData.Length > 240)
+                {
+                    throw new Exception("");
+                }
+            }
+            else
+            {
+                //do nothing;
+            }
 
         }
     }

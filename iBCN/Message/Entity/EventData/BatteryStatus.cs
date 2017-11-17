@@ -20,7 +20,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// <summary>
         /// 
         /// </summary>
-        public byte Temperature { get; private set; }
+        public Int16 Temperature { get; private set; }
 
         /// <summary>
         /// 
@@ -29,6 +29,8 @@ namespace Metocean.iBCN.Message.Entity.EventData
         public override void FromBytes(byte[] evtData)
         {
             base.FromBytes(evtData);
+            Voltage = BitConverter.ToUInt16(evtData.Take(2).Reverse().ToArray(), 0);
+            Temperature = (sbyte)(evtData.Skip(2).Take(1).ToArray()[0]);
         }
 
     }

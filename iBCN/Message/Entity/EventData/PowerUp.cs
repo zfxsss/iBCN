@@ -15,7 +15,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
         /// <summary>
         /// 
         /// </summary>
-        public byte ResetReason { get; private set; }
+        public UInt16 ResetReason { get; private set; }
 
         /// <summary>
         /// 
@@ -24,6 +24,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
         public override void FromBytes(byte[] evtData)
         {
             base.FromBytes(evtData);
+            ResetReason = evtData.Take(1).ToArray()[0];
         }
     }
 }

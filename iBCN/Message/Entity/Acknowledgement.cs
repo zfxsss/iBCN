@@ -15,7 +15,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// true: Success, false: Error
         /// </summary>
-        public bool Ack { get; private set; }
+        public byte Ack { get; private set; }
 
         /// <summary>
         /// 
@@ -24,14 +24,7 @@ namespace Metocean.iBCN.Message.Entity
         public override void FromBytes(byte[] entityData)
         {
             base.FromBytes(entityData);
-            if (entityData[0] == 0)
-            {
-                Ack = true;
-            }
-            else
-            {
-                Ack = false;
-            }
+            Ack = entityData.Take(1).ToArray()[0];
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Metocean.iBCN.Command.Payload
         /// <summary>
         /// 
         /// </summary>
-        public int Index { get; set; }
+        public UInt16 Index { get; set; }
 
         /// <summary>
         /// 
@@ -23,11 +23,12 @@ namespace Metocean.iBCN.Command.Payload
         /// <returns></returns>
         public byte[] ToBytes()
         {
-            return null;
-
-            //CommandsSupported.Count(x => x.Item1 == 1 && x.Item2 == 2);
+            return new byte[] { BitConverter.GetBytes(Index)[0] };
         }
 
-        public Tuple<uint, uint>[] CommandsSupported { get; } = new Tuple<uint, uint>[] { };
+        /// <summary>
+        /// 
+        /// </summary>
+        public Tuple<uint, uint>[] CommandsSupported { get; } = new Tuple<uint, uint>[] { new Tuple<uint, uint>(0x05, 0x01) };
     }
 }

@@ -89,6 +89,8 @@
     <Compile Include="Message\Entity\EventData\EvtDataBuilder.cs" />
     <Compile Include="Message\Entity\MultiplePositionReport.cs" />
     <Compile Include="Message\Entity\EventData\Position.cs" />
+    <Compile Include="Message\Entity\ReadConfigMode.cs" />
+    <Compile Include="Message\Entity\ReceiveIridiumMessage.cs" />
     <Compile Include="Message\Interface\IMsgT.cs" />
     <Compile Include="Message\Entity\Acknowledgement.cs" />
     <Compile Include="Message\Entity\DateTime.cs" />

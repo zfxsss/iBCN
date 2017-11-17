@@ -60,9 +60,44 @@ namespace Metocean.iBCN.Command.Definition
                 {
                     return false;
                 }
+                else if (GetType() == typeof(ReadConfigMode))
+                {
+                    return true;
+                }
+                else if (GetType() == typeof(WriteConfigMode))
+                {
+                    return true;
+                }
+                else if (GetType() == typeof(ClearMemoryLog))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(ResetReportingIndex))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(StartDownloadAll))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(StartDownloadNew))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(StopDownload))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(StartBootloaderProcess))
+                {
+                    return false;
+                }
+                else if (GetType() == typeof(SendIridiumMessage))
+                {
+                    return true;
+                }
 
                 return null;
-                //return true;
             }
         }
 

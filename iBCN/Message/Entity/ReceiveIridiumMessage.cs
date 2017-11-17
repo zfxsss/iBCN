@@ -5,26 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Message.Entity.EventData
+namespace Metocean.iBCN.Message.Entity
 {
     /// <summary>
     /// 
     /// </summary>
-    public class GpsPositionRequest : iBCNEvtData, IParser
+    public class ReceiveIridiumMessage : iBCNMessage, IParser
     {
         /// <summary>
         /// 
         /// </summary>
-        public UInt16 Source { get; private set; }
+        public byte[] Msg { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="evtData"></param>
-        public override void FromBytes(byte[] evtData)
+        /// <param name="entityData"></param>
+        public override void FromBytes(byte[] entityData)
         {
-            base.FromBytes(evtData);
-            Source = evtData.Take(1).ToArray()[0];
+            base.FromBytes(entityData);
+            Msg = entityData;
         }
     }
 }

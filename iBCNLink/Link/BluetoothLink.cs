@@ -84,6 +84,43 @@ namespace iBCNLinkLayer.Link
                 AppDataPreparedHandler = (bytes) =>
                 {
                     var msg = MessageBuilder.GetMessage(bytes);
+                    foreach (var x in msg.GetType().GetProperties())
+                    {
+                        if (x.Name == "EntityBytes")
+                        {
+                            var rawbytes = (byte[])x.GetValue(msg);
+                            string bytesStr = "";
+                            foreach (var b in rawbytes)
+                            {
+                                bytesStr += b;
+                                bytesStr += " ";
+                            }
+                            Console.WriteLine("EntityBytes : " + bytesStr);
+                        }
+                        else if (x.Name == "MessageEntity")
+                        {
+                            Console.WriteLine("MessageEntity : ");
+                            foreach (var y in x.PropertyType.GetProperties())
+                            {
+                                if (!y.PropertyType.IsValueType)
+                                {
+                                    Console.WriteLine("  " + y.Name + " : ");
+                                    foreach (var z in y.PropertyType.GetProperties())
+                                    {
+                                        Console.WriteLine("    " + z.Name + " : " + z.GetValue(y.GetValue(x.GetValue(msg))));
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("  " + y.Name + " : " + y.GetValue(x.GetValue(msg)));
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine(x.Name + " : " + x.GetValue(msg));
+                        }
+                    }
                 };
 
                 serialPort = new SerialPort(name, BaudRate, Parity.None, 8, StopBits.One);
@@ -124,37 +161,49 @@ namespace iBCNLinkLayer.Link
                             }
                         }
 
-                        if (readBytesNumber > 0)
-                        {
-                            readBuffer = readBuffer.Concat(tempbuffer.Take(readBytesNumber)).ToArray();
-                            while (bufferCursor < readBuffer.Length)
-                            {
-                                byte[] appMsg;
-                                //if (LinkLayerWrapper.UnwrapLinkLayerMessage(readBuffer.Take(bufferCursor + 1).ToArray(), out appMsg))
-                                if (LinkLayerWrapper.UnwrapLinkLayerMessage(readBuffer, out appMsg))
-                                {
-                                    if (supportQueue)
-                                    {
-                                        if (QueueAppDataHandler_Inbound == null)
-                                        {
-                                            throw new Exception("");
-                                        }
 
-                                        Engine.EnqueInBoundMsg(new QueueItem(appMsg, QueueAppDataHandler_Inbound));
-                                    }
-                                    else
+                        readBuffer = readBuffer.Concat(tempbuffer.Take(readBytesNumber)).ToArray();
+
+                        if (readBuffer.Length > 0)
+                        {
+                            byte[] appMsg;
+                            int parseLength;
+
+                            var bytesType = LinkLayerWrapper.ParseLinkLayerBytes(readBuffer, out appMsg, out parseLength);
+                            if (bytesType == LinkLayerBytesType.iBCNMsg)
+                            {
+                                if (supportQueue)
+                                {
+                                    if (QueueAppDataHandler_Inbound == null)
                                     {
-                                        AppDataPreparedHandler?.Invoke(appMsg); //invoke the handler
+                                        throw new Exception("");
                                     }
-                                    readBuffer = readBuffer.Skip(bufferCursor + 1).ToArray();
-                                    bufferCursor = 0;
-                                    break;
+
+                                    Engine.EnqueInBoundMsg(new QueueItem(appMsg, QueueAppDataHandler_Inbound));
+                                }
+                                else
+                                {
+                                    AppDataPreparedHandler?.Invoke(appMsg); //invoke the handler
                                 }
 
-                                bufferCursor++;
+                                readBuffer = readBuffer.Skip(parseLength).ToArray();
                             }
-
+                            else if (bytesType == LinkLayerBytesType.iBCNMsg_Invalid)
+                            {
+                                readBuffer = readBuffer.Skip(parseLength).ToArray();
+                                Console.WriteLine("iBCNMsg_Invalid detected and processed");
+                            }
+                            else if (bytesType == LinkLayerBytesType.PlainText)
+                            {
+                                readBuffer = readBuffer.Skip(parseLength).ToArray();
+                                Console.WriteLine("PlainText detected and processed");
+                            }
+                            else if (bytesType == LinkLayerBytesType.None)
+                            {
+                                Console.WriteLine("\"None\" string detected");
+                            }
                         }
+
 
                         if (supportQueue)
                         {

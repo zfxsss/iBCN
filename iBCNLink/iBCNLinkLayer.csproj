@@ -53,6 +53,7 @@
     <Compile Include="MsgQueue\QueueItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Link\SerialLink.cs" />
+    <Compile Include="Wrapper\LinkLayerBytesType.cs" />
     <Compile Include="Wrapper\LinkLayerWrapper.cs" />
   </ItemGroup>
   <ItemGroup>

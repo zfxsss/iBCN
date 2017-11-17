@@ -148,5 +148,67 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<RequestPositionReport_New>.GetCommandBytes(1, null);
             receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
+
+        /// <summary>
+        /// ReadConfigMode
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button12_Click(object sender, EventArgs e)
+        {
+            var payload = new Metocean.iBCN.Command.Payload.ReadConfigMode();
+            payload.Index = 0x09;
+
+            var cmdbytes = Command<Metocean.iBCN.Command.Definition.ReadConfigMode>.GetCommandBytes(1, payload);
+            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+        }
+
+        /// <summary>
+        /// WriteConfigMode
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button13_Click(object sender, EventArgs e)
+        {
+            var payload = new Metocean.iBCN.Command.Payload.WriteConfigMode();
+            payload.Index = 0xFF;
+            payload.Mode = new Metocean.iBCN.Message.Entity.Mode[10];
+            payload.Mode[0] = new Metocean.iBCN.Message.Entity.Mode(0, 300, 0, 1, 1, 1, 1);
+            payload.Mode[1] = new Metocean.iBCN.Message.Entity.Mode(0, 300, 0, 1, 1, 1, 1);
+            payload.Mode[2] = new Metocean.iBCN.Message.Entity.Mode(0, 300, 0, 1, 1, 1, 1);
+            payload.Mode[3] = new Metocean.iBCN.Message.Entity.Mode(0, 300, 0, 1, 1, 1, 1);
+            payload.Mode[4] = new Metocean.iBCN.Message.Entity.Mode(0, 300, 0, 1, 1, 1, 1);
+            payload.Mode[5] = new Metocean.iBCN.Message.Entity.Mode(0, 300, 0, 1, 1, 1, 1);
+            payload.Mode[6] = new Metocean.iBCN.Message.Entity.Mode(0, 300, 0, 1, 1, 1, 1);
+            payload.Mode[7] = new Metocean.iBCN.Message.Entity.Mode(0, 300, 0, 1, 1, 1, 1);
+            payload.Mode[8] = new Metocean.iBCN.Message.Entity.Mode(0, 300, 0, 1, 1, 1, 1);
+            payload.Mode[9] = new Metocean.iBCN.Message.Entity.Mode(0, 300, 0, 1, 1, 1, 1);
+
+
+            var cmdbytes = Command<Metocean.iBCN.Command.Definition.WriteConfigMode>.GetCommandBytes(1, payload);
+            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+        }
+
+        /// <summary>
+        /// ClearMemoryLog
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button14_Click(object sender, EventArgs e)
+        {
+            var cmdbytes = Command<ClearMemoryLog>.GetCommandBytes(1, null);
+            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+        }
+
+        /// <summary>
+        /// ResetReportingIndex
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button15_Click(object sender, EventArgs e)
+        {
+            var cmdbytes = Command<ResetReportingIndex>.GetCommandBytes(1, null);
+            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+        }
     }
 }

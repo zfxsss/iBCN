@@ -22,43 +22,43 @@ namespace Metocean.iBCN.Message
         /// <param name="data"></param>
         public T ParseBytes(byte[] entityData)
         {
+            #region test
+            /*
+            var msgConfig = JsonConfigReader.GetConfigItem(typeof(T).Name);
+
+            var cursorPosition = 0;
+            int byteOccupied = 0;
+
+            //the size of the Message Entity is already defined
+            if ((byteOccupied = msgConfig.Value<int>("BytesOccupied")) > 0)
+            {
+                if (entityData.Length < byteOccupied)
+                {
+                    throw new Exception("Not enough bytes provided");
+                }
+                else
+                {
+                    //start parsing the bytes
+                    var propertiesConfig = msgConfig["PropertiesConfig"];
+
+                    //new Msg<>
+
+                }
+            }
+            //the size of the Message Entity is not defined
+            else
+            {
+
+            }
+
+            //needs to be implemented
+            */
+            #endregion
+
             try
             {
                 EntityBytes = entityData;
                 MessageEntity.FromBytes(EntityBytes);
-
-                #region test
-                /*
-                var msgConfig = JsonConfigReader.GetConfigItem(typeof(T).Name);
-
-                var cursorPosition = 0;
-                int byteOccupied = 0;
-
-                //the size of the Message Entity is already defined
-                if ((byteOccupied = msgConfig.Value<int>("BytesOccupied")) > 0)
-                {
-                    if (entityData.Length < byteOccupied)
-                    {
-                        throw new Exception("Not enough bytes provided");
-                    }
-                    else
-                    {
-                        //start parsing the bytes
-                        var propertiesConfig = msgConfig["PropertiesConfig"];
-
-                        //new Msg<>
-
-                    }
-                }
-                //the size of the Message Entity is not defined
-                else
-                {
-
-                }
-
-                //needs to be implemented
-                */
-                #endregion
 
                 return MessageEntity;
             }
