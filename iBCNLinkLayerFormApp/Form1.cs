@@ -92,7 +92,7 @@ namespace iBCNLinkLayerFormApp
         }
 
         /// <summary>
-        /// 
+        /// WriteDateTime
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -208,6 +208,66 @@ namespace iBCNLinkLayerFormApp
         private void button15_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<ResetReportingIndex>.GetCommandBytes(1, null);
+            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+        }
+
+        /// <summary>
+        /// StartDownloadAll
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button16_Click(object sender, EventArgs e)
+        {
+            var cmdbytes = Command<StartDownloadAll>.GetCommandBytes(1, null);
+            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+        }
+
+        /// <summary>
+        /// StartDownloadNew
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button17_Click(object sender, EventArgs e)
+        {
+            byte a = 0x0A;
+            UInt16 x = a;
+
+            var cmdbytes = Command<StartDownloadNew>.GetCommandBytes(1, null);
+            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+        }
+
+        /// <summary>
+        /// StopDownload
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button18_Click(object sender, EventArgs e)
+        {
+            var cmdbytes = Command<StopDownload>.GetCommandBytes(1, null);
+            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+        }
+
+        /// <summary>
+        /// SendIridiumMessage
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button19_Click(object sender, EventArgs e)
+        {
+            var payload = new Metocean.iBCN.Command.Payload.SendIridiumMessage();
+            payload.Message = new byte[] { 0x11, 0x11 };
+            var cmdbytes = Command<Metocean.iBCN.Command.Definition.SendIridiumMessage>.GetCommandBytes(1, payload);
+            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+        }
+
+        /// <summary>
+        /// StartBootloaderProcess
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button20_Click(object sender, EventArgs e)
+        {
+            var cmdbytes = Command<StartBootloaderProcess>.GetCommandBytes(1, null);
             receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
     }

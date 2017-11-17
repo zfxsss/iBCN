@@ -42,6 +42,13 @@ namespace Metocean.iBCN.Message.Entity.EventData
             {
                 return new GpsPositionRequest();
             }
+            else if ((typeCode == 10) || (typeCode == 20) || (typeCode == 22) || (typeCode == 14)
+                || (typeCode == 1) || (typeCode == 4) || (typeCode == 5) || (typeCode == 6)
+                || (typeCode == 8) || (typeCode == 11) || (typeCode == 12) || (typeCode == 13)
+                || (typeCode == 17) || (typeCode == 18) || (typeCode == 19))
+            {
+                return new Common();
+            }
             else if (typeCode >= 128)
             {
                 return new Position();

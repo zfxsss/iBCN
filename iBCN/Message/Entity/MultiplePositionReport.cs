@@ -15,7 +15,7 @@ namespace Metocean.iBCN.Message.Entity
         /// <summary>
         /// 
         /// </summary>
-        public iBCNMessage[] PositionReports { get; private set; } = new EventReport[] { };
+        public EventReport[] PositionReports { get; private set; } = new EventReport[] { };
 
         /// <summary>
         /// 
@@ -24,6 +24,13 @@ namespace Metocean.iBCN.Message.Entity
         public override void FromBytes(byte[] entityData)
         {
             base.FromBytes(entityData);
+            var count = entityData.Length / 16;
+            for (int i = 0; i < count; i++)
+            {
+                var report = new EventReport();
+                report.FromBytes(entityData.Skip(i * 16).Take(16).ToArray());
+                PositionReports = PositionReports.Concat(new EventReport[] { report }).ToArray();
+            }
         }
     }
 }

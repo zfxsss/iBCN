@@ -86,6 +86,7 @@
     <Compile Include="iBCNException\Command\CommandDomainException.cs" />
     <Compile Include="iBCNException\Configuration\ConfigurationDomainException.cs" />
     <Compile Include="iBCNException\Message\MessageDomainException.cs" />
+    <Compile Include="Message\Entity\EventData\Common.cs" />
     <Compile Include="Message\Entity\EventData\EvtDataBuilder.cs" />
     <Compile Include="Message\Entity\MultiplePositionReport.cs" />
     <Compile Include="Message\Entity\EventData\Position.cs" />

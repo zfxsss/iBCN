@@ -89,6 +89,7 @@ namespace Metocean.iBCN.Message.Entity
             base.FromBytes(entityData);
             Timestamp = new DateTime();
             Timestamp.FromBytes(entityData.Take(4).ToArray());
+            eventCode = entityData.Skip(4).Take(1).ToArray()[0];
             EventCode = entityData.Skip(4).Take(1).ToArray()[0];
             EventData.FromBytes(entityData.Skip(5).Take(11).ToArray());
         }

@@ -64,6 +64,10 @@ namespace Metocean.iBCN.Message
             {
                 return new Msg<ReceiveIridiumMessage>(data[0], data[1], data[2], data.Skip(3).ToArray()).MessageEntity;
             }
+            else if ((data[0] == 0x09 && data[1] == 0x90) || (data[0] == 0x09 && data[1] == 0x91))
+            {
+                return new Msg<StartDownload>(data[0], data[1], data[3], data.Skip(3).ToArray()).MessageEntity;
+            }
             else
             {
                 //throw new Exception("Unknown Message");
@@ -123,6 +127,10 @@ namespace Metocean.iBCN.Message
             else if (data[0] == 0x03 && data[1] == 0xB1)
             {
                 return new Msg<ReceiveIridiumMessage>(data[0], data[1], data[2], data.Skip(3).ToArray());
+            }
+            else if ((data[0] == 0x09 && data[1] == 0x90) || (data[0] == 0x09 && data[1] == 0x91))
+            {
+                return new Msg<StartDownload>(data[0], data[1], data[3], data.Skip(3).ToArray());
             }
             else
             {

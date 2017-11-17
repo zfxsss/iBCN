@@ -31,11 +31,6 @@ namespace iBCNLinkLayer.Link
         /// <summary>
         /// 
         /// </summary>
-        private int bufferCursor = 0;
-
-        /// <summary>
-        /// 
-        /// </summary>
         private SerialPort serialPort;
 
         /// <summary>
@@ -99,21 +94,28 @@ namespace iBCNLinkLayer.Link
                         }
                         else if (x.Name == "MessageEntity")
                         {
-                            Console.WriteLine("MessageEntity : ");
-                            foreach (var y in x.PropertyType.GetProperties())
+                            try
                             {
-                                if (!y.PropertyType.IsValueType)
+                                Console.WriteLine("MessageEntity : ");
+                                foreach (var y in x.PropertyType.GetProperties())
                                 {
-                                    Console.WriteLine("  " + y.Name + " : ");
-                                    foreach (var z in y.PropertyType.GetProperties())
+                                    if (!y.PropertyType.IsValueType)
                                     {
-                                        Console.WriteLine("    " + z.Name + " : " + z.GetValue(y.GetValue(x.GetValue(msg))));
+                                        Console.WriteLine("  " + y.Name + " : ");
+                                        foreach (var z in y.PropertyType.GetProperties())
+                                        {
+                                            Console.WriteLine("    " + z.Name + " : " + z.GetValue(y.GetValue(x.GetValue(msg))));
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("  " + y.Name + " : " + y.GetValue(x.GetValue(msg)));
                                     }
                                 }
-                                else
-                                {
-                                    Console.WriteLine("  " + y.Name + " : " + y.GetValue(x.GetValue(msg)));
-                                }
+                            }
+                            catch (Exception)
+                            {
+
                             }
                         }
                         else
@@ -248,7 +250,6 @@ namespace iBCNLinkLayer.Link
             serialPort.Close();
             serialPort = null;
 
-            bufferCursor = 0;
         }
 
         /// <summary>

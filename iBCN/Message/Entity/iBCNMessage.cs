@@ -82,7 +82,7 @@ namespace Metocean.iBCN.Message.Entity
             }
             else if (GetType() == typeof(RecordsPacket))
             {
-                if (entityData.Length != 16 * 12 + 4)
+                if ((entityData.Length > 16 * 12 + 4) || (entityData.Length % 16 != 4))
                 {
                     throw new Exception("");
                 }
@@ -97,6 +97,13 @@ namespace Metocean.iBCN.Message.Entity
             else if (GetType() == typeof(ReceiveIridiumMessage))
             {
                 if (entityData.Length > 240)
+                {
+                    throw new Exception("");
+                }
+            }
+            else if (GetType() == typeof(MultiplePositionReport))
+            {
+                if (entityData.Length % 16 != 0)
                 {
                     throw new Exception("");
                 }
