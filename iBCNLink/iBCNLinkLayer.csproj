@@ -7,7 +7,7 @@
     <ProjectGuid>{E40B8D4B-46CE-4C1C-BDA3-33D18CEB3B3B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iBCNLinkLayer</RootNamespace>
+    <RootNamespace>Metocean.iBCNLinkLayer</RootNamespace>
     <AssemblyName>iBCNLinkLayer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace iBCNLinkLayer.MsgQueue.Interface
+namespace Metocean.iBCNLinkLayer.MsgQueue.Interface
 {
     /// <summary>
     /// 

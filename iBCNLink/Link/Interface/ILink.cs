@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
 
-namespace iBCNLinkLayer.Link.Interface
+namespace Metocean.iBCNLinkLayer.Link.Interface
 {
     /// <summary>
     /// 

@@ -1,7 +1,7 @@
-﻿using iBCNLinkLayer.Link.Interface;
-using iBCNLinkLayer.MsgQueueEngine;
-using iBCNLinkLayer.Wrapper;
-using iBCNLinkLayer.MsgQueue;
+﻿using Metocean.iBCNLinkLayer.Link.Interface;
+using Metocean.iBCNLinkLayer.MsgQueueEngine;
+using Metocean.iBCNLinkLayer.Wrapper;
+using Metocean.iBCNLinkLayer.MsgQueue;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Metocean.iBCN.Message;
 
-namespace iBCNLinkLayer.Link
+namespace Metocean.iBCNLinkLayer.Link
 {
     /// <summary>
     /// 

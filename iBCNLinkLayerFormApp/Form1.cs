@@ -1,4 +1,4 @@
-﻿using iBCNLinkLayer.Link;
+﻿using Metocean.iBCNLinkLayer.Link;
 using Metocean.iBCN.Command;
 using Metocean.iBCN.Command.Definition;
 using Metocean.iBCN.Command.Payload.Interface;
@@ -54,7 +54,7 @@ namespace iBCNLinkLayerFormApp
             payload.DebugLevel = 0;
 
             var cmdbytes = Command<Metocean.iBCN.Command.Definition.SetDebugOutputLevel>.GetCommandBytes(2, payload);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
             //receiving.Send(new byte[] { 0xAA, 0x55, 0x00, 0x04, 0x05, 0x20, 0x02, 0x01, 0xCB, 0xD6, 0xFF, 0xCC });
         }
 
@@ -66,7 +66,7 @@ namespace iBCNLinkLayerFormApp
         private void button4_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<GetDiagnosticStatus>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace iBCNLinkLayerFormApp
         private void button5_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<GetLogMemoryStatus>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace iBCNLinkLayerFormApp
         private void button6_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<ReadDateTime>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace iBCNLinkLayerFormApp
             payload.Date_Time = new System.DateTime(2011, 2, 1);
 
             var cmdbytes = Command<Metocean.iBCN.Command.Definition.WriteDateTime>.GetCommandBytes(1, payload);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace iBCNLinkLayerFormApp
         private void button8_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<GetIdentification>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace iBCNLinkLayerFormApp
         private void button9_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<GetExtendedDiagnostics>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace iBCNLinkLayerFormApp
         private void button10_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<RequestPositionReport_Last>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace iBCNLinkLayerFormApp
         private void button11_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<RequestPositionReport_New>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace iBCNLinkLayerFormApp
             payload.Index = 0x09;
 
             var cmdbytes = Command<Metocean.iBCN.Command.Definition.ReadConfigMode>.GetCommandBytes(1, payload);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace iBCNLinkLayerFormApp
 
 
             var cmdbytes = Command<Metocean.iBCN.Command.Definition.WriteConfigMode>.GetCommandBytes(1, payload);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace iBCNLinkLayerFormApp
         private void button14_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<ClearMemoryLog>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace iBCNLinkLayerFormApp
         private void button15_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<ResetReportingIndex>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace iBCNLinkLayerFormApp
         private void button16_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<StartDownloadAll>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace iBCNLinkLayerFormApp
             UInt16 x = a;
 
             var cmdbytes = Command<StartDownloadNew>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace iBCNLinkLayerFormApp
         private void button18_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<StopDownload>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace iBCNLinkLayerFormApp
             var payload = new Metocean.iBCN.Command.Payload.SendIridiumMessage();
             payload.Message = new byte[] { 0x11, 0x11 };
             var cmdbytes = Command<Metocean.iBCN.Command.Definition.SendIridiumMessage>.GetCommandBytes(1, payload);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace iBCNLinkLayerFormApp
         private void button20_Click(object sender, EventArgs e)
         {
             var cmdbytes = Command<StartBootloaderProcess>.GetCommandBytes(1, null);
-            receiving.Send(iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+            receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
     }
 }

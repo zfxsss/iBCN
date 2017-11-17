@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
-using iBCNLinkLayer.Link.Interface;
+using Metocean.iBCNLinkLayer.Link.Interface;
 
-namespace iBCNLinkLayer.Link
+namespace Metocean.iBCNLinkLayer.Link
 {
     /// <summary>
     /// 

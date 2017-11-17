@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace iBCNLinkLayer.Wrapper
+namespace Metocean.iBCNLinkLayer.Wrapper
 {
     /// <summary>
     /// 
