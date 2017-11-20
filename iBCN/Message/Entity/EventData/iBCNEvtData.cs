@@ -1,4 +1,5 @@
-﻿using Metocean.iBCN.Message.Interface.Parser;
+﻿using Metocean.iBCN.iBCNException;
+using Metocean.iBCN.Message.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace Metocean.iBCN.Message.Entity.EventData
 {
     /// <summary>
-    /// 
+    /// Base class for event data
     /// </summary>
     public abstract class iBCNEvtData : IParser
     {
@@ -19,7 +20,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
         {
             if (evtData.Length != 11)
             {
-                throw new Exception("");
+                throw new InvalidBytesLength("The length of the byte stream for the event data is invalid: " + evtData.Length.ToString());
             }
         }
     }

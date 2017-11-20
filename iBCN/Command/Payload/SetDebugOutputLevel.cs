@@ -1,4 +1,5 @@
 ﻿using Metocean.iBCN.Command.Payload.Interface;
+using Metocean.iBCN.iBCNException;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +29,9 @@ namespace Metocean.iBCN.Command.Payload
             }
             set
             {
-                if (!(debugLevel >= 0 && debugLevel <= 3))
+                if (!(value >= 0 && value <= 3))
                 {
-                    throw new Exception("");
+                    throw new InvalidDebugLevel("debug level is not between 0 and 3: " + value.ToString());
                 }
 
                 debugLevel = value;

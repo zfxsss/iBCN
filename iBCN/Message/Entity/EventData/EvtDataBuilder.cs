@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Metocean.iBCN.iBCNException;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,7 +56,7 @@ namespace Metocean.iBCN.Message.Entity.EventData
             }
             else
             {
-                throw new Exception("");
+                throw new UnsupportedEventTypeCode("Unknown Event Data Type Code: " + typeCode.ToString());
             }
         }
     }

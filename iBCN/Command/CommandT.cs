@@ -36,7 +36,7 @@ namespace Metocean.iBCN.Command
                 if (CmdBytes.HasPayload != null)
                 {
                     //append payload
-                    if ((bool)CmdBytes.HasPayload == true)
+                    if (CmdBytes.HasPayload == true)
                     {
                         var payloadBytes = Payload.ToBytes();
 
@@ -44,6 +44,16 @@ namespace Metocean.iBCN.Command
                         CmdBytes.Body = CmdBytes.Body.Concat(payloadBytes).ToArray();
                     }
 
+                }
+                else
+                {
+                    if (payload != null)
+                    {
+                        var payloadBytes = Payload.ToBytes();
+                        //
+
+                        CmdBytes.Body = CmdBytes.Body.Concat(payloadBytes).ToArray();
+                    }
                 }
 
                 return CmdBytes;

@@ -85,7 +85,11 @@
     <Compile Include="Command\Interface\ICmdT.cs" />
     <Compile Include="iBCNException\Command\CommandDomainException.cs" />
     <Compile Include="iBCNException\Configuration\ConfigurationDomainException.cs" />
+    <Compile Include="iBCNException\InvalidBytesLength.cs" />
+    <Compile Include="iBCNException\InvalidDateTime.cs" />
+    <Compile Include="iBCNException\InvalidDebugLevel.cs" />
     <Compile Include="iBCNException\Message\MessageDomainException.cs" />
+    <Compile Include="iBCNException\UnsupportedEventTypeCode.cs" />
     <Compile Include="Message\Entity\EventData\Common.cs" />
     <Compile Include="Message\Entity\EventData\EvtDataBuilder.cs" />
     <Compile Include="Message\Entity\MultiplePositionReport.cs" />

@@ -1,4 +1,5 @@
 ﻿using Metocean.iBCN.Command.Payload.Interface;
+using Metocean.iBCN.iBCNException;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Metocean.iBCN.Command.Payload
             }
             if (Message.Length > 240)
             {
-                throw new Exception("");
+                throw new InvalidBytesLength("SendIridiumMessage Length is more than 240: " + Message.Length.ToString());
             }
 
             return Message;

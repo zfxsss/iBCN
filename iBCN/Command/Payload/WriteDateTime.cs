@@ -1,4 +1,5 @@
 ﻿using Metocean.iBCN.Command.Payload.Interface;
+using Metocean.iBCN.iBCNException;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,11 @@ namespace Metocean.iBCN.Command.Payload
     /// </summary>
     public class WriteDateTime : IPayload
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private DateTime date_Time = new DateTime(1980, 1, 6);
+
         /// <summary>
         /// 
         /// </summary>
@@ -26,8 +31,9 @@ namespace Metocean.iBCN.Command.Payload
             {
                 if (value < new DateTime(1980, 1, 6))
                 {
-                    throw new Exception("");
+                    throw new InvalidDateTime("");
                 }
+
                 date_Time = value;
             }
         }

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Metocean.iBCN.Message
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MessageBuilder
     {
         /// <summary>
@@ -70,7 +73,6 @@ namespace Metocean.iBCN.Message
             }
             else
             {
-                //throw new Exception("Unknown Message");
                 throw new MessageDomainException("Unknown message type code, unable to parse the byte stream");
             }
         }
@@ -134,16 +136,15 @@ namespace Metocean.iBCN.Message
             }
             else
             {
-                //throw new Exception("Unknown Message");
                 throw new MessageDomainException("Unknown message type code, unable to parse the byte stream");
             }
 
         }
 
         /// <summary>
-        /// normally it will be invoked in ParseBytes method
+        ///  normally it will be invoked in ParseBytes method
         /// </summary>
-        /// <param name="MsgName"></param>
+        /// <typeparam name="T"></typeparam>
         /// <param name="entitydata"></param>
         /// <returns></returns>
         public static T GetMessageEntity<T>(byte[] entitydata) where T : iBCNMessage, new()

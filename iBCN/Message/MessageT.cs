@@ -19,7 +19,7 @@ namespace Metocean.iBCN.Message
         /// <summary>
         /// recursively parse the bytes
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="entityData"></param>
         public T ParseBytes(byte[] entityData)
         {
             #region test
@@ -64,10 +64,13 @@ namespace Metocean.iBCN.Message
             }
             catch (Exception ex)
             {
-                throw new MessageDomainException("Exception raised in message processing", ex);
+                throw new MessageDomainException("Exception is raised in message processing", ex);
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public byte[] EntityBytes { get; private set; }
 
         /// <summary>
@@ -97,7 +100,9 @@ namespace Metocean.iBCN.Message
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="messageName"></param>
+        /// <param name="cmdType"></param>
+        /// <param name="subCmdType"></param>
+        /// <param name="sequence"></param>
         public Msg(int cmdType, int subCmdType, int sequence)
         {
             CmdType = cmdType;
@@ -109,7 +114,10 @@ namespace Metocean.iBCN.Message
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="cmdType"></param>
+        /// <param name="subCmdType"></param>
+        /// <param name="sequence"></param>
+        /// <param name="entityData"></param>
         internal Msg(int cmdType, int subCmdType, int sequence, byte[] entityData) : this(cmdType, subCmdType, sequence)
         {
             ParseBytes(entityData);
