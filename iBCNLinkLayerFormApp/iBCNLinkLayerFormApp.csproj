@@ -48,9 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Form1.cs" />
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
@@ -89,6 +87,10 @@
     <ProjectReference Include="..\iBCN\iBCN.csproj">
       <Project>{fc8a3e3b-05c9-464b-84f7-7edf1c6dccab}</Project>
       <Name>iBCN</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObjectPropertiesIteration\ObjectPropertiesIteration.csproj">
+      <Project>{15B59690-9562-4D3E-AD99-E935CB31A6C5}</Project>
+      <Name>ObjectPropertiesIteration</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

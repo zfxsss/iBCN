@@ -12,9 +12,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ObjectPropertiesIteration;
 
 namespace iBCNLinkLayerFormApp
 {
+    public class test
+    {
+        public int t1 { get; set; }
+
+        public byte[] t2 { get; set; }
+
+        public test2[] t3 { get; set; }
+    }
+
+    public class test2
+    {
+        public byte[] t4 { get; set; }
+    }
+
     public partial class Form1 : Form
     {
 
@@ -269,6 +284,34 @@ namespace iBCNLinkLayerFormApp
         {
             var cmdbytes = Command<StartBootloaderProcess>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button21_Click(object sender, EventArgs e)
+        {
+            //PropertiesIterator.PrintIteration(null);
+            //PropertiesIterator.PrintIteration(new DateTime());
+            //PropertiesIterator.PrintIteration(new byte[] { 1, 3, 5 });
+            //PropertiesIterator.PrintIteration(new List<byte> { 1, 3, 5 });
+
+            var t = new test();
+            t.t1 = 18;
+            t.t2 = new byte[] { 1, 3, 5 };
+            t.t3 = new test2[2];
+
+            t.t3[0] = new test2();
+            t.t3[0].t4 = new byte[] { 6, 6, 6, 6, 6 };
+            t.t3[1] = new test2();
+            t.t3[1].t4 = new byte[] { 8, 8, 8, 8, 8, 8 };
+
+            PropertiesIterator.PrintIteration(t);
+
         }
     }
 }

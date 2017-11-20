@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBCN", "iBCN\iBCN.csproj", "{FC8A3E3B-05C9-464B-84F7-7EDF1C6DCCAB}"
 EndProject
@@ -12,6 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortAppTest", "SerialPortAppTest\SerialPortAppTest.csproj", "{1CB5875C-049C-40BF-8AF7-3F229D57A2D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBCNLinkLayerFormApp", "iBCNLinkLayerFormApp\iBCNLinkLayerFormApp.csproj", "{6C3DDA08-8589-42FA-9E6D-B95624D4CA68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectPropertiesIteration", "ObjectPropertiesIteration\ObjectPropertiesIteration.csproj", "{15B59690-9562-4D3E-AD99-E935CB31A6C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectPropertiesIterationTests", "ObjectPropertiesIterationTests\ObjectPropertiesIterationTests.csproj", "{21AFCA20-58E0-4D40-A698-B2F185A0EF78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{6C3DDA08-8589-42FA-9E6D-B95624D4CA68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C3DDA08-8589-42FA-9E6D-B95624D4CA68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C3DDA08-8589-42FA-9E6D-B95624D4CA68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B59690-9562-4D3E-AD99-E935CB31A6C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B59690-9562-4D3E-AD99-E935CB31A6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B59690-9562-4D3E-AD99-E935CB31A6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B59690-9562-4D3E-AD99-E935CB31A6C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21AFCA20-58E0-4D40-A698-B2F185A0EF78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21AFCA20-58E0-4D40-A698-B2F185A0EF78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21AFCA20-58E0-4D40-A698-B2F185A0EF78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21AFCA20-58E0-4D40-A698-B2F185A0EF78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
