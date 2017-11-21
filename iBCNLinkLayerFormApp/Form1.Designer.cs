@@ -69,6 +69,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "StartSendingLinkLayer";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
@@ -259,6 +260,7 @@
             this.button21.TabIndex = 20;
             this.button21.Text = "button21";
             this.button21.UseVisualStyleBackColor = true;
+            this.button21.Visible = false;
             this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // Form1

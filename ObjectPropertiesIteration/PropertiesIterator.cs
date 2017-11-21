@@ -38,6 +38,11 @@ namespace ObjectPropertiesIteration
                 return;
             }
 
+            if (identation == 0)
+            {
+                Console.WriteLine("/******New message is coming******/");
+            }
+
             //it is a struct(almost)
             if (o.GetType().IsValueType)
             {
@@ -84,6 +89,12 @@ namespace ObjectPropertiesIteration
             //it is an IEnumerable
             if (o is IEnumerable)
             {
+                if (o is string)
+                {
+                    Console.WriteLine(prefixSpace + o.ToString());
+                    return;
+                }
+
                 foreach (var o2 in (IEnumerable)o)
                 {
                     PrintIteration(o2, identation + 2);
@@ -98,7 +109,7 @@ namespace ObjectPropertiesIteration
                 //the property is array
                 if (p.PropertyType.IsArray)
                 {
-                    if (p.PropertyType == typeof(byte[]))
+                    if (p.GetValue(o) is byte[])
                     {
                         var bytes = (byte[])p.GetValue(o);
                         string bytesStr = "";
@@ -121,11 +132,12 @@ namespace ObjectPropertiesIteration
                         }
                     }
                 }
-                else if (p.GetValue(o) is IEnumerable)
+                //the property is IEnumerable but not string
+                else if ((p.GetValue(o) is IEnumerable) && !(p.GetValue(o) is string))
                 {
                     Console.WriteLine(prefixSpace + p.Name + " : ");
 
-                    foreach (var o2 in (IEnumerable)o)
+                    foreach (var o2 in (IEnumerable)p.GetValue(o))
                     {
                         PrintIteration(o2, identation + 2);
                     }
@@ -142,21 +154,17 @@ namespace ObjectPropertiesIteration
                         Console.WriteLine(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
                     }
                 }
+                //the property is "normal" reference type, including string type
                 else
                 {
-                    if (p.PropertyType == typeof(string))
+                    if (p.GetValue(o) is string)
                     {
                         Console.WriteLine(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
                     }
                     else
                     {
                         Console.WriteLine(prefixSpace + p.Name + " : ");
-
-                        var o2 = p.GetValue(o);
-                        foreach (var p2 in o2.GetType().GetProperties())
-                        {
-                            PrintIteration(p2.GetValue(o2), identation + 2);
-                        }
+                        PrintIteration(p.GetValue(o), identation + 2);
                     }
                 }
 

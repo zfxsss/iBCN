@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Metocean.iBCN.Message;
+using ObjectPropertiesIteration;
 
 namespace Metocean.iBCNLinkLayer.Link
 {
@@ -79,49 +80,13 @@ namespace Metocean.iBCNLinkLayer.Link
                 AppDataPreparedHandler = (bytes) =>
                 {
                     var msg = MessageBuilder.GetMessage(bytes);
-                    foreach (var x in msg.GetType().GetProperties())
+                    try
                     {
-                        if (x.Name == "EntityBytes")
-                        {
-                            var rawbytes = (byte[])x.GetValue(msg);
-                            string bytesStr = "";
-                            foreach (var b in rawbytes)
-                            {
-                                bytesStr += b;
-                                bytesStr += " ";
-                            }
-                            Console.WriteLine("EntityBytes : " + bytesStr);
-                        }
-                        else if (x.Name == "MessageEntity")
-                        {
-                            try
-                            {
-                                Console.WriteLine("MessageEntity : ");
-                                foreach (var y in x.PropertyType.GetProperties())
-                                {
-                                    if (!y.PropertyType.IsValueType)
-                                    {
-                                        Console.WriteLine("  " + y.Name + " : ");
-                                        foreach (var z in y.PropertyType.GetProperties())
-                                        {
-                                            Console.WriteLine("    " + z.Name + " : " + z.GetValue(y.GetValue(x.GetValue(msg))));
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("  " + y.Name + " : " + y.GetValue(x.GetValue(msg)));
-                                    }
-                                }
-                            }
-                            catch (Exception)
-                            {
+                        PropertiesIterator.PrintIteration(msg);
+                    }
+                    catch (Exception ex)
+                    {
 
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine(x.Name + " : " + x.GetValue(msg));
-                        }
                     }
                 };
 
@@ -143,7 +108,7 @@ namespace Metocean.iBCNLinkLayer.Link
                             callbackIsRunning = true;
                         }
 
-                        byte[] tempbuffer = new byte[4096];
+                        byte[] tempbuffer = new byte[8192];
 
                         var readBytesNumber = 0;
 

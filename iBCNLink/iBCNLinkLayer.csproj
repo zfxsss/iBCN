@@ -61,6 +61,10 @@
       <Project>{FC8A3E3B-05C9-464B-84F7-7EDF1C6DCCAB}</Project>
       <Name>iBCN</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ObjectPropertiesIteration\ObjectPropertiesIteration.csproj">
+      <Project>{15B59690-9562-4D3E-AD99-E935CB31A6C5}</Project>
+      <Name>ObjectPropertiesIteration</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

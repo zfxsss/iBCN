@@ -16,32 +16,28 @@ using ObjectPropertiesIteration;
 
 namespace iBCNLinkLayerFormApp
 {
-    public class test
-    {
-        public int t1 { get; set; }
-
-        public byte[] t2 { get; set; }
-
-        public test2[] t3 { get; set; }
-    }
-
-    public class test2
-    {
-        public byte[] t4 { get; set; }
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class Form1 : Form
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         BluetoothLink receiving;
 
+        /// <summary>
+        /// 
+        /// </summary>
         BluetoothLink sending;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
         }
-
 
         //start receiving link layer
         private void button1_Click(object sender, EventArgs e)
@@ -286,8 +282,6 @@ namespace iBCNLinkLayerFormApp
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
         }
 
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -300,18 +294,49 @@ namespace iBCNLinkLayerFormApp
             //PropertiesIterator.PrintIteration(new byte[] { 1, 3, 5 });
             //PropertiesIterator.PrintIteration(new List<byte> { 1, 3, 5 });
 
+            /*
             var t = new test();
             t.t1 = 18;
             t.t2 = new byte[] { 1, 3, 5 };
             t.t3 = new test2[2];
+            t.t5 = "hello Metocean";
 
             t.t3[0] = new test2();
             t.t3[0].t4 = new byte[] { 6, 6, 6, 6, 6 };
             t.t3[1] = new test2();
             t.t3[1].t4 = new byte[] { 8, 8, 8, 8, 8, 8 };
 
-            PropertiesIterator.PrintIteration(t);
+            /// <summary>
+        /// 
+        /// </summary>
+        public class test
+        {
+            public int t1 { get; set; }
 
+            public byte[] t2 { get; set; }
+
+            public test2[] t3 { get; set; }
+
+            public string t5 { get; set; }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public class test2
+        {
+            public byte[] t4 { get; set; }
+        }
+
+            PropertiesIterator.PrintIteration(t);
+            */
+
+            PropertiesIterator.PrintIteration("abcd");
+        }
+
+        
+
     }
+
+
 }
