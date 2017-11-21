@@ -89,6 +89,7 @@
     <Compile Include="iBCNException\InvalidBytesLength.cs" />
     <Compile Include="iBCNException\InvalidDateTime.cs" />
     <Compile Include="iBCNException\InvalidDebugLevel.cs" />
+    <Compile Include="iBCNException\InvalidSequenceNumber.cs" />
     <Compile Include="iBCNException\Message\MessageDomainException.cs" />
     <Compile Include="iBCNException\NullPayload.cs" />
     <Compile Include="iBCNException\UnsupportedEventTypeCode.cs" />

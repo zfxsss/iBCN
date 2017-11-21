@@ -100,7 +100,7 @@ namespace Metocean.iBCN.Command
             {
                 if ((value > 255) || (value < 0))
                 {
-                    throw new Exception("");
+                    throw new InvalidSequenceNumber("Sequence Number: " + value.ToString());
                 }
                 else
                 {

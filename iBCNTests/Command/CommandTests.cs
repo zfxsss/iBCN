@@ -15,31 +15,34 @@ namespace Metocean.iBCN.Command.Tests
         [TestMethod()]
         public void CommandTest()
         {
-            Definition.Interface.ICmdBytes x = new Definition.ClearMemoryLog();
-            var y = (Definition.Interface.ICmdBytes)(new Definition.ClearMemoryLog());
 
-            Console.WriteLine("Type is:" + x.GetType().ToString());
-            Console.WriteLine("Type is:" + y.GetType().ToString());
-
-            Assert.Fail();
         }
 
         [TestMethod()]
         public void GetCommandBytesTest()
         {
-            Command<ClearMemoryLog>.GetCommandBytes();
-            Assert.Fail();
+            var bytes = Command<ClearMemoryLog>.GetCommandBytes(1);
+            Assert.IsTrue(bytes.Body.Length == 3);
+            Assert.IsTrue(bytes.Body[0] == 0x09 && bytes.Body[1] == 0x30 && bytes.Body[2] == 1);
         }
 
         [TestMethod()]
         public void GetCommandTest()
         {
-            Command<ClearMemoryLog>.GetCommand();
-            Assert.Fail();
+            var cmd = Command<ClearMemoryLog>.GetCommand(1);
+            Assert.IsTrue(cmd.CmdTypeCode == 0x09);
+            Assert.IsTrue(cmd.SubCmdTypeCode == 0x30);
+            Assert.IsTrue(cmd.Sequence == 1);
         }
 
         [TestMethod()]
         public void GetCommandTest1()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetCommandBytesTest1()
         {
             Assert.Fail();
         }

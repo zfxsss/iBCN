@@ -40,7 +40,7 @@ namespace ObjectPropertiesIteration
 
             if (identation == 0)
             {
-                Console.WriteLine("/******New message is coming******/");
+                Console.WriteLine("/******New information is coming******/");
             }
 
             //it is a struct(almost)
