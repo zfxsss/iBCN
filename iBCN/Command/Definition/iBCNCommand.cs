@@ -97,7 +97,7 @@ namespace Metocean.iBCN.Command.Definition
                     return true;
                 }
 
-                //there could be some commands support either operation with payload or not
+                //some commands could support the mode either with or without payload
                 return null;
             }
         }

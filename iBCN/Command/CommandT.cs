@@ -9,6 +9,7 @@ using Metocean.iBCN.Command.Payload.Interface;
 using Metocean.iBCN.Command.Interface;
 using Metocean.iBCN.iBCNException.Command;
 using Metocean.iBCN.Command.Definition;
+using Metocean.iBCN.iBCNException;
 
 namespace Metocean.iBCN.Command
 {
@@ -38,20 +39,27 @@ namespace Metocean.iBCN.Command
                     //append payload
                     if (CmdBytes.HasPayload == true)
                     {
-                        var payloadBytes = Payload.ToBytes();
+                        if (Payload == null)
+                        {
+                            throw new NullPayload("CommandType: " + CmdTypeCode.ToString() + "; SubCommandType: " + SubCmdTypeCode.ToString());
+                        }
 
-                        //some logic need to be added here
+                        if (Payload.CommandsSupported.Count(x => x.Item1 == CmdTypeCode && x.Item2 == SubCmdTypeCode) < 1)
+                        {
+                            throw new CommandPayloadUnmatched("Command: " + typeof(T).Name + "; Payload: " + Payload.GetType().Name);
+                        }
+
+                        var payloadBytes = Payload.ToBytes();
                         CmdBytes.Body = CmdBytes.Body.Concat(payloadBytes).ToArray();
                     }
 
                 }
                 else
                 {
+                    //append payload whatever
                     if (payload != null)
                     {
                         var payloadBytes = Payload.ToBytes();
-                        //
-
                         CmdBytes.Body = CmdBytes.Body.Concat(payloadBytes).ToArray();
                     }
                 }
