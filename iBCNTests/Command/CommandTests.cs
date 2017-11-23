@@ -27,6 +27,12 @@ namespace Metocean.iBCN.Command.Tests
         }
 
         [TestMethod()]
+        public void GetCommandBytesTest1()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
         public void GetCommandTest()
         {
             var cmd = Command<ClearMemoryLog>.GetCommand(1);
@@ -38,13 +44,21 @@ namespace Metocean.iBCN.Command.Tests
         [TestMethod()]
         public void GetCommandTest1()
         {
-            Assert.Fail();
+            var cmd = Command<GetDiagnosticStatus>.GetCommand(1);
+            Assert.IsTrue(cmd.CmdTypeCode == 0x03);
+            Assert.IsTrue(cmd.SubCmdTypeCode == 0x02);
+            Assert.IsTrue(cmd.Sequence == 1);
         }
 
         [TestMethod()]
-        public void GetCommandBytesTest1()
+        public void GetCommandTest2()
         {
-            Assert.Fail();
+            var cmd = Command<GetExtendedDiagnostics>.GetCommand(1);
+            Assert.IsTrue(cmd.CmdTypeCode == 0x03);
+            Assert.IsTrue(cmd.SubCmdTypeCode == 0x04);
+            Assert.IsTrue(cmd.Sequence == 1);
         }
+
+
     }
 }

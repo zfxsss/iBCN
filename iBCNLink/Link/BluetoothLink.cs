@@ -91,9 +91,9 @@ namespace Metocean.iBCNLinkLayer.Link
                 };
 
                 serialPort = new SerialPort(name, BaudRate, Parity.None, 8, StopBits.One);
-                serialPort.ReadTimeout = 450;
+                serialPort.ReadTimeout = 500; // can be modified
 
-                readTimer = new System.Timers.Timer(500); // to modify later
+                readTimer = new System.Timers.Timer(750); // can be modified
                 readTimer.AutoReset = true; //false; //true;
                 readTimer.Elapsed += (o, e) =>
                 {
@@ -108,7 +108,7 @@ namespace Metocean.iBCNLinkLayer.Link
                             callbackIsRunning = true;
                         }
 
-                        byte[] tempbuffer = new byte[8192];
+                        byte[] tempbuffer = new byte[serialPort.ReadBufferSize]; //in default the length is 4096
 
                         var readBytesNumber = 0;
 
@@ -128,49 +128,59 @@ namespace Metocean.iBCNLinkLayer.Link
                             }
                         }
 
-
                         readBuffer = readBuffer.Concat(tempbuffer.Take(readBytesNumber)).ToArray();
 
                         if (readBuffer.Length > 0)
                         {
-                            byte[] appMsg;
-                            int parseLength;
-
-                            var bytesType = LinkLayerWrapper.ParseLinkLayerBytes(readBuffer, out appMsg, out parseLength);
-                            if (bytesType == LinkLayerBytesType.iBCNMsg)
+                            while (1 == 1)
                             {
-                                if (supportQueue)
+                                byte[] appMsg;
+                                int parseLength;
+
+                                var bytesType = LinkLayerWrapper.ParseLinkLayerBytes(readBuffer, out appMsg, out parseLength);
+                                if (bytesType == LinkLayerBytesType.iBCNMsg)
                                 {
-                                    if (QueueAppDataHandler_Inbound == null)
+                                    if (supportQueue)
                                     {
-                                        throw new Exception("");
+                                        if (QueueAppDataHandler_Inbound == null)
+                                        {
+                                            throw new Exception("");
+                                        }
+
+                                        Engine.EnqueInBoundMsg(new QueueItem(appMsg, QueueAppDataHandler_Inbound));
+                                    }
+                                    else
+                                    {
+                                        AppDataPreparedHandler?.Invoke(appMsg); //invoke the handler
                                     }
 
-                                    Engine.EnqueInBoundMsg(new QueueItem(appMsg, QueueAppDataHandler_Inbound));
+                                    readBuffer = readBuffer.Skip(parseLength).ToArray();
                                 }
-                                else
+                                else if (bytesType == LinkLayerBytesType.iBCNMsg_Invalid)
                                 {
-                                    AppDataPreparedHandler?.Invoke(appMsg); //invoke the handler
+                                    readBuffer = readBuffer.Skip(parseLength).ToArray();
+                                    Console.WriteLine("iBCNMsg_Invalid detected and processed");
+                                }
+                                else if (bytesType == LinkLayerBytesType.PlainText)
+                                {
+                                    readBuffer = readBuffer.Skip(parseLength).ToArray();
+                                    Console.WriteLine("PlainText detected and processed");
+                                }
+                                else if (bytesType == LinkLayerBytesType.None)
+                                {
+                                    Console.WriteLine("\"None\" string detected");
+                                    //bytes are not enough
+                                    break;
                                 }
 
-                                readBuffer = readBuffer.Skip(parseLength).ToArray();
-                            }
-                            else if (bytesType == LinkLayerBytesType.iBCNMsg_Invalid)
-                            {
-                                readBuffer = readBuffer.Skip(parseLength).ToArray();
-                                Console.WriteLine("iBCNMsg_Invalid detected and processed");
-                            }
-                            else if (bytesType == LinkLayerBytesType.PlainText)
-                            {
-                                readBuffer = readBuffer.Skip(parseLength).ToArray();
-                                Console.WriteLine("PlainText detected and processed");
-                            }
-                            else if (bytesType == LinkLayerBytesType.None)
-                            {
-                                Console.WriteLine("\"None\" string detected");
+                                //no bytes anymore
+                                if (readBuffer.Length == 0)
+                                {
+                                    break;
+                                }
+
                             }
                         }
-
 
                         if (supportQueue)
                         {
