@@ -21,13 +21,18 @@ namespace ObjectPropertiesIteration
         /// <summary>
         /// 
         /// </summary>
+        public static event Action<string> CB;
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="o"></param>
         public static void PrintIteration(object o, int identation = 0)
         {
 
             string prefixSpace = "";
 
-            for (int i = 0; i < identation; i++)
+            for (int i = 0; i < identation * 4; i++)
             {
                 prefixSpace += " ";
             }
@@ -40,7 +45,7 @@ namespace ObjectPropertiesIteration
 
             if (identation == 0)
             {
-                Console.WriteLine("/******New information is coming******/");
+                CB?.Invoke("/******New information is coming******/");
             }
 
             //it is a struct(almost)
@@ -48,11 +53,11 @@ namespace ObjectPropertiesIteration
             {
                 if (o.GetType() == typeof(System.DateTime))
                 {
-                    Console.WriteLine(prefixSpace + o.ToString());
+                    CB?.Invoke(prefixSpace + o.ToString());
                 }
                 else
                 {
-                    Console.WriteLine(prefixSpace + o.ToString());
+                    CB?.Invoke(prefixSpace + o.ToString());
                 }
 
                 return;
@@ -72,7 +77,7 @@ namespace ObjectPropertiesIteration
                         bytesStr += " ";
                     }
 
-                    Console.WriteLine(prefixSpace + bytesStr);
+                    CB?.Invoke(prefixSpace + bytesStr);
                     return;
                 }
                 else
@@ -91,7 +96,7 @@ namespace ObjectPropertiesIteration
             {
                 if (o is string)
                 {
-                    Console.WriteLine(prefixSpace + o.ToString());
+                    CB?.Invoke(prefixSpace + o.ToString());
                     return;
                 }
 
@@ -120,11 +125,11 @@ namespace ObjectPropertiesIteration
                             bytesStr += " ";
                         }
 
-                        Console.WriteLine(prefixSpace + p.Name + " : " + bytesStr);
+                        CB?.Invoke(prefixSpace + p.Name + " : " + bytesStr);
                     }
                     else
                     {
-                        Console.WriteLine(prefixSpace + p.Name + " : ");
+                        CB?.Invoke(prefixSpace + p.Name + " : ");
 
                         foreach (var o2 in (object[])p.GetValue(o))
                         {
@@ -135,7 +140,7 @@ namespace ObjectPropertiesIteration
                 //the property is IEnumerable but not string
                 else if ((p.GetValue(o) is IEnumerable) && !(p.GetValue(o) is string))
                 {
-                    Console.WriteLine(prefixSpace + p.Name + " : ");
+                    CB?.Invoke(prefixSpace + p.Name + " : ");
 
                     foreach (var o2 in (IEnumerable)p.GetValue(o))
                     {
@@ -147,11 +152,11 @@ namespace ObjectPropertiesIteration
                 {
                     if (p.PropertyType == typeof(System.DateTime))
                     {
-                        Console.WriteLine(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
+                        CB?.Invoke(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
                     }
                     else
                     {
-                        Console.WriteLine(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
+                        CB?.Invoke(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
                     }
                 }
                 //the property is "normal" reference type, including string type
@@ -159,11 +164,11 @@ namespace ObjectPropertiesIteration
                 {
                     if (p.GetValue(o) is string)
                     {
-                        Console.WriteLine(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
+                        CB?.Invoke(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
                     }
                     else
                     {
-                        Console.WriteLine(prefixSpace + p.Name + " : ");
+                        CB?.Invoke(prefixSpace + p.Name + " : ");
                         PrintIteration(p.GetValue(o), identation + 2);
                     }
                 }
