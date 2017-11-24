@@ -159,16 +159,16 @@ namespace Metocean.iBCNLinkLayer.Link
                                 else if (bytesType == LinkLayerBytesType.iBCNMsg_Invalid)
                                 {
                                     readBuffer = readBuffer.Skip(parseLength).ToArray();
-                                    Console.WriteLine("iBCNMsg_Invalid detected and processed");
+                                    //Console.WriteLine("iBCNMsg_Invalid detected and processed");
                                 }
                                 else if (bytesType == LinkLayerBytesType.PlainText)
                                 {
                                     readBuffer = readBuffer.Skip(parseLength).ToArray();
-                                    Console.WriteLine("PlainText detected and processed");
+                                    //Console.WriteLine("PlainText detected and processed");
                                 }
                                 else if (bytesType == LinkLayerBytesType.None)
                                 {
-                                    Console.WriteLine("\"None\" string detected");
+                                    //Console.WriteLine("\"None\" string detected");
                                     //bytes are not enough
                                     break;
                                 }

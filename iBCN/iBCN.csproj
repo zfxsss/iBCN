@@ -83,6 +83,7 @@
     <Compile Include="Configuration\Repository\ConfigRepository.cs" />
     <Compile Include="Command\Interface\ICmd.cs" />
     <Compile Include="Command\Interface\ICmdT.cs" />
+    <Compile Include="Device\DeviceEnum.cs" />
     <Compile Include="iBCNException\CommandPayloadUnmatched.cs" />
     <Compile Include="iBCNException\Command\CommandDomainException.cs" />
     <Compile Include="iBCNException\Configuration\ConfigurationDomainException.cs" />

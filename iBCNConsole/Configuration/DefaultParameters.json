@@ -1,0 +1,16 @@
+﻿{
+	"DefaultSequenceNumber" : 1,
+	"Command_DefaultPayload" : {
+		"WriteDateTime" : {
+			"payload" : "now",
+		}
+	},
+	"CommandPayloadMapper" : {
+		"WriteDateTime" : "xxx",
+		
+	},
+	"CommandsSupported" : {
+		"Device1" : ["ReadDateTime", "WriteDateTime", "Set***"],
+		"Device2" : ["ReadDateTime", "WriteDateTime", "Define***"]
+	}
+}
