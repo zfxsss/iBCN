@@ -21,20 +21,20 @@ namespace ObjectPropertiesIteration
         /// <summary>
         /// 
         /// </summary>
-        public static event Action<string> CB;
+        public static event Action<string, string> CB;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="o"></param>
-        public static void PrintIteration(object o, int identation = 0)
+        public static void PrintIteration(object o, int identation = 0, string prefix = "")
         {
 
-            string prefixSpace = "";
+            string identationSpace = "";
 
             for (int i = 0; i < identation * 4; i++)
             {
-                prefixSpace += " ";
+                identationSpace += " ";
             }
 
             //null
@@ -43,21 +43,16 @@ namespace ObjectPropertiesIteration
                 return;
             }
 
-            if (identation == 0)
-            {
-                CB?.Invoke("/******New information is coming******/");
-            }
-
             //it is a struct(almost)
             if (o.GetType().IsValueType)
             {
                 if (o.GetType() == typeof(System.DateTime))
                 {
-                    CB?.Invoke(prefixSpace + o.ToString());
+                    CB?.Invoke(prefix, identationSpace + o.ToString());
                 }
                 else
                 {
-                    CB?.Invoke(prefixSpace + o.ToString());
+                    CB?.Invoke(prefix, identationSpace + o.ToString());
                 }
 
                 return;
@@ -77,14 +72,14 @@ namespace ObjectPropertiesIteration
                         bytesStr += " ";
                     }
 
-                    CB?.Invoke(prefixSpace + bytesStr);
+                    CB?.Invoke(prefix, identationSpace + bytesStr);
                     return;
                 }
                 else
                 {
                     foreach (var o2 in (object[])o)
                     {
-                        PrintIteration(o2, identation + 2);
+                        PrintIteration(o2, identation + 2, prefix);
                     }
 
                     return;
@@ -96,13 +91,13 @@ namespace ObjectPropertiesIteration
             {
                 if (o is string)
                 {
-                    CB?.Invoke(prefixSpace + o.ToString());
+                    CB?.Invoke(prefix, identationSpace + o.ToString());
                     return;
                 }
 
                 foreach (var o2 in (IEnumerable)o)
                 {
-                    PrintIteration(o2, identation + 2);
+                    PrintIteration(o2, identation + 2, prefix);
                 }
 
                 return;
@@ -125,26 +120,26 @@ namespace ObjectPropertiesIteration
                             bytesStr += " ";
                         }
 
-                        CB?.Invoke(prefixSpace + p.Name + " : " + bytesStr);
+                        CB?.Invoke(prefix, identationSpace + p.Name + " : " + bytesStr);
                     }
                     else
                     {
-                        CB?.Invoke(prefixSpace + p.Name + " : ");
+                        CB?.Invoke(prefix, identationSpace + p.Name + " : ");
 
                         foreach (var o2 in (object[])p.GetValue(o))
                         {
-                            PrintIteration(o2, identation + 2);
+                            PrintIteration(o2, identation + 2, prefix);
                         }
                     }
                 }
                 //the property is IEnumerable but not string
                 else if ((p.GetValue(o) is IEnumerable) && !(p.GetValue(o) is string))
                 {
-                    CB?.Invoke(prefixSpace + p.Name + " : ");
+                    CB?.Invoke(prefix, identationSpace + p.Name + " : ");
 
                     foreach (var o2 in (IEnumerable)p.GetValue(o))
                     {
-                        PrintIteration(o2, identation + 2);
+                        PrintIteration(o2, identation + 2, prefix);
                     }
                 }
                 //the property is struct
@@ -152,11 +147,11 @@ namespace ObjectPropertiesIteration
                 {
                     if (p.PropertyType == typeof(System.DateTime))
                     {
-                        CB?.Invoke(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
+                        CB?.Invoke(prefix, identationSpace + p.Name + " : " + p.GetValue(o).ToString());
                     }
                     else
                     {
-                        CB?.Invoke(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
+                        CB?.Invoke(prefix, identationSpace + p.Name + " : " + p.GetValue(o).ToString());
                     }
                 }
                 //the property is "normal" reference type, including string type
@@ -164,12 +159,12 @@ namespace ObjectPropertiesIteration
                 {
                     if (p.GetValue(o) is string)
                     {
-                        CB?.Invoke(prefixSpace + p.Name + " : " + p.GetValue(o).ToString());
+                        CB?.Invoke(prefix, identationSpace + p.Name + " : " + p.GetValue(o).ToString());
                     }
                     else
                     {
-                        CB?.Invoke(prefixSpace + p.Name + " : ");
-                        PrintIteration(p.GetValue(o), identation + 2);
+                        CB?.Invoke(prefix, identationSpace + p.Name + " : ");
+                        PrintIteration(p.GetValue(o), identation + 2, prefix);
                     }
                 }
 

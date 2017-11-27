@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closePortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.commandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.closePortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.richTextBox_ConsoleWindow = new System.Windows.Forms.RichTextBox();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.comboBox_CommandInput = new System.Windows.Forms.ComboBox();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.checkBox_EnableDefaultMode = new System.Windows.Forms.CheckBox();
+            this.checkBox_ShowDiagnosticMsg = new System.Windows.Forms.CheckBox();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.checkBox_ShowLogTime = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -103,15 +104,40 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.openToolStripMenuItem.Text = "Open Port";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // closePortToolStripMenuItem
+            // 
+            this.closePortToolStripMenuItem.Name = "closePortToolStripMenuItem";
+            this.closePortToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.closePortToolStripMenuItem.Text = "Close Port";
+            this.closePortToolStripMenuItem.Click += new System.EventHandler(this.closePortToolStripMenuItem_Click);
             // 
             // homeToolStripMenuItem
             // 
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             this.homeToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.homeToolStripMenuItem.Text = "Edit";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // commandToolStripMenuItem
+            // 
+            this.commandToolStripMenuItem.Name = "commandToolStripMenuItem";
+            this.commandToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.commandToolStripMenuItem.Text = "Command";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
             // splitContainer1
             // 
@@ -123,7 +149,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.richTextBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.richTextBox_ConsoleWindow);
             // 
             // splitContainer1.Panel2
             // 
@@ -133,6 +159,19 @@
             this.splitContainer1.Size = new System.Drawing.Size(785, 584);
             this.splitContainer1.SplitterDistance = 512;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // richTextBox_ConsoleWindow
+            // 
+            this.richTextBox_ConsoleWindow.BackColor = System.Drawing.Color.Black;
+            this.richTextBox_ConsoleWindow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox_ConsoleWindow.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox_ConsoleWindow.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.richTextBox_ConsoleWindow.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox_ConsoleWindow.Name = "richTextBox_ConsoleWindow";
+            this.richTextBox_ConsoleWindow.ReadOnly = true;
+            this.richTextBox_ConsoleWindow.Size = new System.Drawing.Size(785, 512);
+            this.richTextBox_ConsoleWindow.TabIndex = 0;
+            this.richTextBox_ConsoleWindow.Text = "";
             // 
             // splitContainer2
             // 
@@ -145,7 +184,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer2.Panel1.Controls.Add(this.comboBox1);
+            this.splitContainer2.Panel1.Controls.Add(this.comboBox_CommandInput);
             this.splitContainer2.Panel1.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
             // 
             // splitContainer2.Panel2
@@ -156,16 +195,16 @@
             this.splitContainer2.SplitterDistance = 34;
             this.splitContainer2.TabIndex = 0;
             // 
-            // comboBox1
+            // comboBox_CommandInput
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(2, 1);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(777, 28);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox1_KeyDown);
+            this.comboBox_CommandInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_CommandInput.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_CommandInput.FormattingEnabled = true;
+            this.comboBox_CommandInput.Location = new System.Drawing.Point(2, 1);
+            this.comboBox_CommandInput.Name = "comboBox_CommandInput";
+            this.comboBox_CommandInput.Size = new System.Drawing.Size(777, 28);
+            this.comboBox_CommandInput.TabIndex = 0;
+            this.comboBox_CommandInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox_CommandInput_KeyDown);
             // 
             // splitContainer3
             // 
@@ -192,36 +231,36 @@
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.checkBox1);
+            this.splitContainer4.Panel1.Controls.Add(this.checkBox_EnableDefaultMode);
             // 
             // splitContainer4.Panel2
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.checkBox2);
+            this.splitContainer4.Panel2.Controls.Add(this.checkBox_ShowDiagnosticMsg);
             this.splitContainer4.Size = new System.Drawing.Size(536, 26);
             this.splitContainer4.SplitterDistance = 300;
             this.splitContainer4.TabIndex = 0;
             // 
-            // checkBox1
+            // checkBox_EnableDefaultMode
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(6, 6);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(126, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Enable Default Mode";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox_EnableDefaultMode.AutoSize = true;
+            this.checkBox_EnableDefaultMode.Checked = true;
+            this.checkBox_EnableDefaultMode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_EnableDefaultMode.Location = new System.Drawing.Point(6, 6);
+            this.checkBox_EnableDefaultMode.Name = "checkBox_EnableDefaultMode";
+            this.checkBox_EnableDefaultMode.Size = new System.Drawing.Size(126, 17);
+            this.checkBox_EnableDefaultMode.TabIndex = 0;
+            this.checkBox_EnableDefaultMode.Text = "Enable Default Mode";
+            this.checkBox_EnableDefaultMode.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // checkBox_ShowDiagnosticMsg
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(3, 6);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(152, 17);
-            this.checkBox2.TabIndex = 0;
-            this.checkBox2.Text = "Show Diagnostic Message";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox_ShowDiagnosticMsg.AutoSize = true;
+            this.checkBox_ShowDiagnosticMsg.Location = new System.Drawing.Point(3, 6);
+            this.checkBox_ShowDiagnosticMsg.Name = "checkBox_ShowDiagnosticMsg";
+            this.checkBox_ShowDiagnosticMsg.Size = new System.Drawing.Size(152, 17);
+            this.checkBox_ShowDiagnosticMsg.TabIndex = 0;
+            this.checkBox_ShowDiagnosticMsg.Text = "Show Diagnostic Message";
+            this.checkBox_ShowDiagnosticMsg.UseVisualStyleBackColor = true;
             // 
             // splitContainer5
             // 
@@ -231,59 +270,22 @@
             // 
             // splitContainer5.Panel1
             // 
-            this.splitContainer5.Panel1.Controls.Add(this.checkBox3);
+            this.splitContainer5.Panel1.Controls.Add(this.checkBox_ShowLogTime);
             this.splitContainer5.Size = new System.Drawing.Size(241, 26);
             this.splitContainer5.SplitterDistance = 212;
             this.splitContainer5.TabIndex = 0;
             // 
-            // checkBox3
+            // checkBox_ShowLogTime
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(41, 6);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(100, 17);
-            this.checkBox3.TabIndex = 0;
-            this.checkBox3.Text = "Show Log Time";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
-            // 
-            // commandToolStripMenuItem
-            // 
-            this.commandToolStripMenuItem.Name = "commandToolStripMenuItem";
-            this.commandToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.commandToolStripMenuItem.Text = "Command";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Black;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(785, 512);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
-            // closePortToolStripMenuItem
-            // 
-            this.closePortToolStripMenuItem.Name = "closePortToolStripMenuItem";
-            this.closePortToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.closePortToolStripMenuItem.Text = "Close Port";
-            this.closePortToolStripMenuItem.Click += new System.EventHandler(this.closePortToolStripMenuItem_Click);
+            this.checkBox_ShowLogTime.AutoSize = true;
+            this.checkBox_ShowLogTime.Checked = true;
+            this.checkBox_ShowLogTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_ShowLogTime.Location = new System.Drawing.Point(41, 6);
+            this.checkBox_ShowLogTime.Name = "checkBox_ShowLogTime";
+            this.checkBox_ShowLogTime.Size = new System.Drawing.Size(100, 17);
+            this.checkBox_ShowLogTime.TabIndex = 0;
+            this.checkBox_ShowLogTime.Text = "Show Log Time";
+            this.checkBox_ShowLogTime.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -294,6 +296,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(801, 668);
             this.Name = "Form1";
@@ -336,17 +339,17 @@
         private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_CommandInput;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.SplitContainer splitContainer5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox_EnableDefaultMode;
+        private System.Windows.Forms.CheckBox checkBox_ShowDiagnosticMsg;
+        private System.Windows.Forms.CheckBox checkBox_ShowLogTime;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem commandToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox_ConsoleWindow;
         private System.Windows.Forms.ToolStripMenuItem closePortToolStripMenuItem;
     }
 }

@@ -29,7 +29,7 @@ namespace Metocean.iBCNLinkLayer.Link
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public override void Open(string name, bool supportQueue)
+        public override void Open(string name)
         {
             throw new NotImplementedException();
         }

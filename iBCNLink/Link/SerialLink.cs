@@ -23,7 +23,7 @@ namespace Metocean.iBCNLinkLayer.Link
         /// </summary>
         public override void OnReceiving(byte[] bytes)
         {
-            
+
         }
 
         /// <summary>
@@ -38,9 +38,9 @@ namespace Metocean.iBCNLinkLayer.Link
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public override void Open(string name, bool supportQueue)
+        public override void Open(string name)
         {
-            if(serialPort == null)
+            if (serialPort == null)
             {
 
             }

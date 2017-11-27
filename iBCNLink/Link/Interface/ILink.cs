@@ -16,7 +16,7 @@ namespace Metocean.iBCNLinkLayer.Link.Interface
         /// 
         /// </summary>
         /// <param name="name"></param>
-        void Open(string name, bool supportQueue = false);
+        void Open(string name);
 
         /// <summary>
         /// 

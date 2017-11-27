@@ -1,6 +1,7 @@
 ﻿using iBCNConsole.Command;
 using iBCNConsole.CommandText;
 using iBCNConsole.Device;
+using Metocean.iBCN.Message;
 using Metocean.iBCNLinkLayer.Link;
 using ObjectPropertiesIteration;
 using System;
@@ -25,19 +26,52 @@ namespace iBCNConsole
         /// <summary>
         /// 
         /// </summary>
+        private const string datetimestyle = "yyyy/MM/dd HH:mm:ss.fff";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private readonly string spaceForDatetime;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private const int consoleWindowMaxLength = 1024 * 16;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
 
-            PropertiesIterator.CB += (msg) =>
+            PropertiesIterator.CB += (prefixMsg, msg) =>
             {
-                PrintOut(msg, false);
+                PrintOut(prefixMsg, msg, false);
             };
 
+
+            //when a command is built, callback will be invoked
             CommandBuilder.CB += (o) =>
             {
-                PropertiesIterator.PrintIteration(o);
+                var cmdBuiltPrompt = "*** Command Built ***";
+                if (checkBox_ShowLogTime.Checked)
+                {
+                    PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", cmdBuiltPrompt, false);
+                    PropertiesIterator.PrintIteration(o, 0, spaceForDatetime);
+                }
+                else
+                {
+                    PrintOut("", cmdBuiltPrompt, false);
+                    PropertiesIterator.PrintIteration(o, 0, "");
+                }
             };
+
+            spaceForDatetime = "";
+            for (int i = 0; i < 50; i++)
+            {
+                spaceForDatetime += " ";
+            }
         }
 
         /// <summary>
@@ -45,51 +79,55 @@ namespace iBCNConsole
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="isError"></param>
-        private void PrintOut(string msg, bool isError)
+        private void PrintOut(string prefixMsg, string msg, bool isError = false)
         {
-            richTextBox1.Invoke(new Action(() =>
+            richTextBox_ConsoleWindow.Invoke(new Action(() =>
             {
-                richTextBox1.MaxLength = 1024 * 8;
-
-                richTextBox1.SelectionStart = richTextBox1.Text.Length;
-
-                richTextBox1.SelectionColor = Color.White;
-                if (checkBox3.Checked)
+                if (richTextBox_ConsoleWindow.Text.Length > 3 * consoleWindowMaxLength)
                 {
-                    if (richTextBox1.Text.Length != 0)
-                    {
-                        richTextBox1.AppendText("\n" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ":  ");
-                    }
-                    else
-                    {
-                        richTextBox1.AppendText(DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ": ");
-                    }
+                    richTextBox_ConsoleWindow.Text = new string(richTextBox_ConsoleWindow.Text.Skip(consoleWindowMaxLength).ToArray());
+                }
 
-                    if (isError)
-                    {
-                        richTextBox1.SelectionColor = Color.Red;
-                    }
-                    richTextBox1.AppendText(msg);
+                richTextBox_ConsoleWindow.SelectionStart = richTextBox_ConsoleWindow.Text.Length;
+                richTextBox_ConsoleWindow.SelectionColor = Color.White;
+
+                if (richTextBox_ConsoleWindow.Text.Length != 0)
+                {
+                    richTextBox_ConsoleWindow.AppendText("\n");
+                    richTextBox_ConsoleWindow.SelectionColor = Color.White;
+                    richTextBox_ConsoleWindow.AppendText(prefixMsg);
                 }
                 else
                 {
-                    if (richTextBox1.Text.Length != 0)
-                    {
-                        msg = "\n" + msg;
-                    }
-
-                    if (isError)
-                    {
-                        richTextBox1.SelectionColor = Color.Red;
-                    }
-
-                    richTextBox1.AppendText(msg);
+                    richTextBox_ConsoleWindow.AppendText(prefixMsg);
                 }
 
-                richTextBox1.ScrollToCaret();
+                if (isError)
+                {
+                    richTextBox_ConsoleWindow.SelectionColor = Color.Red;
+                }
 
+                richTextBox_ConsoleWindow.AppendText(msg);
+                richTextBox_ConsoleWindow.ScrollToCaret();
 
             }));
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        private void PrintException(string msg)
+        {
+            if (checkBox_ShowLogTime.Checked)
+            {
+                PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", msg, true);
+            }
+            else
+            {
+                PrintOut("", msg, true);
+            }
         }
 
         /// <summary>
@@ -97,26 +135,73 @@ namespace iBCNConsole
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void comboBox1_KeyDown(object sender, KeyEventArgs e)
+        private void comboBox_CommandInput_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
-                var x = "ReadDateTime 1";
+                //var x = "ReadDateTime 1";
+                string input = "";
 
-                string[] info = TextParser.GetSplittedStringArray(x);
+                if (e.KeyCode == Keys.Enter)
+                {
+                    input = comboBox_CommandInput.Text;
+                    comboBox_CommandInput.Text = "";
+
+                    if (richTextBox_ConsoleWindow.Text.Length > consoleWindowMaxLength)
+                    {
+                        richTextBox_ConsoleWindow.Text = new string(richTextBox_ConsoleWindow.Text.Skip(richTextBox_ConsoleWindow.Text.Length - consoleWindowMaxLength).ToArray());
+                    }
+
+                    if (checkBox_ShowLogTime.Checked)
+                    {
+                        PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", input, false);
+                    }
+                    else
+                    {
+                        PrintOut("", input, false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+
+                if (input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length == 0)
+                {
+                    throw new Exception("Empty Input!");
+                }
+
+                // get string array
+                string[] info = TextParser.GetSplittedStringArray(input);
+
+                // get cmd name, sequence number, payload
                 var cmdName = Preprocessing.GetCommandName(info);
                 var seq = Preprocessing.GetSequenceNum(info);
                 var payload = Preprocessing.GetPayload(info, DeviceInfo.CurrentDevice);
 
+                //build the command
                 var bytes = CommandBuilder.Build(cmdName, seq, payload, DeviceInfo.CurrentDevice);
 
+                //send the command on interface
                 link.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(bytes.Body));
 
-                PropertiesIterator.PrintIteration(bytes);
+                //cmd sent, print it;
+                var cmdSentPrompt = "*** Command Sent ***";
+                if (checkBox_ShowLogTime.Checked)
+                {
+                    PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", cmdSentPrompt, false);
+                    PropertiesIterator.PrintIteration(bytes, 0, spaceForDatetime);
+                }
+                else
+                {
+                    PrintOut("", cmdSentPrompt, false);
+                    PropertiesIterator.PrintIteration(bytes, 0, "");
+                }
+
             }
             catch (Exception ex)
             {
-                PrintOut(ex.Message, true);
+                PrintException(ex.Message);
             }
         }
 
@@ -127,8 +212,105 @@ namespace iBCNConsole
         /// <param name="e"></param>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            link = new BluetoothLink();
-            link.Open("COM3", false);
+            try
+            {
+                link = new BluetoothLink();
+
+                link.AppDataBytesHandler += (bytes) =>
+                {
+                    var msgPrompt = "*** Message Received ***";
+                    var msg = MessageBuilder.GetMessage(bytes);
+                    try
+                    {
+                        if (checkBox_ShowLogTime.Checked)
+                        {
+                            PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", msgPrompt, false);
+                            PropertiesIterator.PrintIteration(msg, 0, spaceForDatetime);
+                        }
+                        else
+                        {
+                            PrintOut("", msgPrompt, false);
+                            PropertiesIterator.PrintIteration(msg, 0, "");
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        PrintException(ex.Message);
+                    }
+                };
+
+                link.InvalidAppDataBytesHandler += (bytes) =>
+                {
+                    var invalidMsgPrompt = "*** Invalid Message Received ***";
+                    var msg = "";
+
+                    try
+                    {
+                        if (checkBox_ShowLogTime.Checked)
+                        {
+                            PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", invalidMsgPrompt, true);
+                            //PropertiesIterator.PrintIteration(msg, 0, "                   ");
+                        }
+                        else
+                        {
+                            PrintOut("", invalidMsgPrompt, true);
+                            //PropertiesIterator.PrintIteration(msg, 0, "");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        PrintException(ex.Message);
+                    }
+                };
+
+                link.PlainTextBytesHandler += (bytes) =>
+                {
+                    var plainTextPrompt = "*** Plain Text Received ***";
+                    var msg = "";
+
+                    try
+                    {
+                        if (checkBox_ShowDiagnosticMsg.Checked)
+                        {
+                            if (checkBox_ShowLogTime.Checked)
+                            {
+                                PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", plainTextPrompt, false);
+                                //PropertiesIterator.PrintIteration(msg, 0, "                   ");
+                            }
+                            else
+                            {
+                                PrintOut("", plainTextPrompt, false);
+                                //PropertiesIterator.PrintIteration(msg, 0, "");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        PrintException(ex.Message);
+                    }
+                };
+
+                link.NoneStringDetectedHandler += (bytes) =>
+                {
+                    var msg = "";
+
+                    try
+                    {
+
+                    }
+                    catch (Exception ex)
+                    {
+                        PrintException(ex.Message);
+                    }
+                };
+
+                link.Open("COM3");
+            }
+            catch (Exception ex)
+            {
+                PrintException(ex.Message);
+            }
         }
 
         /// <summary>
@@ -138,7 +320,14 @@ namespace iBCNConsole
         /// <param name="e"></param>
         private void closePortToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            link.Close();
+            try
+            {
+                link.Close();
+            }
+            catch (Exception ex)
+            {
+                PrintException(ex.Message);
+            }
         }
     }
 }

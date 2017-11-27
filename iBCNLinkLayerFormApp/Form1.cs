@@ -43,14 +43,14 @@ namespace iBCNLinkLayerFormApp
         private void button1_Click(object sender, EventArgs e)
         {
             receiving = new BluetoothLink();
-            receiving.Open("COM3", false);
+            receiving.Open("COM3");
         }
 
         //start sending link layer
         private void button2_Click(object sender, EventArgs e)
         {
             sending = new BluetoothLink();
-            sending.Open("COM4", false);
+            sending.Open("COM4");
         }
 
 

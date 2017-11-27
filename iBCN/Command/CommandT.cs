@@ -22,6 +22,7 @@ namespace Metocean.iBCN.Command
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="sequence"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
         public T AppendBytes(UInt16 sequence, IPayload payload)
@@ -32,7 +33,7 @@ namespace Metocean.iBCN.Command
                 Payload = payload;
 
                 //append sequence first
-                CmdBytes.Body = CmdBytes.Body.Concat(new byte[] { BitConverter.GetBytes(sequence)[0] }).ToArray();
+                CmdBytes.Body = CmdBytes.Body.Concat(new byte[] { BitConverter.GetBytes(Sequence)[0] }).ToArray();
 
                 if (CmdBytes.HasPayload != null)
                 {

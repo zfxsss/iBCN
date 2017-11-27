@@ -37,22 +37,22 @@ namespace Metocean.iBCNLinkLayer.Link
         /// <summary>
         /// 
         /// </summary>
-        public bool IsQueueSupported { get; private set; }
+        public event Action<byte[]> AppDataBytesHandler;
 
         /// <summary>
         /// 
         /// </summary>
-        public Action<byte[]> AppDataPreparedHandler;
+        public event Action<byte[]> InvalidAppDataBytesHandler;
 
         /// <summary>
         /// 
         /// </summary>
-        public Action<byte[]> QueueAppDataHandler_Inbound;
+        public event Action<byte[]> PlainTextBytesHandler;
 
         /// <summary>
         /// 
         /// </summary>
-        public Action<byte[]> QueueAppDataHandler_Outbound;
+        public event Action<byte[]> NoneStringDetectedHandler;
 
         /// <summary>
         /// 
@@ -73,23 +73,10 @@ namespace Metocean.iBCNLinkLayer.Link
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public override void Open(string name, bool supportQueue)
+        public override void Open(string name)
         {
             if (serialPort == null)
             {
-                AppDataPreparedHandler = (bytes) =>
-                {
-                    var msg = MessageBuilder.GetMessage(bytes);
-                    try
-                    {
-                        PropertiesIterator.PrintIteration(msg);
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                };
-
                 serialPort = new SerialPort(name, BaudRate, Parity.None, 8, StopBits.One);
                 serialPort.ReadTimeout = 500; // can be modified
 
@@ -140,34 +127,24 @@ namespace Metocean.iBCNLinkLayer.Link
                                 var bytesType = LinkLayerWrapper.ParseLinkLayerBytes(readBuffer, out appMsg, out parseLength);
                                 if (bytesType == LinkLayerBytesType.iBCNMsg)
                                 {
-                                    if (supportQueue)
-                                    {
-                                        if (QueueAppDataHandler_Inbound == null)
-                                        {
-                                            throw new Exception("");
-                                        }
-
-                                        Engine.EnqueInBoundMsg(new QueueItem(appMsg, QueueAppDataHandler_Inbound));
-                                    }
-                                    else
-                                    {
-                                        AppDataPreparedHandler?.Invoke(appMsg); //invoke the handler
-                                    }
-
+                                    AppDataBytesHandler?.Invoke(appMsg); //invoke the handler
                                     readBuffer = readBuffer.Skip(parseLength).ToArray();
                                 }
                                 else if (bytesType == LinkLayerBytesType.iBCNMsg_Invalid)
                                 {
+                                    InvalidAppDataBytesHandler?.Invoke(appMsg);
                                     readBuffer = readBuffer.Skip(parseLength).ToArray();
                                     //Console.WriteLine("iBCNMsg_Invalid detected and processed");
                                 }
                                 else if (bytesType == LinkLayerBytesType.PlainText)
                                 {
+                                    PlainTextBytesHandler?.Invoke(appMsg);
                                     readBuffer = readBuffer.Skip(parseLength).ToArray();
                                     //Console.WriteLine("PlainText detected and processed");
                                 }
                                 else if (bytesType == LinkLayerBytesType.None)
                                 {
+                                    NoneStringDetectedHandler?.Invoke(appMsg);
                                     //Console.WriteLine("\"None\" string detected");
                                     //bytes are not enough
                                     break;
@@ -180,11 +157,6 @@ namespace Metocean.iBCNLinkLayer.Link
                                 }
 
                             }
-                        }
-
-                        if (supportQueue)
-                        {
-                            QueueAppDataHandler_Outbound = data => Send(data);
                         }
 
                         lock (timerCallbackMutex)
@@ -235,7 +207,7 @@ namespace Metocean.iBCNLinkLayer.Link
         {
             if (!serialPort.IsOpen)
             {
-                throw new Exception("");
+                throw new Exception("Port is not open");
             }
             serialPort.Write(data, 0, data.Length);
         }

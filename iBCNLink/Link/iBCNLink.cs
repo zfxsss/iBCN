@@ -40,7 +40,7 @@ namespace Metocean.iBCNLinkLayer.Link
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public abstract void Open(string name, bool supportQueue);
+        public abstract void Open(string name);
 
         /// <summary>
         /// 
