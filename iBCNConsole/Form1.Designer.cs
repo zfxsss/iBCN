@@ -120,18 +120,21 @@
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             this.homeToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.homeToolStripMenuItem.Text = "Edit";
+            this.homeToolStripMenuItem.Visible = false;
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Visible = false;
             // 
             // commandToolStripMenuItem
             // 
             this.commandToolStripMenuItem.Name = "commandToolStripMenuItem";
             this.commandToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.commandToolStripMenuItem.Text = "Command";
+            this.commandToolStripMenuItem.Visible = false;
             // 
             // helpToolStripMenuItem
             // 
