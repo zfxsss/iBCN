@@ -15,7 +15,7 @@ namespace iBCNConsole.Device
         /// <summary>
         /// 
         /// </summary>
-        private static object mutex { get; set; } = new object();
+        private static object mutex = new object();
 
         /// <summary>
         /// 

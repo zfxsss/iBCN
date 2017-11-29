@@ -30,10 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tooStripStatusLabel_Com = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closePortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.openLogDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.commandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +51,8 @@
             this.checkBox_ShowDiagnosticMsg = new System.Windows.Forms.CheckBox();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.checkBox_ShowLogTime = new System.Windows.Forms.CheckBox();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -72,11 +77,20 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tooStripStatusLabel_Com});
             this.statusStrip1.Location = new System.Drawing.Point(0, 608);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(785, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tooStripStatusLabel_Com
+            // 
+            this.tooStripStatusLabel_Com.BackColor = System.Drawing.Color.Transparent;
+            this.tooStripStatusLabel_Com.Name = "tooStripStatusLabel_Com";
+            this.tooStripStatusLabel_Com.Size = new System.Drawing.Size(88, 17);
+            this.tooStripStatusLabel_Com.Text = "Not Connected";
             // 
             // menuStrip1
             // 
@@ -96,7 +110,9 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
-            this.closePortToolStripMenuItem});
+            this.closePortToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.openLogDirectoryToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -104,16 +120,28 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.openToolStripMenuItem.Text = "Open Port";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.openToolStripMenuItem.Text = "Open Serial Port...";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openPortToolStripMenuItem_Click);
             // 
             // closePortToolStripMenuItem
             // 
             this.closePortToolStripMenuItem.Name = "closePortToolStripMenuItem";
-            this.closePortToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.closePortToolStripMenuItem.Text = "Close Port";
+            this.closePortToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.closePortToolStripMenuItem.Text = "Close Serial Port";
             this.closePortToolStripMenuItem.Click += new System.EventHandler(this.closePortToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
+            // 
+            // openLogDirectoryToolStripMenuItem
+            // 
+            this.openLogDirectoryToolStripMenuItem.Name = "openLogDirectoryToolStripMenuItem";
+            this.openLogDirectoryToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.openLogDirectoryToolStripMenuItem.Text = "Open Log Directory";
+            this.openLogDirectoryToolStripMenuItem.Click += new System.EventHandler(this.openLogDirectoryToolStripMenuItem_Click);
             // 
             // homeToolStripMenuItem
             // 
@@ -138,6 +166,8 @@
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
@@ -290,6 +320,13 @@
             this.checkBox_ShowLogTime.Text = "Show Log Time";
             this.checkBox_ShowLogTime.UseVisualStyleBackColor = true;
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,7 +340,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(801, 668);
             this.Name = "Form1";
-            this.Text = "iBCNConsole";
+            this.Text = "iBCN Console";
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -354,6 +393,10 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.RichTextBox richTextBox_ConsoleWindow;
         private System.Windows.Forms.ToolStripMenuItem closePortToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openLogDirectoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel tooStripStatusLabel_Com;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
