@@ -21,7 +21,7 @@ namespace iBCNConsole
         /// <summary>
         /// 
         /// </summary>
-        private BluetoothLink link;
+        private SerialLink link;
 
         /// <summary>
         /// 
@@ -45,11 +45,18 @@ namespace iBCNConsole
         {
             InitializeComponent();
 
+            foreach (var c in Preprocessing.CommandSupported)
+            {
+                comboBox_CommandInput.Items.Add(c);
+            }
+
+            comboBox_CommandInput.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBox_CommandInput.AutoCompleteMode = AutoCompleteMode.Suggest;
+
             PropertiesIterator.CB += (prefixMsg, msg) =>
             {
                 PrintOut(prefixMsg, msg, false);
             };
-
 
             //when a command is built, callback will be invoked
             CommandBuilder.CB += (o) =>
@@ -139,11 +146,12 @@ namespace iBCNConsole
         {
             try
             {
-                //var x = "ReadDateTime 1";
                 string input = "";
 
                 if (e.KeyCode == Keys.Enter)
                 {
+                    //e.Handled = true;
+
                     input = comboBox_CommandInput.Text;
                     comboBox_CommandInput.Text = "";
 
@@ -163,16 +171,37 @@ namespace iBCNConsole
                 }
                 else
                 {
+                    /*
+                    if ((e.KeyCode == Keys.Up) || (e.KeyCode == Keys.Down))
+                    {
+                        //comboBox_CommandInput.SelectionStart = comboBox_CommandInput.Text.Length;
+                        //e.Handled = true;
+                        comboBox_CommandInput.SelectionStart = 0;
+                    }
+                    */
                     return;
                 }
 
+                //check if it is empty string[]
                 if (input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length == 0)
                 {
-                    throw new Exception("Empty Input!");
+                    throw new Exception("Empty Input");
                 }
 
                 // get string array
                 string[] info = TextParser.GetSplittedStringArray(input);
+
+                if (Preprocessing.AnalyzeCommandMode(ref info, checkBox_EnableDefaultMode.Checked))
+                {
+                    if (checkBox_ShowLogTime.Checked)
+                    {
+                        PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", "(Default Mode)", false);
+                    }
+                    else
+                    {
+                        PrintOut("", "(Default Mode)", false);
+                    }
+                }
 
                 // get cmd name, sequence number, payload
                 var cmdName = Preprocessing.GetCommandName(info);
@@ -214,7 +243,12 @@ namespace iBCNConsole
         {
             try
             {
-                link = new BluetoothLink();
+                //pop up a window to select a port to open
+
+
+
+
+                link = new SerialLink();
 
                 link.AppDataBytesHandler += (bytes) =>
                 {
@@ -329,5 +363,6 @@ namespace iBCNConsole
                 PrintException(ex.Message);
             }
         }
+
     }
 }

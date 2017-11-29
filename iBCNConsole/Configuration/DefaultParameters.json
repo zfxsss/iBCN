@@ -1,16 +1,10 @@
 ﻿{
 	"DefaultSequenceNumber" : 1,
 	"Command_DefaultPayload" : {
-		"WriteDateTime" : {
-			"payload" : "now",
-		}
-	},
-	"CommandPayloadMapper" : {
-		"WriteDateTime" : "xxx",
-		
-	},
-	"CommandsSupported" : {
-		"Device1" : ["ReadDateTime", "WriteDateTime", "Set***"],
-		"Device2" : ["ReadDateTime", "WriteDateTime", "Define***"]
+		"WriteDateTime" : ["now"], //"now" means current datetime, a string with format "yyyy/MM/DD HH:mi:ss" is also acceptable
+		"ReadConfigMode" : [0],
+		"WriteConfigMode" : [0/*index*/, 0, 300, 0, 1, 1, 1, 1], //UInt32 reserved1, UInt32 fixInterval, UInt16 reserved2, UInt16 mailboxCheckInterval, UInt8 surfaceSetting, UInt16 transmitIntervalFlags, UInt16 transmitInterval
+		"SendIridiumMessage" : [0x12, 0x15],
+		"SetDebugOutputLevel" : [0] //0, 1, 2, 3
 	}
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBCN", "iBCN\iBCN.csproj", "{FC8A3E3B-05C9-464B-84F7-7EDF1C6DCCAB}"
 EndProject
@@ -20,8 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBCNConfigurator", "iBCNConfigurator\iBCNConfigurator.csproj", "{B79E9305-96A8-4FC9-8C86-F249DD578A50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBCNConsole", "iBCNConsole\iBCNConsole.csproj", "{85F181B7-767A-44D6-A6E6-BB90FC6F41F6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigRepository", "ConfigRepository\ConfigRepository.csproj", "{018254CF-7040-4167-8D47-86CF3CC2667E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBCNConsoleTests", "iBCNConsoleTests\iBCNConsoleTests.csproj", "{CC746711-84B2-4702-A6CA-97021ACE3205}"
 EndProject
@@ -67,10 +65,6 @@ Global
 		{85F181B7-767A-44D6-A6E6-BB90FC6F41F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85F181B7-767A-44D6-A6E6-BB90FC6F41F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85F181B7-767A-44D6-A6E6-BB90FC6F41F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{018254CF-7040-4167-8D47-86CF3CC2667E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{018254CF-7040-4167-8D47-86CF3CC2667E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{018254CF-7040-4167-8D47-86CF3CC2667E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{018254CF-7040-4167-8D47-86CF3CC2667E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC746711-84B2-4702-A6CA-97021ACE3205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC746711-84B2-4702-A6CA-97021ACE3205}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC746711-84B2-4702-A6CA-97021ACE3205}.Release|Any CPU.ActiveCfg = Release|Any CPU

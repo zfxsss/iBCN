@@ -24,12 +24,12 @@ namespace iBCNLinkLayerFormApp
         /// <summary>
         /// 
         /// </summary>
-        BluetoothLink receiving;
+        SerialLink receiving;
 
         /// <summary>
         /// 
         /// </summary>
-        BluetoothLink sending;
+        SerialLink sending;
 
         /// <summary>
         /// 
@@ -42,14 +42,14 @@ namespace iBCNLinkLayerFormApp
         //start receiving link layer
         private void button1_Click(object sender, EventArgs e)
         {
-            receiving = new BluetoothLink();
+            receiving = new SerialLink();
             receiving.Open("COM3");
         }
 
         //start sending link layer
         private void button2_Click(object sender, EventArgs e)
         {
-            sending = new BluetoothLink();
+            sending = new SerialLink();
             sending.Open("COM4");
         }
 

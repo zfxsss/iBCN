@@ -57,6 +57,11 @@ namespace Metocean.iBCNLinkLayer.Link
         /// <summary>
         /// 
         /// </summary>
+        public event Action<Exception> ExceptionHandler;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private System.Timers.Timer readTimer;
 
         /// <summary>
@@ -165,7 +170,7 @@ namespace Metocean.iBCNLinkLayer.Link
                         }
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         lock (timerCallbackMutex)
                         {
@@ -173,12 +178,35 @@ namespace Metocean.iBCNLinkLayer.Link
                         }
 
                         //how to deal with the exception
-
+                        ExceptionHandler?.Invoke(ex);
                     }
                 };
 
+                //serialPort.Open();
+                //readTimer.Start();
+            }
+
+            if (!serialPort.IsOpen)
+            {
                 serialPort.Open();
                 readTimer.Start();
+            }
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void PortCheck()
+        {
+            if (serialPort == null)
+            {
+                throw new Exception("serialPort is null");
+            }
+
+            if (!serialPort.IsOpen)
+            {
+                throw new Exception("serialPort is not open");
             }
         }
 
@@ -187,16 +215,14 @@ namespace Metocean.iBCNLinkLayer.Link
         /// </summary>
         public override void Close()
         {
-            if (!serialPort.IsOpen)
-            {
-                throw new Exception("");
-            }
+            PortCheck();
 
             readTimer.Stop();
             readTimer.Close();
             serialPort.Close();
-            serialPort = null;
 
+            //set it to null
+            serialPort = null;
         }
 
         /// <summary>
@@ -205,10 +231,8 @@ namespace Metocean.iBCNLinkLayer.Link
         /// <param name="data"></param>
         public void Send(byte[] data)
         {
-            if (!serialPort.IsOpen)
-            {
-                throw new Exception("Port is not open");
-            }
+            PortCheck();
+
             serialPort.Write(data, 0, data.Length);
         }
     }

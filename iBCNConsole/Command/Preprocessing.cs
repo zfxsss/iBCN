@@ -2,8 +2,10 @@
 using Metocean.iBCN.Command.Definition;
 using Metocean.iBCN.Command.Payload.Interface;
 using Metocean.iBCN.Device;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,10 @@ namespace iBCNConsole.Command
         /// <returns></returns>
         public static IPayload GetPayload(string[] cmdInfo, DeviceEnum? di = null)
         {
+            /*
+             * Will read payload information from cmdInfo[2] 
+             */
+
             if (cmdInfo[0].ToLower() == "clearmemorylog")
             {
                 return null;
@@ -44,7 +50,14 @@ namespace iBCNConsole.Command
             }
             else if (cmdInfo[0].ToLower() == "readconfigmode")
             {
-                return null;
+                if (cmdInfo.Length < 3)
+                {
+                    throw new Exception("No enough data to build payload");
+                }
+
+                var payload = new Metocean.iBCN.Command.Payload.ReadConfigMode();
+                payload.Index = ushort.Parse(cmdInfo[2]);
+                return payload;
             }
             else if (cmdInfo[0].ToLower() == "readdatetime")
             {
@@ -64,11 +77,31 @@ namespace iBCNConsole.Command
             }
             else if (cmdInfo[0].ToLower() == "sendiridiummessage")
             {
-                return null;
+                if (cmdInfo.Length < 3)
+                {
+                    throw new Exception("No enough data to build payload");
+                }
+
+                var payload = new Metocean.iBCN.Command.Payload.SendIridiumMessage();
+                var bytes = new byte[] { };
+                foreach (var s in cmdInfo.Skip(2).ToArray())
+                {
+                    bytes = bytes.Concat(new byte[] { byte.Parse(s) }).ToArray();
+                }
+
+                payload.Message = bytes;
+                return payload;
             }
             else if (cmdInfo[0].ToLower() == "setdebugoutputlevel")
             {
-                return null;
+                if (cmdInfo.Length < 3)
+                {
+                    throw new Exception("No enough data to build payload");
+                }
+
+                var payload = new Metocean.iBCN.Command.Payload.SetDebugOutputLevel();
+                payload.DebugLevel = ushort.Parse(cmdInfo[2]);
+                return payload;
             }
             else if (cmdInfo[0].ToLower() == "startbootloaderprocess")
             {
@@ -88,13 +121,43 @@ namespace iBCNConsole.Command
             }
             else if (cmdInfo[0].ToLower() == "writeconfigmode")
             {
-                return null;
+                if (cmdInfo.Length < 10)
+                {
+                    throw new Exception("No enough data to build payload");
+                }
+
+                var payload = new Metocean.iBCN.Command.Payload.WriteConfigMode();
+                payload.Index = ushort.Parse(cmdInfo[2]);
+                payload.Mode = new Metocean.iBCN.Message.Entity.Mode[1];
+                payload.Mode[0] = new Metocean.iBCN.Message.Entity.Mode(uint.Parse(cmdInfo[3]), uint.Parse(cmdInfo[4]),
+                                                                        ushort.Parse(cmdInfo[5]), ushort.Parse(cmdInfo[6]),
+                                                                        ushort.Parse(cmdInfo[7]), ushort.Parse(cmdInfo[8]),
+                                                                        ushort.Parse(cmdInfo[9]));
+                return payload;
             }
             else if (cmdInfo[0].ToLower() == "writedatetime")
             {
-                return null;
+                if (cmdInfo.Length < 3)
+                {
+                    throw new Exception("No enough data to build payload");
+                }
+
+                if (cmdInfo[2].ToLower() == "now")
+                {
+                    var payload = new Metocean.iBCN.Command.Payload.WriteDateTime();
+                    payload.Date_Time = DateTime.Now;
+                    return payload;
+                }
+                else
+                {
+                    var payload = new Metocean.iBCN.Command.Payload.WriteDateTime();
+                    payload.Date_Time = DateTime.Parse(cmdInfo[2]);
+                    return payload;
+                }
+
             }
 
+            //return null if no match
             return null;
         }
 
@@ -107,16 +170,16 @@ namespace iBCNConsole.Command
         {
             if (cmdInfo.Length < 2)
             {
-                throw new Exception("");
+                throw new Exception("No sequence number found");
             }
 
-            UInt16 seq = 0;
+            UInt16 seq;
             if (UInt16.TryParse(cmdInfo[1], out seq))
             {
                 return seq;
             }
 
-            throw new Exception("Invalid input");
+            throw new Exception("Invalid sequence number");
         }
 
         /// <summary>
@@ -128,15 +191,52 @@ namespace iBCNConsole.Command
         {
             if (cmdInfo.Length < 1)
             {
-                throw new Exception("");
+                throw new Exception("Invalid Input");
             }
 
             if (CommandSupported.Count(x => x.ToLower() == cmdInfo[0].ToLower()) < 1)
             {
-                throw new Exception("Command not supported");
+                throw new Exception("Unsupported Command");
             }
 
-            return cmdInfo[0];
+            return CommandSupported.Where(x => x.ToLower() == cmdInfo[0].ToLower()).First();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="defaultModeEnabled"></param>
+        /// <returns>true: default mode; false: not default mode</returns>
+        public static bool AnalyzeCommandMode(ref string[] info, bool defaultModeEnabled)
+        {
+            if (info.Length > 1)
+            {
+                return false;
+            }
+
+            //default mode?
+            if (defaultModeEnabled)
+            {
+                var config = JObject.Parse(File.ReadAllText(@"Configuration\DefaultParameters.json"));
+
+                //get default sequence num
+                var sequenceNum = config["DefaultSequenceNumber"].Value<string>();
+                info = info.Concat(new string[] { sequenceNum }).ToArray();
+
+                //deal with payload
+                var cmdName = GetCommandName(info);
+                var payload = config["Command_DefaultPayload"][cmdName];
+
+                if (payload != null)
+                {
+                    info = info.Concat(payload.Values<string>().ToArray()).ToArray();
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>

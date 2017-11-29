@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="MsgQueueEngine\Engine.cs" />
     <Compile Include="LinkRepository\iBCNLinkRepo.cs" />
-    <Compile Include="Link\BluetoothLink.cs" />
     <Compile Include="Link\iBCNLink.cs" />
     <Compile Include="Link\Interface\ILink.cs" />
     <Compile Include="Link\IridiumLink.cs" />
