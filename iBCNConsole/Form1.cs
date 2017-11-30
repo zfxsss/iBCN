@@ -96,6 +96,8 @@ namespace iBCNConsole
 
             //combobox is disbaled
             comboBox_CommandInput.Enabled = false;
+
+            closePortToolStripMenuItem.Enabled = false;
         }
 
         /// <summary>
@@ -469,6 +471,9 @@ namespace iBCNConsole
                 var portName = p.PortName;
                 link.Open(portName);
 
+                openPortToolStripMenuItem.Enabled = false;
+                closePortToolStripMenuItem.Enabled = true;
+
                 SimpleLogOutput(portName + " is open");
                 comboBox_CommandInput.Enabled = true;
                 tooStripStatusLabel_Com.Text = portName;
@@ -489,6 +494,10 @@ namespace iBCNConsole
             try
             {
                 link.Close();
+                link = null;
+
+                openPortToolStripMenuItem.Enabled = true;
+                closePortToolStripMenuItem.Enabled = false;
 
                 comboBox_CommandInput.Enabled = false;
                 tooStripStatusLabel_Com.Text = "Not Connected";
@@ -507,7 +516,19 @@ namespace iBCNConsole
         /// <param name="e"></param>
         private void openLogDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"log");
+            try
+            {
+                if (!Directory.Exists("log"))
+                {
+                    Directory.CreateDirectory("log");
+                }
+
+                System.Diagnostics.Process.Start(@"log");
+            }
+            catch (Exception ex)
+            {
+                PrintException(ex.Message);
+            }
         }
 
         /// <summary>
@@ -518,6 +539,19 @@ namespace iBCNConsole
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new About().ShowDialog();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (closePortToolStripMenuItem.Enabled)
+            {
+                closePortToolStripMenuItem_Click(sender, e);
+            }
         }
     }
 }

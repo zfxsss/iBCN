@@ -79,6 +79,7 @@ namespace Metocean.iBCNLinkLayer.Link
             {
                 serialPort = new SerialPort(name, BaudRate, Parity.None, 8, StopBits.One);
                 serialPort.ReadTimeout = 500; // can be modified
+                serialPort.WriteTimeout = 1500; // can be modified
 
                 readTimer = new System.Timers.Timer(750); // can be modified
                 readTimer.AutoReset = true; //false; //true;
