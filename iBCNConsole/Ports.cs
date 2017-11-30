@@ -26,7 +26,10 @@ namespace iBCNConsole
                 comboBox_Ports.Items.Add(n);
             }
 
-            comboBox_Ports.SelectedIndex = 0;
+            if (comboBox_Ports.Items.Count > 0)
+            {
+                comboBox_Ports.SelectedIndex = 0;
+            }
         }
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace iBCNConsole
         /// <param name="e"></param>
         private void button_OK_Click(object sender, EventArgs e)
         {
-            PortName = comboBox_Ports.SelectedItem.ToString();
+            PortName = comboBox_Ports.SelectedItem == null ? "" : comboBox_Ports.SelectedItem.ToString();
             DialogResult = DialogResult.OK;
             Close();
         }

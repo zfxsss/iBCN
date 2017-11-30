@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label_AppName = new System.Windows.Forms.Label();
             this.label_Company = new System.Windows.Forms.Label();
@@ -39,9 +40,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::iBCNConsole.Properties.Resources.console;
-            this.pictureBox1.Location = new System.Drawing.Point(144, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(144, 11);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(171, 177);
+            this.pictureBox1.Size = new System.Drawing.Size(171, 163);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -49,35 +50,35 @@
             // label_AppName
             // 
             this.label_AppName.AutoSize = true;
-            this.label_AppName.Location = new System.Drawing.Point(193, 202);
+            this.label_AppName.Location = new System.Drawing.Point(193, 186);
             this.label_AppName.Name = "label_AppName";
-            this.label_AppName.Size = new System.Drawing.Size(72, 13);
+            this.label_AppName.Size = new System.Drawing.Size(77, 12);
             this.label_AppName.TabIndex = 1;
             this.label_AppName.Text = "iBCN Console";
             // 
             // label_Company
             // 
             this.label_Company.AutoSize = true;
-            this.label_Company.Location = new System.Drawing.Point(199, 252);
+            this.label_Company.Location = new System.Drawing.Point(199, 233);
             this.label_Company.Name = "label_Company";
-            this.label_Company.Size = new System.Drawing.Size(55, 13);
+            this.label_Company.Size = new System.Drawing.Size(53, 12);
             this.label_Company.TabIndex = 2;
             this.label_Company.Text = "Metocean";
             // 
             // label_Version
             // 
             this.label_Version.AutoSize = true;
-            this.label_Version.Location = new System.Drawing.Point(191, 226);
+            this.label_Version.Location = new System.Drawing.Point(191, 209);
             this.label_Version.Name = "label_Version";
-            this.label_Version.Size = new System.Drawing.Size(45, 13);
+            this.label_Version.Size = new System.Drawing.Size(53, 12);
             this.label_Version.TabIndex = 3;
             this.label_Version.Text = "Version ";
             // 
             // button_OK
             // 
-            this.button_OK.Location = new System.Drawing.Point(190, 282);
+            this.button_OK.Location = new System.Drawing.Point(190, 260);
             this.button_OK.Name = "button_OK";
-            this.button_OK.Size = new System.Drawing.Size(75, 23);
+            this.button_OK.Size = new System.Drawing.Size(75, 21);
             this.button_OK.TabIndex = 4;
             this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
@@ -86,14 +87,15 @@
             // About
             // 
             this.AcceptButton = this.button_OK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 326);
+            this.ClientSize = new System.Drawing.Size(461, 301);
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.label_Version);
             this.Controls.Add(this.label_Company);
             this.Controls.Add(this.label_AppName);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "About";
