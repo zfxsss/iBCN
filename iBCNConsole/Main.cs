@@ -462,6 +462,11 @@ namespace iBCNConsole
                     SimpleLogOutput("Port is close");
                 };
 
+                link.ExceptionHandler += (ex) =>
+                {
+                    PrintException(ex.Message);
+                };
+
                 link.Open(portName);
             }
             catch (Exception ex)
