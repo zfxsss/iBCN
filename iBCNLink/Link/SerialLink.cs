@@ -113,7 +113,7 @@ namespace Metocean.iBCNLinkLayer.Link
                             throw new Exception("Serial port is not open. Timer is closed");
                         }
 
-                        byte[] tempbuffer = new byte[serialPort.ReadBufferSize]; //in default the length is 4096
+                        byte[] tempbuffer = new byte[4096 * 4];//new byte[serialPort.ReadBufferSize * 4]; //in default the length is 4096
 
                         var readBytesNumber = 0;
 
