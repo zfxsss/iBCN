@@ -1,6 +1,6 @@
 ﻿namespace iBCNConsole
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tooStripStatusLabel_Com = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_Com = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_Model = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,19 +79,28 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tooStripStatusLabel_Com});
+            this.toolStripStatusLabel_Com,
+            this.toolStripStatusLabel_Model});
             this.statusStrip1.Location = new System.Drawing.Point(0, 608);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(785, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // tooStripStatusLabel_Com
+            // toolStripStatusLabel_Com
             // 
-            this.tooStripStatusLabel_Com.BackColor = System.Drawing.Color.Transparent;
-            this.tooStripStatusLabel_Com.Name = "tooStripStatusLabel_Com";
-            this.tooStripStatusLabel_Com.Size = new System.Drawing.Size(88, 17);
-            this.tooStripStatusLabel_Com.Text = "Not Connected";
+            this.toolStripStatusLabel_Com.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabel_Com.Name = "toolStripStatusLabel_Com";
+            this.toolStripStatusLabel_Com.Size = new System.Drawing.Size(88, 17);
+            this.toolStripStatusLabel_Com.Text = "Not Connected";
+            // 
+            // toolStripStatusLabel_Model
+            // 
+            this.toolStripStatusLabel_Model.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabel_Model.Name = "toolStripStatusLabel_Model";
+            this.toolStripStatusLabel_Model.Size = new System.Drawing.Size(651, 17);
+            this.toolStripStatusLabel_Model.Spring = true;
+            this.toolStripStatusLabel_Model.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // menuStrip1
             // 
@@ -327,7 +337,7 @@
             this.checkBox_ShowLogTime.Text = "Show Log Time";
             this.checkBox_ShowLogTime.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -339,7 +349,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(801, 668);
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "iBCN Console";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.statusStrip1.ResumeLayout(false);
@@ -395,9 +405,10 @@
         private System.Windows.Forms.RichTextBox richTextBox_ConsoleWindow;
         private System.Windows.Forms.ToolStripMenuItem closePortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openLogDirectoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel tooStripStatusLabel_Com;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Com;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Model;
     }
 }
 

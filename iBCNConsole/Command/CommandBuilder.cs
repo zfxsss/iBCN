@@ -142,7 +142,6 @@ namespace iBCNConsole.Command
             }
 
             throw new Exception("Unsupported Command");
-
         }
 
     }

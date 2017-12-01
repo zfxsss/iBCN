@@ -11,8 +11,8 @@ namespace Metocean.iBCN.Device
     /// </summary>
     public enum DeviceEnum
     {
-        MMI,
-        MMI1,
-        MMI2
+        MMI_513,
+        MMI_xxx,
+        MMI_yyy
     }
 }

@@ -194,12 +194,13 @@ namespace iBCNConsole.Command
                 throw new Exception("Invalid Input");
             }
 
-            if (CommandSupported.Count(x => x.ToLower() == cmdInfo[0].ToLower()) < 1)
+            //if (CommandSupported_MMI_513.Count(x => x.ToLower() == cmdInfo[0].ToLower()) < 1)
+            if (CurrentCommandSet.Count(x => x.ToLower() == cmdInfo[0].ToLower()) < 1)
             {
                 throw new Exception("Unsupported Command");
             }
 
-            return CommandSupported.Where(x => x.ToLower() == cmdInfo[0].ToLower()).First();
+            return CurrentCommandSet.Where(x => x.ToLower() == cmdInfo[0].ToLower()).First();
         }
 
         /// <summary>
@@ -242,25 +243,60 @@ namespace iBCNConsole.Command
         /// <summary>
         /// 
         /// </summary>
-        public static readonly string[] CommandSupported = new string[] {
-                "ClearMemoryLog" ,
-                "GetDiagnosticStatus",
-                "GetExtendedDiagnostics",
-                "GetIdentification",
-                "GetLogMemoryStatus",
-                "ReadConfigMode",
-                "ReadDateTime",
-                "RequestPositionReportLast",
-                "RequestPositionReportNew",
-                "ResetReportingIndex",
-                "SendIridiumMessage",
-                "SetDebugOutputLevel",
-                "StartBootloaderProcess",
-                "StartDownloadAll",
-                "StartDownloadNew",
-                "StopDownload",
-                "WriteConfigMode",
-                "WriteDateTime"
-            };
+        public static readonly string[] CommandSupported_Common = new string[]
+        {
+            "GetIdentification"
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly string[] CommandSupported_MMI_513 = new string[]
+        {
+            "ClearMemoryLog" ,
+            "GetDiagnosticStatus",
+            "GetExtendedDiagnostics",
+            "GetLogMemoryStatus",
+            "ReadConfigMode",
+            "ReadDateTime",
+            "RequestPositionReportLast",
+            "RequestPositionReportNew",
+            "ResetReportingIndex",
+            "SendIridiumMessage",
+            "SetDebugOutputLevel",
+            "StartBootloaderProcess",
+            "StartDownloadAll",
+            "StartDownloadNew",
+            "StopDownload",
+            "WriteConfigMode",
+            "WriteDateTime"
+        }.Concat(CommandSupported_Common).ToArray();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static event Action<string[]> CommandSetChanged;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static string[] currentCommandSet = null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string[] CurrentCommandSet
+        {
+            get
+            {
+                return currentCommandSet;
+            }
+            set
+            {
+                currentCommandSet = value;
+                CommandSetChanged?.Invoke(currentCommandSet);
+            }
+        }
+
     }
 }

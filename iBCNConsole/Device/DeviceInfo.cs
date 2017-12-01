@@ -25,6 +25,11 @@ namespace iBCNConsole.Device
         /// <summary>
         /// 
         /// </summary>
+        public static event Action<DeviceEnum?> CB;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static DeviceEnum? CurrentDevice
         {
             get
@@ -38,7 +43,16 @@ namespace iBCNConsole.Device
             {
                 lock (mutex)
                 {
-                    currentDevice = value;
+                    if (value != currentDevice)
+                    {
+                        currentDevice = value;
+
+                        if (CB != null)
+                        {
+                            //var deviceStr = currentDevice == null ? null : ((Enum)currentDevice).ToString();
+                            CB.Invoke(currentDevice);
+                        }
+                    }
                 }
             }
         }

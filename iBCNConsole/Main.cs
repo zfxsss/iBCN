@@ -1,7 +1,11 @@
 ﻿using iBCNConsole.Command;
 using iBCNConsole.CommandText;
 using iBCNConsole.Device;
+using Metocean.iBCN.Command;
+using Metocean.iBCN.Command.Definition;
 using Metocean.iBCN.Message;
+using Metocean.iBCN.Message.Entity;
+using Metocean.iBCN.Message.Interface;
 using Metocean.iBCNLinkLayer.Link;
 using ObjectPropertiesIteration;
 using System;
@@ -20,7 +24,7 @@ namespace iBCNConsole
     /// <summary>
     /// 
     /// </summary>
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
         /// <summary>
         /// 
@@ -45,18 +49,9 @@ namespace iBCNConsole
         /// <summary>
         /// 
         /// </summary>
-        public Form1()
+        public Main()
         {
             InitializeComponent();
-
-            //combobox auto-complete
-            foreach (var c in Preprocessing.CommandSupported)
-            {
-                comboBox_CommandInput.Items.Add(c);
-            }
-
-            comboBox_CommandInput.AutoCompleteSource = AutoCompleteSource.ListItems;
-            comboBox_CommandInput.AutoCompleteMode = AutoCompleteMode.Suggest;
 
             //object iterator CB binding
             PropertiesIterator.CB += (prefixMsg, msg) =>
@@ -68,23 +63,43 @@ namespace iBCNConsole
             //when a command is built, callback will be invoked
             CommandBuilder.CB += (o) =>
             {
-                #region old output
-                /*
-                var cmdBuiltPrompt = "*** Command Built ***";
-                if (checkBox_ShowLogTime.Checked)
-                {
-                    PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", cmdBuiltPrompt, false);
-                    PropertiesIterator.PrintIteration(o, 0, spaceForDatetime);
-                }
-                else
-                {
-                    PrintOut("", cmdBuiltPrompt, false);
-                    PropertiesIterator.PrintIteration(o, 0, "");
-                }
-                */
-                #endregion
-
                 AdvancedLogOutput(o, "*** Command Built ***");
+            };
+
+            //command set changed callback
+            Preprocessing.CommandSetChanged += (commands) =>
+            {
+                // initialize the commandinput box
+                comboBox_CommandInput.Items.Clear();
+
+                // combobox auto-complete
+                foreach (var c in commands)
+                {
+                    comboBox_CommandInput.Items.Add(c);
+                }
+            };
+
+            //device info callback
+            DeviceInfo.CB += (info) =>
+            {
+                Invoke(new Action(() =>
+                {
+                    if (info == null)
+                    {
+                        // set command set
+                        Preprocessing.CurrentCommandSet = Preprocessing.CommandSupported_Common;
+                    }
+                    else
+                    {
+                        toolStripStatusLabel_Model.Text = "Model: " + ((Enum)info).ToString().Replace('_', '-');
+
+                        // set command set, according to the device model
+                        if (info == Metocean.iBCN.Device.DeviceEnum.MMI_513)
+                        {
+                            Preprocessing.CurrentCommandSet = Preprocessing.CommandSupported_MMI_513;
+                        }
+                    }
+                }));
             };
 
             //space initialization
@@ -94,8 +109,11 @@ namespace iBCNConsole
                 spaceForDatetime += " ";
             }
 
-            //combobox is disbaled
+            //combobox is disabled
             comboBox_CommandInput.Enabled = false;
+
+            comboBox_CommandInput.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBox_CommandInput.AutoCompleteMode = AutoCompleteMode.Suggest;
 
             closePortToolStripMenuItem.Enabled = false;
         }
@@ -156,11 +174,11 @@ namespace iBCNConsole
                         Directory.CreateDirectory("log");
                     }
 
-                    File.AppendAllLines(@"log\console_" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt", new string[] { prefixMsg + msg });
+                    File.AppendAllLines(@"log\console_" + System.DateTime.Now.ToString("yyyy_MM_dd") + ".txt", new string[] { prefixMsg + msg });
                 }
                 catch (Exception ex)
                 {
-                    var timestamp = DateTime.Now.ToString(datetimestyle);
+                    var timestamp = System.DateTime.Now.ToString(datetimestyle);
 
                     if (checkBox_ShowLogTime.Checked)
                     {
@@ -180,7 +198,7 @@ namespace iBCNConsole
         /// <param name="input"></param>
         private void SimpleLogOutput(string input)
         {
-            var timestamp = DateTime.Now.ToString(datetimestyle);
+            var timestamp = System.DateTime.Now.ToString(datetimestyle);
 
             if (checkBox_ShowLogTime.Checked)
             {
@@ -199,7 +217,7 @@ namespace iBCNConsole
         /// </summary>
         private void AdvancedLogOutput(object o, string msgPrompt)
         {
-            var timestamp = DateTime.Now.ToString(datetimestyle);
+            var timestamp = System.DateTime.Now.ToString(datetimestyle);
 
             if (checkBox_ShowLogTime.Checked)
             {
@@ -221,7 +239,7 @@ namespace iBCNConsole
         /// <param name="msg"></param>
         private void PrintException(string msg)
         {
-            var timestamp = DateTime.Now.ToString(datetimestyle);
+            var timestamp = System.DateTime.Now.ToString(datetimestyle);
 
             if (checkBox_ShowLogTime.Checked)
             {
@@ -249,7 +267,6 @@ namespace iBCNConsole
                 if (e.KeyCode == Keys.Enter)
                 {
                     //e.Handled = true;
-
                     input = comboBox_CommandInput.Text;
                     comboBox_CommandInput.Text = "";
 
@@ -262,6 +279,7 @@ namespace iBCNConsole
                 }
                 else
                 {
+                    #region
                     /*
                     if ((e.KeyCode == Keys.Up) || (e.KeyCode == Keys.Down))
                     {
@@ -270,6 +288,8 @@ namespace iBCNConsole
                         comboBox_CommandInput.SelectionStart = 0;
                     }
                     */
+                    #endregion
+
                     return;
                 }
 
@@ -296,27 +316,9 @@ namespace iBCNConsole
                 var bytes = CommandBuilder.Build(cmdName, seq, payload, DeviceInfo.CurrentDevice);
 
                 //send the command on interface
-                link.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(bytes.Body));
+                link.SendWrappedBytes(bytes.Body);
 
                 //cmd sent, print it;
-
-                #region old output
-                /*
-                var cmdSentPrompt = "*** Command Sent ***";
-                if (checkBox_ShowLogTime.Checked)
-                {
-                    PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", cmdSentPrompt, false);
-                    PropertiesIterator.PrintIteration(bytes, 0, spaceForDatetime);
-                }
-                else
-                {
-                    PrintOut("", cmdSentPrompt, false);
-                    PropertiesIterator.PrintIteration(bytes, 0, "");
-                }
-                */
-
-                #endregion
-
                 AdvancedLogOutput(bytes, "*** Command Sent ***");
             }
             catch (Exception ex)
@@ -335,7 +337,6 @@ namespace iBCNConsole
             try
             {
                 //pop up a window to select a port to open
-
                 var p = new Ports();
                 var r = p.ShowDialog(this);
 
@@ -356,25 +357,25 @@ namespace iBCNConsole
                 {
                     var msgPrompt = "*** Message Received ***";
                     var msg = MessageBuilder.GetMessage(bytes);
-
                     try
                     {
-                        #region old output
-                        /*
-                        if (checkBox_ShowLogTime.Checked)
-                        {
-                            PrintOut(DateTime.Now.ToString(datetimestyle) + ":  ", msgPrompt, false);
-                            PropertiesIterator.PrintIteration(msg, 0, spaceForDatetime);
-                        }
-                        else
-                        {
-                            PrintOut("", msgPrompt, false);
-                            PropertiesIterator.PrintIteration(msg, 0, "");
-                        }
-                        */
-                        #endregion
-
                         AdvancedLogOutput(msg, msgPrompt);
+
+                        if (msg is IMsg<Identity>)
+                        {
+                            if (((IMsg<Identity>)msg).MessageEntity.ModelNumber == "MMI-513")
+                            {
+                                DeviceInfo.CurrentDevice = Metocean.iBCN.Device.DeviceEnum.MMI_513;
+                            }
+                            else if (((IMsg<Identity>)msg).MessageEntity.ModelNumber == "MMI-xxx")
+                            {
+                                DeviceInfo.CurrentDevice = Metocean.iBCN.Device.DeviceEnum.MMI_xxx;
+                            }
+                            else if (((IMsg<Identity>)msg).MessageEntity.ModelNumber == "MMI-yyy")
+                            {
+                                DeviceInfo.CurrentDevice = Metocean.iBCN.Device.DeviceEnum.MMI_yyy;
+                            }
+                        }
 
                     }
                     catch (Exception ex)
@@ -386,28 +387,9 @@ namespace iBCNConsole
                 link.InvalidAppDataBytesHandler += (bytes) =>
                 {
                     var invalidMsgPrompt = "*** Invalid Message Received ***";
-                    var msg = "";
-
+                    //var msg = "";
                     try
                     {
-                        #region old output
-                        /*
-                        var timestamp = DateTime.Now.ToString(datetimestyle);
-                        if (checkBox_ShowLogTime.Checked)
-                        {
-                            PrintOut(timestamp + ":  ", invalidMsgPrompt, true);
-                            //PropertiesIterator.PrintIteration(msg, 0, "                   ");
-                        }
-                        else
-                        {
-                            PrintOut("", invalidMsgPrompt, true);
-                            //PropertiesIterator.PrintIteration(msg, 0, "");
-                        }
-
-                        PrintOut_File(timestamp, invalidMsgPrompt);
-                        */
-                        #endregion
-
                         SimpleLogOutput(invalidMsgPrompt);
                     }
                     catch (Exception ex)
@@ -418,32 +400,12 @@ namespace iBCNConsole
 
                 link.PlainTextBytesHandler += (bytes) =>
                 {
-                    var plainTextPrompt = "*** Plain Text Received ***";
+                    //var plainTextPrompt = "*** Plain Text Received ***";
                     var msg = Encoding.ASCII.GetString(bytes);
-
                     try
                     {
                         if (checkBox_ShowDiagnosticMsg.Checked)
                         {
-                            #region old output
-                            /*
-                            var timestamp = DateTime.Now.ToString(datetimestyle);
-
-                            if (checkBox_ShowLogTime.Checked)
-                            {
-                                PrintOut(timestamp + ":  ", plainTextPrompt, false);
-                                //PropertiesIterator.PrintIteration(msg, 0, "                   ");
-                            }
-                            else
-                            {
-                                PrintOut("", plainTextPrompt, false);
-                                //PropertiesIterator.PrintIteration(msg, 0, "");
-                            }
-
-                            PrintOut_File(timestamp + ":  ", plainTextPrompt);
-                            */
-                            #endregion
-
                             //AdvancedLogOutput(msg, plainTextPrompt);
                             SimpleLogOutput(msg);
                         }
@@ -456,8 +418,7 @@ namespace iBCNConsole
 
                 link.NoneStringDetectedHandler += (bytes) =>
                 {
-                    var msg = "";
-
+                    //var msg = "";
                     try
                     {
 
@@ -469,14 +430,39 @@ namespace iBCNConsole
                 };
 
                 var portName = p.PortName;
+
+                link.PortOpenHandler += () =>
+                {
+                    toolStripStatusLabel_Com.Text = portName;
+                    openPortToolStripMenuItem.Enabled = false;
+                    closePortToolStripMenuItem.Enabled = true;
+
+                    SimpleLogOutput(portName + " is open");
+
+                    //set commandset
+                    Preprocessing.CurrentCommandSet = Preprocessing.CommandSupported_Common;
+                    comboBox_CommandInput.Enabled = true;
+
+                    toolStripStatusLabel_Model.Text = "Model: Unknown";
+
+                    //get the identification
+                    link.SendWrappedBytes(Command<GetIdentification>.GetCommandBytes(0).Body);
+                };
+
+                link.PortCloseHandler += () =>
+                {
+                    DeviceInfo.CurrentDevice = null;
+
+                    openPortToolStripMenuItem.Enabled = true;
+                    closePortToolStripMenuItem.Enabled = false;
+
+                    comboBox_CommandInput.Enabled = false;
+                    toolStripStatusLabel_Com.Text = "Not Connected";
+                    toolStripStatusLabel_Model.Text = ""; //"Model: Unknown"
+                    SimpleLogOutput("Port is close");
+                };
+
                 link.Open(portName);
-
-                openPortToolStripMenuItem.Enabled = false;
-                closePortToolStripMenuItem.Enabled = true;
-
-                SimpleLogOutput(portName + " is open");
-                comboBox_CommandInput.Enabled = true;
-                tooStripStatusLabel_Com.Text = portName;
             }
             catch (Exception ex)
             {
@@ -495,13 +481,6 @@ namespace iBCNConsole
             {
                 link.Close();
                 link = null;
-
-                openPortToolStripMenuItem.Enabled = true;
-                closePortToolStripMenuItem.Enabled = false;
-
-                comboBox_CommandInput.Enabled = false;
-                tooStripStatusLabel_Com.Text = "Not Connected";
-                SimpleLogOutput("Port is close");
             }
             catch (Exception ex)
             {

@@ -57,6 +57,16 @@ namespace Metocean.iBCNLinkLayer.Link
         /// <summary>
         /// 
         /// </summary>
+        public event Action PortOpenHandler;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event Action PortCloseHandler;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private System.Timers.Timer readTimer;
 
         /// <summary>
@@ -186,6 +196,7 @@ namespace Metocean.iBCNLinkLayer.Link
             {
                 serialPort.Open();
                 readTimer.Start();
+                PortOpenHandler?.Invoke();
             }
 
         }
@@ -216,6 +227,7 @@ namespace Metocean.iBCNLinkLayer.Link
             readTimer.Stop();
             readTimer.Close();
             serialPort.Close();
+            PortCloseHandler?.Invoke();
 
             //set it to null
             serialPort = null;
@@ -230,6 +242,15 @@ namespace Metocean.iBCNLinkLayer.Link
             PortCheck();
 
             serialPort.Write(data, 0, data.Length);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        public void SendWrappedBytes(byte[] data)
+        {
+            Send(LinkLayerWrapper.WrapApplicationLayerMessage(data));
         }
 
     }
