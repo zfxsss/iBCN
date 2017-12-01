@@ -437,7 +437,7 @@ namespace iBCNConsole
                     openPortToolStripMenuItem.Enabled = false;
                     closePortToolStripMenuItem.Enabled = true;
 
-                    SimpleLogOutput(portName + " is open");
+                    SimpleLogOutput(portName + " is opened");
 
                     //set commandset
                     Preprocessing.CurrentCommandSet = Preprocessing.CommandSupported_Common;
@@ -459,7 +459,7 @@ namespace iBCNConsole
                     comboBox_CommandInput.Enabled = false;
                     toolStripStatusLabel_Com.Text = "Not Connected";
                     toolStripStatusLabel_Model.Text = ""; //"Model: Unknown"
-                    SimpleLogOutput("Port is close");
+                    SimpleLogOutput("Port is closed");
                 };
 
                 link.ExceptionHandler += (ex) =>
