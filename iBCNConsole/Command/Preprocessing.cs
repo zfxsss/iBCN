@@ -145,7 +145,7 @@ namespace iBCNConsole.Command
                 if (cmdInfo[2].ToLower() == "now")
                 {
                     var payload = new Metocean.iBCN.Command.Payload.WriteDateTime();
-                    payload.Date_Time = DateTime.Now;
+                    payload.Date_Time = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, TimeZoneInfo.Utc);
                     return payload;
                 }
                 else
