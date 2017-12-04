@@ -147,7 +147,7 @@ namespace Metocean.iBCN.Message
         /// <typeparam name="T"></typeparam>
         /// <param name="entitydata"></param>
         /// <returns></returns>
-        public static T GetMessageEntity<T>(byte[] entitydata) where T : iBCNMessage, new()
+        public static T GetMessageEntity<T>(byte[] entitydata) where T : IMsgEntity, new()
         {
             return new Msg<T>(entitydata).MessageEntity;
         }
