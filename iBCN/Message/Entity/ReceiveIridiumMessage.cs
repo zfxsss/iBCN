@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class ReceiveIridiumMessage : iBCNMessage, IParser
+    public class ReceiveIridiumMessage : iBCNMessage, IMsgEntity
     {
         /// <summary>
         /// 

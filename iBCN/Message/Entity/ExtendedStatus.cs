@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class ExtendedStatus : iBCNMessage, IParser
+    public class ExtendedStatus : iBCNMessage, IMsgEntity
     {
         /// <summary>
         /// 

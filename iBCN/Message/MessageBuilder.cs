@@ -19,7 +19,7 @@ namespace Metocean.iBCN.Message
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static iBCNMessage GetMessageEntity(byte[] data)
+        public static IMsgEntity GetMessageEntity(byte[] data)
         {
             if ((data[0] == 0x01 && data[1] == 0x81) || (data[0] == 0x03 && data[1] == 0x90) || (data[0] == 0x03 && data[1] == 0x91))
             {

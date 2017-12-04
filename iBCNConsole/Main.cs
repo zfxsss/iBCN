@@ -49,12 +49,24 @@ namespace iBCNConsole
         /// <summary>
         /// 
         /// </summary>
+        private PropertiesIterator pi = new PropertiesIterator();
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Main()
         {
             InitializeComponent();
 
             //object iterator CB binding
-            PropertiesIterator.CB += (prefixMsg, msg) =>
+            //PropertiesIterator.CB += (prefixMsg, msg) =>
+            //{
+            //    PrintOut(prefixMsg, msg, false);
+            //    PrintOut_File(prefixMsg, msg);
+            //};
+
+            //object iterator CB binding
+            pi.CB += (prefixMsg, msg) =>
             {
                 PrintOut(prefixMsg, msg, false);
                 PrintOut_File(prefixMsg, msg);
@@ -223,13 +235,17 @@ namespace iBCNConsole
             {
                 PrintOut(timestamp + ":  ", msgPrompt, false);
                 PrintOut_File(timestamp + ":  ", msgPrompt);
-                PropertiesIterator.PrintIteration(o, 0, spaceForDatetime);
+
+                //PropertiesIterator.PrintIteration(o, 0, spaceForDatetime);
+                pi.PrintIteration(o, 0, spaceForDatetime);
             }
             else
             {
                 PrintOut("", msgPrompt, false);
                 PrintOut_File(timestamp + ":  ", msgPrompt);
-                PropertiesIterator.PrintIteration(o, 0, "");
+
+                //PropertiesIterator.PrintIteration(o, 0, "");
+                pi.PrintIteration(o, 0, spaceForDatetime);
             }
         }
 

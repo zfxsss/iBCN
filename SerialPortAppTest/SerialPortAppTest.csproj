@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iBCN\iBCN.csproj">
+      <Project>{fc8a3e3b-05c9-464b-84f7-7edf1c6dccab}</Project>
+      <Name>iBCN</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

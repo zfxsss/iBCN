@@ -43,11 +43,5 @@
     <Compile Include="PropertiesIterator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\iBCN\iBCN.csproj">
-      <Project>{FC8A3E3B-05C9-464B-84F7-7EDF1C6DCCAB}</Project>
-      <Name>iBCN</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

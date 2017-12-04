@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class Mode : iBCNMessage, IParser
+    public class Mode : iBCNMessage, IMsgEntity
     {
         /// <summary>
         /// 

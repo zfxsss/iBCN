@@ -1,5 +1,6 @@
 ﻿using Metocean.iBCN.iBCNException;
 using Metocean.iBCN.Message.Interface.Parser;
+using ObjectPropertiesIteration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -123,7 +124,14 @@ namespace Metocean.iBCN.Message.Entity
         /// <returns></returns>
         string IMsgEntity.ToString()
         {
-            return null;
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(this);
+            return output;
         }
     }
 }

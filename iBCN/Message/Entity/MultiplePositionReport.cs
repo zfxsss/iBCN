@@ -10,7 +10,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public class MultiplePositionReport : iBCNMessage, IParser
+    public class MultiplePositionReport : iBCNMessage, IMsgEntity
     {
         /// <summary>
         /// 

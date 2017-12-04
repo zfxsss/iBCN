@@ -67,7 +67,15 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<Metocean.iBCN.Command.Definition.SetDebugOutputLevel>.GetCommandBytes(2, payload);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
 
             //receiving.Send(new byte[] { 0xAA, 0x55, 0x00, 0x04, 0x05, 0x20, 0x02, 0x01, 0xCB, 0xD6, 0xFF, 0xCC });
         }
@@ -82,7 +90,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<GetDiagnosticStatus>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -95,7 +110,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<GetLogMemoryStatus>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -108,7 +130,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<ReadDateTime>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -124,7 +153,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<Metocean.iBCN.Command.Definition.WriteDateTime>.GetCommandBytes(1, payload);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -137,7 +173,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<GetIdentification>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -150,7 +193,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<GetExtendedDiagnostics>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -163,7 +213,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<RequestPositionReport_Last>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -176,7 +233,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<RequestPositionReport_New>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -197,7 +261,14 @@ namespace iBCNLinkLayerFormApp
 
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -225,7 +296,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<Metocean.iBCN.Command.Definition.WriteConfigMode>.GetCommandBytes(1, payload);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -238,7 +316,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<ClearMemoryLog>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -251,7 +336,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<ResetReportingIndex>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -264,7 +356,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<StartDownloadAll>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -277,7 +376,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<StartDownloadNew>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -290,7 +396,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<StopDownload>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -305,7 +418,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<Metocean.iBCN.Command.Definition.SendIridiumMessage>.GetCommandBytes(1, payload);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -318,7 +438,14 @@ namespace iBCNLinkLayerFormApp
             var cmdbytes = Command<StartBootloaderProcess>.GetCommandBytes(1, null);
             receiving.Send(Metocean.iBCNLinkLayer.Wrapper.LinkLayerWrapper.WrapApplicationLayerMessage(cmdbytes.Body));
 
-            PropertiesIterator.PrintIteration(cmdbytes);
+            //PropertiesIterator.PrintIteration(cmdbytes);
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(cmdbytes);
         }
 
         /// <summary>
@@ -370,7 +497,14 @@ namespace iBCNLinkLayerFormApp
             }            
             */
 
-            PropertiesIterator.PrintIteration("abcd");
+            //PropertiesIterator.PrintIteration("abcd");
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration("abcd");
         }
 
 

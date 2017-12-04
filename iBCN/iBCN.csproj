@@ -126,7 +126,12 @@
     <Compile Include="Message\MessageT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ObjectPropertiesIteration\ObjectPropertiesIteration.csproj">
+      <Project>{15b59690-9562-4d3e-ad99-e935cb31a6c5}</Project>
+      <Name>ObjectPropertiesIteration</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Configuration\Json\iBCN_Configuration.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

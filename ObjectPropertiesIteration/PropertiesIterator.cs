@@ -1,9 +1,4 @@
-﻿using Metocean.iBCN.Command.Definition;
-using Metocean.iBCN.Command.Interface;
-using Metocean.iBCN.Command.Payload.Interface;
-using Metocean.iBCN.Message.Entity;
-using Metocean.iBCN.Message.Interface;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +16,14 @@ namespace ObjectPropertiesIteration
         /// <summary>
         /// 
         /// </summary>
-        public static event Action<string, string> CB;
+        public event Action<string, string> CB;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="o"></param>
-        public static void PrintIteration(object o, int identation = 0, string prefix = "")
+        public void PrintIteration(object o, int identation = 0, string prefix = "")
         {
-
             string identationSpace = "";
 
             for (int i = 0; i < identation * 4; i++)
