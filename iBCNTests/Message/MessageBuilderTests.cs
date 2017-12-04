@@ -33,6 +33,9 @@ namespace Metocean.iBCN.Message.Tests
             var x = MessageBuilder.GetMessageEntity(new byte[] { 0x01, 0x81, 0x00, 0x01, 0x02, 0x03, 0x04, 0x01, 0x02, 0x03, 0x04, 0x01, 0x02, 0x03, 0x04, 0x01, 0x02, 0x03, 0x04 });
             var y = x.ToString();
 
+            var z = (iBCNMessage)x;
+            var k = z.ToString();
+
             //Assert.Fail();
         }
     }
