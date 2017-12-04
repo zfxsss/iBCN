@@ -40,16 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MsgQueueEngine\Engine.cs" />
-    <Compile Include="LinkRepository\iBCNLinkRepo.cs" />
     <Compile Include="Link\iBCNLink.cs" />
     <Compile Include="Link\Interface\ILink.cs" />
     <Compile Include="Link\IridiumLink.cs" />
     <Compile Include="Link\LinkDescription.cs" />
     <Compile Include="Link\LinkType.cs" />
-    <Compile Include="MsgQueue\Interface\IMsgQueue.cs" />
-    <Compile Include="MsgQueue\MessageQueue.cs" />
-    <Compile Include="MsgQueue\QueueItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Link\SerialLink.cs" />
     <Compile Include="Wrapper\LinkLayerBytesType.cs" />

@@ -7,24 +7,8 @@ using System.Threading.Tasks;
 
 namespace Metocean.iBCNLinkLayer.Link
 {
-    class IridiumLink : iBCNLink, ILink
+    public class IridiumLink : iBCNLink, ILink
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public override void OnReceiving(byte[] bytes)
-        {
-            base.OnReceiving(bytes);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override void OnSending(byte[] bytes)
-        {
-
-        }
-
         /// <summary>
         /// 
         /// </summary>

@@ -11,7 +11,7 @@ namespace Metocean.iBCN.Message.Entity
     /// <summary>
     /// 
     /// </summary>
-    public abstract class iBCNMessage : IParser
+    public abstract class iBCNMessage : IMsgEntity
     {
         /// <summary>
         /// 
@@ -115,6 +115,15 @@ namespace Metocean.iBCN.Message.Entity
                 //do nothing;
             }
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        string IMsgEntity.ToString()
+        {
+            return null;
         }
     }
 }

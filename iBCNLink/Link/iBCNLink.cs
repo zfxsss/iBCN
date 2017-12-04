@@ -16,29 +16,6 @@ namespace Metocean.iBCNLinkLayer.Link
         /// <summary>
         /// 
         /// </summary>
-        public virtual void OnReceiving(byte[] bytes)
-        {
-            if (GetType() == typeof(IridiumLink))
-            {
-
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual void OnSending(byte[] bytes)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="name"></param>
         public abstract void Open(string name);
 

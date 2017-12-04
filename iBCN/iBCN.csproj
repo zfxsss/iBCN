@@ -96,6 +96,7 @@
     <Compile Include="iBCNException\UnsupportedEventTypeCode.cs" />
     <Compile Include="Message\Entity\EventData\Common.cs" />
     <Compile Include="Message\Entity\EventData\EvtDataBuilder.cs" />
+    <Compile Include="Message\Entity\IMsgEntity.cs" />
     <Compile Include="Message\Entity\MultiplePositionReport.cs" />
     <Compile Include="Message\Entity\EventData\Position.cs" />
     <Compile Include="Message\Entity\ReadConfigMode.cs" />

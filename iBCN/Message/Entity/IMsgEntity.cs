@@ -5,14 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Message.Entity.EventData.Interface
+namespace Metocean.iBCN.Message.Entity
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IEvtData : IParser
+    public interface IMsgEntity : IParser
     {
-        //int EventCode { get; }
         string ToString();
     }
 }

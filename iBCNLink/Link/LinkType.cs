@@ -12,7 +12,6 @@ namespace Metocean.iBCNLinkLayer.Link
     public enum LinkType
     {
         Serial,
-        Bluetooth,
         Iridium
     }
 }
