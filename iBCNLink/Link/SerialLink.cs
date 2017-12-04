@@ -82,6 +82,11 @@ namespace Metocean.iBCNLinkLayer.Link
         /// <summary>
         /// 
         /// </summary>
+        private int multiple = 1;
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="name"></param>
         public override void Open(string name)
         {
@@ -113,7 +118,8 @@ namespace Metocean.iBCNLinkLayer.Link
                             throw new Exception("Serial port is not open. Timer is closed");
                         }
 
-                        byte[] tempbuffer = new byte[4096 * 4];//new byte[serialPort.ReadBufferSize * 4]; //in default the length is 4096
+                        byte[] tempbuffer = new byte[1024 * 16 * multiple];//new byte[serialPort.ReadBufferSize * 4]; //in default the length is 4096
+                        //byte[] tempbuffer = new byte[16];
 
                         var readBytesNumber = 0;
 
@@ -185,13 +191,24 @@ namespace Metocean.iBCNLinkLayer.Link
                     }
                     catch (Exception ex)
                     {
+                        try
+                        {
+                            if (ex.Message.Contains("Offset and length were out of"))
+                            {
+                                if (multiple < 8)
+                                {
+                                    multiple *= 2;
+                                }
+                            }
+                            //how to deal with the exception
+                            ExceptionHandler?.Invoke(ex);
+                        }
+                        catch (Exception ex2) { throw ex2; }
+
                         lock (timerCallbackMutex)
                         {
                             callbackIsRunning = false;
                         }
-
-                        //how to deal with the exception
-                        ExceptionHandler?.Invoke(ex);
                     }
                 };
 
@@ -205,7 +222,6 @@ namespace Metocean.iBCNLinkLayer.Link
                 readTimer.Start();
                 PortOpenHandler?.Invoke();
             }
-
         }
 
         /// <summary>
