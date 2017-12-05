@@ -31,7 +31,7 @@ namespace Metocean.iBCN.Command.Payload
             {
                 if (value < new DateTime(1980, 1, 6))
                 {
-                    throw new InvalidDateTime("");
+                    throw new InvalidDateTime("DateTime should be later than 1980/01/06T00:00:00: " + value.ToString());
                 }
 
                 date_Time = value;
