@@ -14,7 +14,7 @@ namespace Metocean.iBCN.Message
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Msg<T> : IMsg<T>, IMsg where T : IMsgEntity, new()
+    public class Msg<T> : IMsg<T>, IMsg where T : iBCNMessage, new()
     {
         /// <summary>
         /// recursively parse the bytes
