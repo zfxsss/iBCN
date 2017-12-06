@@ -40,6 +40,7 @@
             this.openLogDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fontSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.commandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,7 +99,7 @@
             // 
             this.toolStripStatusLabel_Model.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel_Model.Name = "toolStripStatusLabel_Model";
-            this.toolStripStatusLabel_Model.Size = new System.Drawing.Size(651, 17);
+            this.toolStripStatusLabel_Model.Size = new System.Drawing.Size(682, 17);
             this.toolStripStatusLabel_Model.Spring = true;
             this.toolStripStatusLabel_Model.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -162,10 +163,18 @@
             // 
             // viewToolStripMenuItem
             // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fontSizeToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
-            this.viewToolStripMenuItem.Visible = false;
+            // 
+            // fontSizeToolStripMenuItem
+            // 
+            this.fontSizeToolStripMenuItem.Name = "fontSizeToolStripMenuItem";
+            this.fontSizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fontSizeToolStripMenuItem.Text = "Font Size";
+            this.fontSizeToolStripMenuItem.Click += new System.EventHandler(this.fontSizeToolStripMenuItem_Click);
             // 
             // commandToolStripMenuItem
             // 
@@ -214,7 +223,7 @@
             // 
             this.richTextBox_ConsoleWindow.BackColor = System.Drawing.Color.Black;
             this.richTextBox_ConsoleWindow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox_ConsoleWindow.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox_ConsoleWindow.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_ConsoleWindow.ForeColor = System.Drawing.SystemColors.WindowText;
             this.richTextBox_ConsoleWindow.Location = new System.Drawing.Point(0, 0);
             this.richTextBox_ConsoleWindow.Name = "richTextBox_ConsoleWindow";
@@ -409,6 +418,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Model;
+        private System.Windows.Forms.ToolStripMenuItem fontSizeToolStripMenuItem;
     }
 }
 

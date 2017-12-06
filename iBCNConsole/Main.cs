@@ -58,12 +58,14 @@ namespace iBCNConsole
         {
             InitializeComponent();
 
+            #region
             //object iterator CB binding
             //PropertiesIterator.CB += (prefixMsg, msg) =>
             //{
             //    PrintOut(prefixMsg, msg, false);
             //    PrintOut_File(prefixMsg, msg);
             //};
+            #endregion
 
             //object iterator CB binding
             pi.CB += (prefixMsg, msg) =>
@@ -109,6 +111,10 @@ namespace iBCNConsole
                         if (info == Metocean.iBCN.Device.DeviceEnum.MMI_513)
                         {
                             Preprocessing.CurrentCommandSet = Preprocessing.CommandSupported_MMI_513;
+                        }
+                        else
+                        {
+
                         }
                     }
                 }));
@@ -552,6 +558,28 @@ namespace iBCNConsole
             {
                 closePortToolStripMenuItem_Click(sender, e);
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fontSizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var f = new FontSize();
+            var r = f.ShowDialog(this);
+
+            if (r != DialogResult.OK)
+            {
+                return;
+            }
+
+            Invoke(new Action(() =>
+            {
+                richTextBox_ConsoleWindow.Clear();
+                richTextBox_ConsoleWindow.Font = new Font("Arial", f.Font_Size, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            }));
         }
     }
 }

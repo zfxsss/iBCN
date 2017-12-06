@@ -60,6 +60,12 @@
     <Compile Include="Command\CommandBuilder.cs" />
     <Compile Include="Command\Preprocessing.cs" />
     <Compile Include="Device\DeviceInfo.cs" />
+    <Compile Include="FontSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FontSize.Designer.cs">
+      <DependentUpon>FontSize.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="CommandText\TextParser.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FontSize.resx">
+      <DependentUpon>FontSize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
