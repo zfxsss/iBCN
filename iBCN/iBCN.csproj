@@ -114,7 +114,7 @@
     <Compile Include="Message\Entity\EventReport.cs" />
     <Compile Include="Message\Entity\ExtendedStatus.cs" />
     <Compile Include="Message\Entity\Identity.cs" />
-    <Compile Include="Message\Interface\Parser\IParser.cs" />
+    <Compile Include="Interface\Parser\IParser.cs" />
     <Compile Include="Message\Interface\IMsg.cs" />
     <Compile Include="Message\Entity\iBCNMessage.cs" />
     <Compile Include="Message\Entity\LogStatus.cs" />

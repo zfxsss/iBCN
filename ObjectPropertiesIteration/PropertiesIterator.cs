@@ -165,5 +165,21 @@ namespace ObjectPropertiesIteration
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static string ToString(object o)
+        {
+            var pi = new PropertiesIterator();
+            string output = "";
+            pi.CB += (prefixMsg, msg) =>
+            {
+                output += (prefixMsg + msg + "\n");
+            };
+            pi.PrintIteration(o);
+            return output;
+        }
+
     }
 }

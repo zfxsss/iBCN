@@ -1,5 +1,5 @@
 ﻿using Metocean.iBCN.iBCNException;
-using Metocean.iBCN.Message.Interface.Parser;
+using Metocean.iBCN.Interface.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metocean.iBCN.Message.Interface.Parser
+namespace Metocean.iBCN.Interface.Parser
 {
     /// <summary>
     /// 
